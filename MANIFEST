@@ -25,7 +25,6 @@ lib/Email/Sender/Transport/Print.pm
 lib/Email/Sender/Transport/Sendmail.pm
 lib/Email/Sender/Transport/SMTP.pm
 lib/Email/Sender/Transport/SMTP/Persistent.pm
-lib/Email/Sender/Transport/SQLite.pm
 lib/Email/Sender/Transport/Test.pm
 lib/Email/Sender/Transport/Wrapper.pm
 lib/Email/Sender/Util.pm
@@ -48,7 +47,6 @@ t/print.t
 t/sendmail.t
 t/smtp-via-mock.t
 t/smtp-via-rig.t
-t/sqlite.t
 t/test.t
 t/trans-misc.t
 t/trans-prep-email.t

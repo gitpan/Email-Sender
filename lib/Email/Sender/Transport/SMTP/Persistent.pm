@@ -2,7 +2,7 @@ package Email::Sender::Transport::SMTP::Persistent;
 use Mouse;
 extends 'Email::Sender::Transport::SMTP';
 
-our $VERSION = '0.000';
+our $VERSION = '0.001';
 
 =head1 NAME
 
@@ -40,6 +40,8 @@ sub _smtp_client {
 
   return $client;
 }
+
+sub _message_complete { }
 
 __PACKAGE__->meta->make_immutable;
 no Mouse;

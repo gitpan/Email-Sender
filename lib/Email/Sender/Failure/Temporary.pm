@@ -2,11 +2,11 @@ package Email::Sender::Failure::Temporary;
 use Mouse;
 extends 'Email::Sender::Failure';
 
-our $VERSION = '0.000';
+our $VERSION = '0.001';
 
 =head1 NAME
 
-Email::Sender::Failure::Permanent - a temporary delivery failure
+Email::Sender::Failure::Temporary - a temporary delivery failure
 
 =cut
 

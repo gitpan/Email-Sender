@@ -16,7 +16,6 @@ requires:
   Carp: 0
   Class::Method::Modifiers: 0
   Cwd: 0
-  DBD::SQLite: 0
   Email::Abstract: 3
   Email::Address: 0
   Email::Simple: 1.998
@@ -35,4 +34,4 @@ requires:
   Test::More: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.000
+version: 0.001
