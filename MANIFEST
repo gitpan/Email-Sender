@@ -55,4 +55,5 @@ t/util-fail.t
 util/executable
 util/not-executable
 util/sendmail
+util/sendmail.bat
 xt/manual/smtp.t
