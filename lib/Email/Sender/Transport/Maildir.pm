@@ -1,8 +1,8 @@
 package Email::Sender::Transport::Maildir;
-use Mouse;
+use Moose;
 extends 'Email::Sender::Transport';
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 =head1 NAME
 
@@ -134,5 +134,5 @@ sub _delivery_fh {
 }
 
 __PACKAGE__->meta->make_immutable;
-no Mouse;
+no Moose;
 1;

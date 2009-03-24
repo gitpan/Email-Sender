@@ -1,8 +1,8 @@
 package Email::Sender::Transport::Wrapper;
-use Mouse;
+use Moose;
 extends 'Email::Sender::Transport';
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 use Carp;
 
@@ -51,5 +51,5 @@ under the same terms as Perl itself.
 =cut
 
 __PACKAGE__->meta->make_immutable;
-no Mouse;
+no Moose;
 1;

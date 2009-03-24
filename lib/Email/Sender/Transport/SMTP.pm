@@ -1,8 +1,8 @@
 package Email::Sender::Transport::SMTP;
-use Mouse;
+use Moose;
 extends 'Email::Sender::Transport';
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 =head1 NAME
 
@@ -198,5 +198,5 @@ documentation.
 =cut
 
 __PACKAGE__->meta->make_immutable;
-no Mouse;
+no Moose;
 1;

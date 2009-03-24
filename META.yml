@@ -15,7 +15,6 @@ no_index:
 requires:
   Capture::Tiny: 0
   Carp: 0
-  Class::Method::Modifiers: 0
   Cwd: 0
   Email::Abstract: 3
   Email::Address: 0
@@ -28,11 +27,11 @@ requires:
   File::Temp: 0
   FindBin: 0
   List::MoreUtils: 0
-  Mouse: 0.12
+  Moose: 0
   Net::SMTP: 0
   Scalar::Util: 0
   Sys::Hostname::Long: 0
   Test::More: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.003
+version: 0.004
