@@ -1,9 +1,10 @@
 package Email::Sender::Transport::Print;
-our $VERSION = '0.091560_001';
+our $VERSION = '0.091560_002';
 
 use Moose;
 with 'Email::Sender::Transport';
 # ABSTRACT: print email to a filehandle (like stdout)
+
 
 use IO::Handle;
 
@@ -44,7 +45,13 @@ Email::Sender::Transport::Print - print email to a filehandle (like stdout)
 
 =head1 VERSION
 
-version 0.091560_001
+version 0.091560_002
+
+=head1 DESCRIPTION
+
+When this transport is handed mail, it prints it to a filehandle.  By default,
+it will print to STDOUT, but it can be given any L<IO::Handle> object to print
+to as its C<fh> attribute.
 
 =head1 AUTHOR
 

@@ -1,5 +1,5 @@
 package Email::Sender::Transport::SMTP;
-our $VERSION = '0.091560_001';
+our $VERSION = '0.091560_002';
 
 use Moose;
 with 'Email::Sender::Transport';
@@ -168,7 +168,16 @@ Email::Sender::Transport::SMTP - send email over SMTP
 
 =head1 VERSION
 
-version 0.091560_001
+version 0.091560_002
+
+=head1 DESCRIPTION
+
+This transport is used to send email over SMTP, either with or without secure
+sockets (SSL).  It is one of the most complex transports available, capable of
+partial success.
+
+For a potentially more efficient version of this transport, see
+L<Email::Sender::Transport::SMTP::Persistent>.
 
 =head1 ATTRIBUTES
 

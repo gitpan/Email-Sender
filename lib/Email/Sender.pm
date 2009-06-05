@@ -1,5 +1,5 @@
 package Email::Sender;
-our $VERSION = '0.091560_001';
+our $VERSION = '0.091560_002';
 
 use Moose::Role;
 # ABSTRACT: a library for sending email
@@ -20,21 +20,29 @@ Email::Sender - a library for sending email
 
 =head1 VERSION
 
-version 0.091560_001
+version 0.091560_002
 
-=head1 DESCRIPTION
+=head1 OVERVIEW
 
 Email::Sender replaces the old and sometimes problematic Email::Send library,
 which did a decent job at handling very simple email sending tasks, but was not
 suitable for serious use, for a variety of reasons.
 
-At present, the casual user is probably best off using
-L<Email::Sender::Transport::Sendmail>.  If a local F<sendmail> program is
-unavailable, L<Email::Sender::Transport::SMTP> will allow you to send mail
-through your relay host.
+Most users will be able to use L<Email::Sender::Simple> to send mail.  Users
+with more specific needs should look at the available Email::Sender::Transport
+classes.
 
-In the future, L<Email::Sender::Simple> will provide a very simple interface
-for sending mail.
+Documentation may be found in L<Email::Sender::Manual>, and new users should
+start with L<Email::Sender::Manual::QuickStart>.
+
+=head1 IMPLEMENTING
+
+Email::Sender itelf is a Moose role.  Any class that implements Email::Sender
+is required to provide a method called C<send>.  This method should accept any
+input that can be understood by L<Email::Abstract>, followed by a hashref
+containing C<to> and C<from> arguments to be used as the envelope.  The method
+should return an L<Email::Sender::Success> object on success or throw an
+L<Email::Sender::Failure> on failure.
 
 =head1 AUTHOR
 

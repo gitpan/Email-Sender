@@ -10,6 +10,8 @@ lib/Email/Sender/Failure.pm
 lib/Email/Sender/Failure/Multi.pm
 lib/Email/Sender/Failure/Permanent.pm
 lib/Email/Sender/Failure/Temporary.pm
+lib/Email/Sender/Manual.pm
+lib/Email/Sender/Manual/QuickStart.pm
 lib/Email/Sender/Role/CommonSending.pm
 lib/Email/Sender/Simple.pm
 lib/Email/Sender/Success.pm

@@ -1,9 +1,10 @@
 package Email::Sender::Transport::DevNull;
-our $VERSION = '0.091560_001';
+our $VERSION = '0.091560_002';
 
 use Moose;
 with 'Email::Sender::Transport';
 # ABSTRACT: happily throw away your mail
+
 
 sub send_email { return $_[0]->success }
 
@@ -21,7 +22,12 @@ Email::Sender::Transport::DevNull - happily throw away your mail
 
 =head1 VERSION
 
-version 0.091560_001
+version 0.091560_002
+
+=head1 DESCRIPTION
+
+This class implements L<Email::Sender::Transport>.  Any mail sent through a
+DevNull transport will be silently discarded.
 
 =head1 AUTHOR
 

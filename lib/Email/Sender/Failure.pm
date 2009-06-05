@@ -1,5 +1,5 @@
 package Email::Sender::Failure;
-our $VERSION = '0.091560_001';
+our $VERSION = '0.091560_002';
 
 use Moose;
 # ABSTRACT: a report of failure from an email sending transport
@@ -26,6 +26,7 @@ has _recipients => (
 );
 
 sub recipients { shift->_recipients }
+
 
 sub throw {
   my $inv = shift;
@@ -67,7 +68,7 @@ Email::Sender::Failure - a report of failure from an email sending transport
 
 =head1 VERSION
 
-version 0.091560_001
+version 0.091560_002
 
 =head1 SEE ALSO
 
@@ -97,6 +98,18 @@ for network protocol transports like SMTP.  This may be undefined.
 
 This returns a list (or, in scalar context, an arrayref) of addresses to which
 the email could not be sent.
+
+=head1 METHODS
+
+=head2 throw
+
+This method can be used to instantiate and throw an Email::Sender::Failure
+object at once.
+
+  Email::Sender::Failure->throw(\%arg);
+
+Instead of a hashref of args, you can pass a single string argument which will
+be used as the C<message> of the new failure.
 
 =head1 AUTHOR
 

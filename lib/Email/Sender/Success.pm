@@ -1,8 +1,9 @@
 package Email::Sender::Success;
-our $VERSION = '0.091560_001';
+our $VERSION = '0.091560_002';
 
 use Moose;
 # ABSTRACT: the result of successfully sending mail
+
 
 __PACKAGE__->meta->make_immutable;
 no Moose;
@@ -18,7 +19,12 @@ Email::Sender::Success - the result of successfully sending mail
 
 =head1 VERSION
 
-version 0.091560_001
+version 0.091560_002
+
+=head1 DESCRIPTION
+
+An Email::Sender::Success object is just an indicator that an email message was
+successfully sent.  Unless extended, it has no properties of its own.
 
 =head1 AUTHOR
 

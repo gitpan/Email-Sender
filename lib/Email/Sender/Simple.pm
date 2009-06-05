@@ -1,13 +1,17 @@
 package Email::Sender::Simple;
-our $VERSION = '0.091560_001';
+our $VERSION = '0.091560_002';
 
 use Moose;
 with 'Email::Sender::Role::CommonSending';
 # ABSTRACT: the simple interface for sending mail with Sender
 
+
 use Sub::Exporter::Util ();
 use Sub::Exporter -setup => {
-  exports => { sendmail => Sub::Exporter::Util::curry_class('send') },
+  exports => {
+    sendmail        => Sub::Exporter::Util::curry_class('send'),
+    try_to_sendmail => Sub::Exporter::Util::curry_class('try_to_send'),
+  },
 };
 
 use Email::Address;
@@ -19,11 +23,11 @@ use Email::Sender::Transport;
 
   sub _default_was_from_env {
     my ($self) = @_;
-    $self->_default_transport;
+    $self->default_transport;
     return $DEFAULT_FROM_ENV;
   }
 
-  sub _default_transport {
+  sub default_transport {
     return $DEFAULT_TRANSPORT if $DEFAULT_TRANSPORT;
     my ($self) = @_;
     
@@ -81,10 +85,10 @@ around prepare_envelope => sub {
 sub send_email {
   my ($self, $email, $arg) = @_;
 
-  my $transport = $self->_default_transport;
+  my $transport = $self->default_transport;
 
   if ($arg->{transport}) {
-    $arg = { %$arg }; # So we can delete mailer without ill effects.
+    $arg = { %$arg }; # So we can delete transport without ill effects.
     $transport = delete $arg->{transport} unless $self->_default_was_from_env;
   }
 
@@ -157,7 +161,12 @@ Email::Sender::Simple - the simple interface for sending mail with Sender
 
 =head1 VERSION
 
-version 0.091560_001
+version 0.091560_002
+
+=head1 SEE INSTEAD
+
+For now, the best documentation of this class is in
+L<Email::Sender::Manual::QuickStart>.
 
 =head1 AUTHOR
 

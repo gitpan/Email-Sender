@@ -1,12 +1,11 @@
-package Email::Sender::Failure::Temporary;
+use strict;
+use warnings;
+package Email::Sender::Manual;
 our $VERSION = '0.091560_002';
 
-use Moose;
-extends 'Email::Sender::Failure';
-# ABSTRACT: a temporary delivery failure
+# ABSTRACT: table of contents for the Email::Sender manual
 
-__PACKAGE__->meta->make_immutable;
-no Moose;
+
 1;
 
 __END__
@@ -15,11 +14,16 @@ __END__
 
 =head1 NAME
 
-Email::Sender::Failure::Temporary - a temporary delivery failure
+Email::Sender::Manual - table of contents for the Email::Sender manual
 
 =head1 VERSION
 
 version 0.091560_002
+
+=head1 THE MANAUL
+
+L<Email::Sender::Manual::QuickStart> tells you just what you need to know to
+start using Email::Sender.
 
 =head1 AUTHOR
 

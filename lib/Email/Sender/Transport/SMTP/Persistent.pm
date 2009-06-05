@@ -1,5 +1,5 @@
 package Email::Sender::Transport::SMTP::Persistent;
-our $VERSION = '0.091560_001';
+our $VERSION = '0.091560_002';
 
 use Moose;
 extends 'Email::Sender::Transport::SMTP';
@@ -56,11 +56,11 @@ Email::Sender::Transport::SMTP::Persistent - an SMTP client that stays online
 
 =head1 VERSION
 
-version 0.091560_001
+version 0.091560_002
 
 =head1 DESCRIPTION
 
-The stock Email::Sender::Transport::SMTP reconnects each time it sends a
+The stock L<Email::Sender::Transport::SMTP> reconnects each time it sends a
 message.  This transport only reconnects when the existing connection fails.
 
 =head1 METHODS
