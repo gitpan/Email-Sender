@@ -1,19 +1,10 @@
 package Email::Sender::Transport::SMTP::Persistent;
+our $VERSION = '0.091560_001';
+
 use Moose;
 extends 'Email::Sender::Transport::SMTP';
+# ABSTRACT: an SMTP client that stays online
 
-our $VERSION = '0.004';
-
-=head1 NAME
-
-Email::Sender::Transport::SMTP::Persistent - an SMTP client that stays online
-
-=head1 DESCRIPTION
-
-The stock Email::Sender::Transport::SMTP reconnects each time it sends a
-message.  This transport only reconnects when the existing connection fails.
-
-=cut
 
 use Net::SMTP;
 use Sys::Hostname::Long ();
@@ -43,16 +34,6 @@ sub _smtp_client {
 
 sub _message_complete { }
 
-=head1 METHODS
-
-=head2 disconnect
-
-  $transport->disconnect;
-
-This method sends an SMTP QUIT command and destroys the SMTP client, if on
-exists and is connected.
-
-=cut
 
 sub disconnect {
   my ($self) = @_;
@@ -64,3 +45,44 @@ sub disconnect {
 __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+Email::Sender::Transport::SMTP::Persistent - an SMTP client that stays online
+
+=head1 VERSION
+
+version 0.091560_001
+
+=head1 DESCRIPTION
+
+The stock Email::Sender::Transport::SMTP reconnects each time it sends a
+message.  This transport only reconnects when the existing connection fails.
+
+=head1 METHODS
+
+=head2 disconnect
+
+  $transport->disconnect;
+
+This method sends an SMTP QUIT command and destroys the SMTP client, if on
+exists and is connected.
+
+=head1 AUTHOR
+
+  Ricardo Signes <rjbs@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2009 by Ricardo Signes.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as perl itself.
+
+=cut 
+
+

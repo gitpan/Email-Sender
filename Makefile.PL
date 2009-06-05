@@ -1,37 +1,36 @@
-require 5.008001; # Moose will need this
-use inc::Module::Install;
 
-name          'Email-Sender';
-author        'Ricardo SIGNES <rjbs@cpan.org>';
-license       'perl';
-version_from  'lib/Email/Sender.pm';
+use strict;
+use warnings;
 
-# NON-CORE PREREQUISITES
-requires('Moose'           => 0);    # minimum version unknown;
-requires('Email::Abstract' => 3);    # XXX: really use Abstract?; 3 = \$str
-requires('Net::SMTP'       => 0);
-requires('List::MoreUtils' => 0);    # minimum version unknown; uniq
-requires('Capture::Tiny'   => 0);    # for testing
+use ExtUtils::MakeMaker;
 
-# SOON TO NOT BE PREREQUISIES
-requires('Email::Address'       => 0);     # used for env-from-msg (::Simple)
-requires('Email::Simple'        => 1.998); # XXX: needed(?) for ->header_obj
-                                           # only needed my Mbox; split?
-requires('Sys::Hostname::Long'  => 0);     # XXX: do we -need- a good HELO?
-
-# CORE PREREQUISITES
-requires('Carp'           => 0);    # minimum unknown
-requires('Cwd'            => 0);    # minimum unknown
-requires('Fcntl'          => 0);
-requires('File::Basename' => 0);
-requires('File::Find'     => 0);
-requires('File::Path'     => 0);
-requires('File::Spec'     => 0);
-requires('File::Temp'     => 0);
-requires('FindBin'        => 0);
-requires('Scalar::Util'   => 0);
-requires('Test::More'     => 0);  # minimum unknown
-
-auto_manifest;
-
-WriteAll();
+WriteMakefile(
+  DISTNAME  => 'Email-Sender',
+  NAME      => 'Email::Sender',
+  AUTHOR    => 'Ricardo\ Signes\ \<rjbs\@cpan\.org\>',
+  ABSTRACT  => 'a\ library\ for\ sending\ email',
+  VERSION   => '0.091560_001',
+  EXE_FILES => [ qw() ],
+  (eval { ExtUtils::MakeMaker->VERSION(6.21) } ? (LICENSE => 'perl') : ()),
+  PREREQ_PM    => {
+    "Scalar::Util" => '0',
+    "Capture::Tiny" => '0',
+    "FindBin" => '0',
+    "File::Spec" => '0',
+    "Fcntl" => '0',
+    "File::Find" => '0',
+    "Email::Abstract" => '3',
+    "File::Path" => '0',
+    "Email::Simple" => '1.998',
+    "List::MoreUtils" => '0',
+    "Sys::Hostname::Long" => '0',
+    "Moose" => '0',
+    "Carp" => '0',
+    "Test::More" => '0',
+    "Net::SMTP" => '0',
+    "File::Temp" => '0',
+    "File::Basename" => '0',
+    "Email::Address" => '0',
+    "Cwd" => '0',
+  },
+);

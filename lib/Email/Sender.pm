@@ -1,13 +1,26 @@
-use warnings;
-use strict;
 package Email::Sender;
-# ABSTRACT: it sends mail
+our $VERSION = '0.091560_001';
 
-our $VERSION = '0.004';
+use Moose::Role;
+# ABSTRACT: a library for sending email
+
+requires 'send';
+
+
+no Moose::Role;
+1;
+
+__END__
+
+=pod
 
 =head1 NAME
 
 Email::Sender - a library for sending email
+
+=head1 VERSION
+
+version 0.091560_001
 
 =head1 DESCRIPTION
 
@@ -25,21 +38,15 @@ for sending mail.
 
 =head1 AUTHOR
 
-Ricardo SIGNES, C<< <rjbs@cpan.org> >>
+  Ricardo Signes <rjbs@cpan.org>
 
-=head1 BUGS
+=head1 COPYRIGHT AND LICENSE
 
-Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.  I will be notified, and then you'll automatically be
-notified of progress on your bug as I make changes.
+This software is copyright (c) 2009 by Ricardo Signes.
 
-=head1 COPYRIGHT
+This is free software; you can redistribute it and/or modify it under
+the same terms as perl itself.
 
-Copyright 2006-2008, Ricardo SIGNES.
+=cut 
 
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
 
-=cut
-
-1;

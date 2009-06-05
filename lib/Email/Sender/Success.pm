@@ -1,14 +1,36 @@
 package Email::Sender::Success;
-use Moose;
+our $VERSION = '0.091560_001';
 
-our $VERSION = '0.004';
+use Moose;
+# ABSTRACT: the result of successfully sending mail
+
+__PACKAGE__->meta->make_immutable;
+no Moose;
+1;
+
+__END__
+
+=pod
 
 =head1 NAME
 
 Email::Sender::Success - the result of successfully sending mail
 
-=cut
+=head1 VERSION
 
-__PACKAGE__->meta->make_immutable;
-no Moose;
-1;
+version 0.091560_001
+
+=head1 AUTHOR
+
+  Ricardo Signes <rjbs@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2009 by Ricardo Signes.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as perl itself.
+
+=cut 
+
+

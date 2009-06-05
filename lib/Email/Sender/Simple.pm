@@ -1,15 +1,175 @@
 package Email::Sender::Simple;
-use strict;
-use warnings;
+our $VERSION = '0.091560_001';
+
+use Moose;
+with 'Email::Sender::Role::CommonSending';
+# ABSTRACT: the simple interface for sending mail with Sender
+
+use Sub::Exporter::Util ();
+use Sub::Exporter -setup => {
+  exports => { sendmail => Sub::Exporter::Util::curry_class('send') },
+};
+
+use Email::Address;
+use Email::Sender::Transport;
+
+{
+  my $DEFAULT_TRANSPORT;
+  my $DEFAULT_FROM_ENV;
+
+  sub _default_was_from_env {
+    my ($self) = @_;
+    $self->_default_transport;
+    return $DEFAULT_FROM_ENV;
+  }
+
+  sub _default_transport {
+    return $DEFAULT_TRANSPORT if $DEFAULT_TRANSPORT;
+    my ($self) = @_;
+    
+    if ($ENV{EMAIL_SENDER_TRANSPORT}) {
+      my $transport_class = $ENV{EMAIL_SENDER_TRANSPORT};
+
+      if ($transport_class !~ tr/://) {
+        $transport_class = "Email::Sender::Transport::$transport_class";
+      }
+
+      eval "require $transport_class" or die $@;
+
+      my %arg;
+      for my $key (grep { /^EMAIL_SENDER_TRANSPORT_\w+/ } keys %ENV) {
+        (my $new_key = $key) =~ s/^EMAIL_SENDER_TRANSPORT_//;
+        $arg{$new_key} = $ENV{$key};
+      }
+
+      $DEFAULT_FROM_ENV  = 1;
+      $DEFAULT_TRANSPORT = $transport_class->new(\%arg);
+    } else {
+      $DEFAULT_FROM_ENV  = 0;
+      $DEFAULT_TRANSPORT = $self->build_default_transport;
+    }
+
+    return $DEFAULT_TRANSPORT;
+  }
+
+  sub build_default_transport {
+    require Email::Sender::Transport::SMTP;
+    Email::Sender::Transport::SMTP->new;
+  }
+
+  sub reset_default_transport {
+    undef $DEFAULT_TRANSPORT;
+    undef $DEFAULT_FROM_ENV;
+  }
+}
+
+# Maybe this should be an around, but I'm just not excited about figuring out
+# order at the moment.  It just has to work. -- rjbs, 2009-06-05
+around prepare_envelope => sub {
+  my ($orig, $self, $arg) = @_;
+  $arg ||= {};
+  my $env = $self->$orig($arg);
+
+  $env = {
+    %$arg,
+    %$env,
+  };
+
+  return $env;
+};
+
+sub send_email {
+  my ($self, $email, $arg) = @_;
+
+  my $transport = $self->_default_transport;
+
+  if ($arg->{transport}) {
+    $arg = { %$arg }; # So we can delete mailer without ill effects.
+    $transport = delete $arg->{transport} unless $self->_default_was_from_env;
+  }
+
+  confess("transport $transport not safe for use with Email::Sender::Simple")
+    unless $transport->is_simple;
+
+  my ($to, $from) = $self->_get_to_from($email, $arg);
+
+  Email::Sender::Failure::Permanent->throw("no recipients") if ! @$to;
+  Email::Sender::Failure::Permanent->throw("no sender") if ! defined $from;
+
+  return $transport->send(
+    $email,
+    {
+      to   => $to,
+      from => $from,
+    },
+  );
+}
+
+sub try_to_send {
+  my ($self, $email, $arg) = @_;
+
+  my $succ = eval { $self->send($email, $arg); };
+
+  return $succ if $succ;
+  my $error = $@ || 'unknown error';
+  return if eval { $error->isa('Email::Sender::Failure') };
+
+  die $error;
+}
+
+sub _get_to_from {
+  my ($self, $email, $arg) = @_;
+
+  my $to = $arg->{to};
+  unless (@$to) {
+    my @to_addrs =
+      map  { $_->address               }
+      grep { defined                   }
+      map  { Email::Address->parse($_) }
+      map  { $email->get_header($_)    }
+      qw(to cc);
+    $to = \@to_addrs;
+  }
+
+  my $from = $arg->{from};
+  unless (defined $from) {
+    ($from) =
+      map  { $_->address               }
+      grep { defined                   }
+      map  { Email::Address->parse($_) }
+      map  { $email->get_header($_)    }
+      qw(from);
+  }
+
+  return ($to, $from);
+}
+
+no Moose;
+"220 OK";
+
+__END__
+
+=pod
 
 =head1 NAME
 
-Email::Sender::Simple - send mail simply (not yet implemented)
+Email::Sender::Simple - the simple interface for sending mail with Sender
 
-=cut
+=head1 VERSION
 
-our $VERSION = '0.004';
+version 0.091560_001
 
-# This is gonna be good. -- rjbs, 2008-12-10
+=head1 AUTHOR
 
-1;
+  Ricardo Signes <rjbs@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2009 by Ricardo Signes.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as perl itself.
+
+=cut 
+
+

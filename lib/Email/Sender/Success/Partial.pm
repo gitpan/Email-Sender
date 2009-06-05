@@ -1,20 +1,10 @@
 package Email::Sender::Success::Partial;
+our $VERSION = '0.091560_001';
+
 use Moose;
 extends 'Email::Sender::Success';
+# ABSTRACT: a report of partial success when delivering
 
-our $VERSION = '0.004';
-
-=head1 NAME
-
-Email::Sender::Success::Partial - a report of partial success when delivering
-
-=head1 DESCRIPTION
-
-These objects indicate that some deliver was accepted for some recipients and
-not others.  The success object's C<failure> attribute will return a
-L<Email::Sender::Failure::Multi> describing which parts of the delivery failed.
-
-=cut
 
 use Email::Sender::Failure::Multi;
 
@@ -27,3 +17,36 @@ has failure => (
 __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+Email::Sender::Success::Partial - a report of partial success when delivering
+
+=head1 VERSION
+
+version 0.091560_001
+
+=head1 DESCRIPTION
+
+These objects indicate that some deliver was accepted for some recipients and
+not others.  The success object's C<failure> attribute will return a
+L<Email::Sender::Failure::Multi> describing which parts of the delivery failed.
+
+=head1 AUTHOR
+
+  Ricardo Signes <rjbs@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2009 by Ricardo Signes.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as perl itself.
+
+=cut 
+
+

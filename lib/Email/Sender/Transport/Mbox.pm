@@ -1,14 +1,9 @@
 package Email::Sender::Transport::Mbox;
+our $VERSION = '0.091560_001';
+
 use Moose;
-extends 'Email::Sender::Transport';
-
-our $VERSION = '0.004';
-
-=head1 NAME
-
-Email::Sender::Transport::Mbox - deliver mail to an mbox on disk
-
-=cut
+with 'Email::Sender::Transport';
+# ABSTRACT: deliver mail to an mbox on disk
 
 use Carp;
 use File::Path;
@@ -17,15 +12,6 @@ use IO::File;
 use Email::Simple 1.998;  # needed for ->header_obj
 use Fcntl ':flock';
 
-=head1 DESCRIPTION
-
-This transport delivers into an mbox.  The mbox file may be given by the 
-F<filename> argument to the constructor, and defaults to F<mbox>.
-
-The transport I<currently> assumes that the mbox is in F<mboxo> format, but
-this may change or be configurable in the future.
-
-=cut
 
 has 'filename' => (is => 'ro', default => 'mbox', required => 1);
 
@@ -118,3 +104,38 @@ sub _unlock {
 __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+Email::Sender::Transport::Mbox - deliver mail to an mbox on disk
+
+=head1 VERSION
+
+version 0.091560_001
+
+=head1 DESCRIPTION
+
+This transport delivers into an mbox.  The mbox file may be given by the 
+F<filename> argument to the constructor, and defaults to F<mbox>.
+
+The transport I<currently> assumes that the mbox is in F<mboxo> format, but
+this may change or be configurable in the future.
+
+=head1 AUTHOR
+
+  Ricardo Signes <rjbs@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2009 by Ricardo Signes.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as perl itself.
+
+=cut 
+
+

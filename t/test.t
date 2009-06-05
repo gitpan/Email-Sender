@@ -2,13 +2,13 @@
 use strict;
 use warnings;
 
-use Test::More tests => 38;
+use Test::More tests => 42;
 
 use Email::Sender::Transport::Test;
 use Email::Sender::Transport::Failable;
 
 my $sender = Email::Sender::Transport::Test->new;
-isa_ok($sender, 'Email::Sender::Transport');
+ok($sender->does('Email::Sender::Transport'));
 isa_ok($sender, 'Email::Sender::Transport::Test');
 
 is(@{ $sender->deliveries }, 0, "no deliveries so far");
@@ -25,6 +25,9 @@ Dear Recipient,
 -- 
 sender
 END_MESSAGE
+
+ok($sender->is_simple,               "we can use standard Test for Simple");
+ok(! $sender->allow_partial_success, "std Test doesn't allow partial succ");
 
 {
   my $result = $sender->send(
@@ -200,6 +203,9 @@ test_fail(
 $fail_test = Email::Sender::Transport::TestFail->new({
   allow_partial_success => 1,
 });
+
+ok(! $fail_test->is_simple,           "partial success capable Test ! simple");
+ok($fail_test->allow_partial_success, "...becaue it allows partial success");
 
 test_fail(
   {

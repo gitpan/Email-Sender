@@ -1,34 +1,14 @@
 package Email::Sender::Transport::SMTP;
+our $VERSION = '0.091560_001';
+
 use Moose;
-extends 'Email::Sender::Transport';
-
-our $VERSION = '0.004';
-
-=head1 NAME
-
-Email::Sender::Transport::SMTP - send email over SMTP
-
-=cut
+with 'Email::Sender::Transport';
+# ABSTRACT: send email over SMTP
 
 use Email::Sender::Failure::Multi;
 use Email::Sender::Success::Partial;
 use Email::Sender::Util;
 
-=head1 DESCRIPTION
-
-=head1 ATTRIBUTES
-
-The following attributes may be passed to the constructor:
-
-=over
-
-=item host - the name of the host to connect to; defaults to localhost
-
-=item ssl - if true, connect via SSL; defaults to false
-
-=item port - port to connect to; defaults to 25 for non-SSL, 465 for SSL
-
-=cut
 
 has host => (is => 'ro', isa => 'Str',  default => 'localhost');
 has ssl  => (is => 'ro', isa => 'Bool', default => 0);
@@ -39,28 +19,12 @@ has port => (
   default => sub { return $_[0]->ssl ? 465 : 25; },
 );
 
-=item sasl_username - the username to use for auth; optional
-
-=item sasl_password - the password to use for auth; must be provided if username is provided
-
-=item allow_partial_success - if true, will send data even if some recipients were rejected
-
-=cut
 
 has sasl_username => (is => 'ro', isa => 'Str');
 has sasl_password => (is => 'ro', isa => 'Str');
 
 has allow_partial_success => (is => 'ro', isa => 'Bool', default => 0);
 
-=item helo - what to say when saying HELO; no default
-
-=item localaddr - local address from which to connect
-
-=item localpart - local port from which to connect
-
-=back
-
-=cut
 
 has helo      => (is => 'ro', isa => 'Str'); # default to hostname_long
 has localaddr => (is => 'ro');
@@ -189,14 +153,66 @@ sub send_email {
 
 sub _message_complete { $_[1]->quit; }
 
+
+__PACKAGE__->meta->make_immutable;
+no Moose;
+1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+Email::Sender::Transport::SMTP - send email over SMTP
+
+=head1 VERSION
+
+version 0.091560_001
+
+=head1 ATTRIBUTES
+
+The following attributes may be passed to the constructor:
+
+=over 
+
+=item host - the name of the host to connect to; defaults to localhost
+
+=item ssl - if true, connect via SSL; defaults to false
+
+=item port - port to connect to; defaults to 25 for non-SSL, 465 for SSL
+
+=item sasl_username - the username to use for auth; optional
+
+=item sasl_password - the password to use for auth; must be provided if username is provided
+
+=item allow_partial_success - if true, will send data even if some recipients were rejected
+
+=item helo - what to say when saying HELO; no default
+
+=item localaddr - local address from which to connect
+
+=item localpart - local port from which to connect
+
+=back 
+
 =head1 PARTIAL SUCCESS
 
 If C<allow_partial_success> was set when creating the transport, the transport
 may return L<Email::Sender::Success::Partial> objects.  Consult that module's
 documentation.
 
-=cut
+=head1 AUTHOR
 
-__PACKAGE__->meta->make_immutable;
-no Moose;
-1;
+  Ricardo Signes <rjbs@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2009 by Ricardo Signes.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as perl itself.
+
+=cut 
+
+

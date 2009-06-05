@@ -1,45 +1,22 @@
 package Email::Sender::Failure;
-use Moose;
+our $VERSION = '0.091560_001';
 
-our $VERSION = '0.004';
+use Moose;
+# ABSTRACT: a report of failure from an email sending transport
 
 use overload '""' => sub { $_[0]->message }, fallback => 1;
 
-=head1 NAME
-
-Email::Sender::Failure - a report of failure from an email sending transport
-
-=head1 METHODS
-
-=head2 message
-
-This method returns the failure message, which should describe the failure.
-Failures stringify to this message.
-
-=cut
 
 has message => (
   is       => 'ro',
   required => 1,
 );
 
-=head2 code
-
-This returns the numeric code of the failure, if any.  This is mostly useful
-for network protocol transports like SMTP.  This may be undefined.
-
-=cut
 
 has code => (
   is => 'ro',
 );
 
-=head2 recipients
-
-This returns a list (or, in scalar context, an arrayref) of addresses to which
-the email could not be sent.
-
-=cut
 
 has _recipients => (
   is         => 'rw',
@@ -75,9 +52,26 @@ sub BUILDARGS {
   return $self->SUPER::BUILDARGS(@args);
 }
 
+
+__PACKAGE__->meta->make_immutable;
+no Moose;
+1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+Email::Sender::Failure - a report of failure from an email sending transport
+
+=head1 VERSION
+
+version 0.091560_001
+
 =head1 SEE ALSO
 
-=over
+=over 
 
 =item * L<Email::Sender::Permanent>
 
@@ -85,10 +79,36 @@ sub BUILDARGS {
 
 =item * L<Email::Sender::Multi>
 
-=back
+=back 
 
-=cut
+=head1 ATTRIBUTES
 
-__PACKAGE__->meta->make_immutable;
-no Moose;
-1;
+=head2 message
+
+This method returns the failure message, which should describe the failure.
+Failures stringify to this message.
+
+=head2 code
+
+This returns the numeric code of the failure, if any.  This is mostly useful
+for network protocol transports like SMTP.  This may be undefined.
+
+=head2 recipients
+
+This returns a list (or, in scalar context, an arrayref) of addresses to which
+the email could not be sent.
+
+=head1 AUTHOR
+
+  Ricardo Signes <rjbs@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2009 by Ricardo Signes.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as perl itself.
+
+=cut 
+
+

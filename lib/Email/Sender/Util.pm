@@ -1,20 +1,15 @@
 use strict;
 use warnings;
 package Email::Sender::Util;
+our $VERSION = '0.091560_001';
 
-our $VERSION = '0.004';
+# ABSTRACT: random stuff that makes Email::Sender go
 
 use Email::Address;
 use Email::Sender::Failure;
 use Email::Sender::Failure::Permanent;
 use Email::Sender::Failure::Temporary;
 use List::MoreUtils ();
-
-=head1 NAME
-
-Email::Sender::Util - random stuff that makes Email::Sender go
-
-=cut
 
 # This code will be used by Email::Sender::Simple. -- rjbs, 2008-12-04
 sub _recipients_from_email {
@@ -60,3 +55,30 @@ sub _failure {
 }
 
 1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+Email::Sender::Util - random stuff that makes Email::Sender go
+
+=head1 VERSION
+
+version 0.091560_001
+
+=head1 AUTHOR
+
+  Ricardo Signes <rjbs@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2009 by Ricardo Signes.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as perl itself.
+
+=cut 
+
+
