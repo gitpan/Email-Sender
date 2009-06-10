@@ -1,5 +1,5 @@
 package Email::Sender::Failure::Permanent;
-our $VERSION = '0.091560_002';
+our $VERSION = '0.091610_003';
 
 use Moose;
 extends 'Email::Sender::Failure';
@@ -19,7 +19,7 @@ Email::Sender::Failure::Permanent - a permanent delivery failure
 
 =head1 VERSION
 
-version 0.091560_002
+version 0.091610_003
 
 =head1 AUTHOR
 

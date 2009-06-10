@@ -1,5 +1,5 @@
 package Email::Sender::Simple;
-our $VERSION = '0.091560_002';
+our $VERSION = '0.091610_003';
 
 use Moose;
 with 'Email::Sender::Role::CommonSending';
@@ -57,6 +57,11 @@ use Email::Sender::Transport;
   }
 
   sub build_default_transport {
+    require Email::Sender::Transport::Sendmail;
+    my $transport = eval { Email::Sender::Transport::Sendmail->new };
+
+    return $transport if $transport;
+
     require Email::Sender::Transport::SMTP;
     Email::Sender::Transport::SMTP->new;
   }
@@ -161,7 +166,7 @@ Email::Sender::Simple - the simple interface for sending mail with Sender
 
 =head1 VERSION
 
-version 0.091560_002
+version 0.091610_003
 
 =head1 SEE INSTEAD
 

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Email::Sender::Manual::QuickStart;
-our $VERSION = '0.091560_002';
+our $VERSION = '0.091610_003';
 
 # ABSTRACT: how to start using Email::Sender right now
 
@@ -18,7 +18,7 @@ Email::Sender::Manual::QuickStart - how to start using Email::Sender right now
 
 =head1 VERSION
 
-version 0.091560_002
+version 0.091610_003
 
 =head1 QUICK START
 
@@ -45,12 +45,14 @@ No messing around, let's just send some mail.
 That's it.  Your message goes out into the internet and tries to get delivered
 to C<x.ample@example.com>.
 
-In the example above, C<$email> could have been a lot of different things.  If
-C<Email::Abstract> can understand it, it could go there.  Email::Sender::Simple
-tries to make a good guess about how to send the message.  It will usually try
-to use the F<sendmail> program on unix-like systems and to use SMTP on Windows.
-You can specify a transport, if you need to, but normally that shouldn't be an
-issue.  (See C<{citation needed}>, though, for more information.)
+In the example above, C<$email> could be an Email::Simple object, a
+MIME::Entity, a string containing an email message, or one of several other
+types of input.  If C<Email::Abstract> can understand a value, it can be passed
+to Email::Sender::Simple.  Email::Sender::Simple tries to make a good guess
+about how to send the message.  It will usually try to use the F<sendmail>
+program on unix-like systems and to use SMTP on Windows.  You can specify a
+transport, if you need to, but normally that shouldn't be an issue.  (See
+L</Picking a Transport>, though, for more information.)
 
 Also note that we imported and used a C<sendmail> routine in the example above.
 This is exactly the same as saying:
@@ -68,8 +70,11 @@ those fields.  Similarly, if no sender is specified, it will use the first
 address found in the F<From> header.
 
 In most email transmission systems, though, the headers are not by necessity
-tied to the addresses used as the sender and recipients.  Being able to set
-those distinctly is important, and Email::Sender::Simple lets you do this:
+tied to the addresses used as the sender and recipients.  For example, your
+message header might say "From: mailing-list@example.com" while your SMTP
+client says "MAIL FROM:E<lt>verp-1234@lists.example.comE<gt>".  This is a
+powerful feature, and is necessary for many email application.  Being able to
+set those distinctly is important, and Email::Sender::Simple lets you do this:
 
   sendmail($email, { to => [ $to_1, $to_2 ], from => $sender });
 
@@ -82,8 +87,8 @@ What's more useful is what happens if the message can't be sent.
 
 If there is an error sending the message, an exception will be thrown.  It will
 be an object belonging to the class L<Email::Sender::Failure>.  This object
-will have a C<message> attribute that should describe the nature of the
-failure.  There are several specialized forms of failure, like
+will have a C<message> attribute describing the nature of the failure.  There
+are several specialized forms of failure, like
 L<Email::Sender::Failure::Multi>, which is thrown when more than one error is
 encountered when trying to send.  You don't need to know about these to use
 Email::Sender::Simple, though.  All you need to know is that C<sendmail>
@@ -143,7 +148,7 @@ environment, I<< no subsequent C<transport> args to C<sendmail> will be
 respected >>.  If you set the default transport via the environment, that's it.
 Everything will use that transport.
 
-This is extremely valuable behavior, as it allows you to audit ever message
+This is extremely valuable behavior, as it allows you to audit every message
 that would be sent by a program by running something like this:
 
   $ export EMAIL_SENDER_TRANSPORT=Maildir
@@ -173,7 +178,7 @@ The simplest way is to do something like this:
 
 Now you've got an array containing every delivery performed through
 Email::Sender::Simple, in order.  Because you set the transport via the
-environment, no other code will be been able to force a different transport.
+environment, no other code will be able to force a different transport.
 
 When testing code that forks, L<Email::Sender::Transport::SQLite> can be used
 to allow every child process to deliver to a single, easy to inspect

@@ -1,5 +1,5 @@
 package Email::Sender::Transport::Sendmail;
-our $VERSION = '0.091560_002';
+our $VERSION = '0.091610_003';
 
 use Moose;
 with 'Email::Sender::Transport';
@@ -23,6 +23,10 @@ has 'sendmail' => (
     return $_[0]->_find_sendmail('sendmail');
   },
 );
+
+sub BUILD {
+  $_[0]->sendmail; # force population -- rjbs, 2009-06-08
+}
 
 sub _find_sendmail {
   my ($self, $program_name) = @_;
@@ -81,7 +85,7 @@ Email::Sender::Transport::Sendmail - send mail via sendmail(1)
 
 =head1 VERSION
 
-version 0.091560_002
+version 0.091610_003
 
 =head2 DESCRIPTION
 
