@@ -1,5 +1,5 @@
 package Email::Sender::Failure::Temporary;
-our $VERSION = '0.091610_003';
+our $VERSION = '0.091640_004';
 
 use Moose;
 extends 'Email::Sender::Failure';
@@ -19,7 +19,7 @@ Email::Sender::Failure::Temporary - a temporary delivery failure
 
 =head1 VERSION
 
-version 0.091610_003
+version 0.091640_004
 
 =head1 AUTHOR
 

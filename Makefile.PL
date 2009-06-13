@@ -9,7 +9,7 @@ WriteMakefile(
   NAME      => 'Email::Sender',
   AUTHOR    => 'Ricardo\ Signes\ \<rjbs\@cpan\.org\>',
   ABSTRACT  => 'a\ library\ for\ sending\ email',
-  VERSION   => '0.091610_003',
+  VERSION   => '0.091640_004',
   EXE_FILES => [ qw() ],
   (eval { ExtUtils::MakeMaker->VERSION(6.21) } ? (LICENSE => 'perl') : ()),
   PREREQ_PM    => {
@@ -26,7 +26,7 @@ WriteMakefile(
     "Sys::Hostname::Long" => '0',
     "Moose" => '0',
     "Carp" => '0',
-    "Test::More" => '0',
+    "Test::More" => '0.88',
     "Net::SMTP" => '0',
     "File::Temp" => '0',
     "File::Basename" => '0',

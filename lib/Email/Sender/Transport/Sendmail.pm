@@ -1,5 +1,5 @@
 package Email::Sender::Transport::Sendmail;
-our $VERSION = '0.091610_003';
+our $VERSION = '0.091640_004';
 
 use Moose;
 with 'Email::Sender::Transport';
@@ -85,7 +85,7 @@ Email::Sender::Transport::Sendmail - send mail via sendmail(1)
 
 =head1 VERSION
 
-version 0.091610_003
+version 0.091640_004
 
 =head2 DESCRIPTION
 

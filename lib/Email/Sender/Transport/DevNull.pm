@@ -1,5 +1,5 @@
 package Email::Sender::Transport::DevNull;
-our $VERSION = '0.091610_003';
+our $VERSION = '0.091640_004';
 
 use Moose;
 with 'Email::Sender::Transport';
@@ -22,7 +22,7 @@ Email::Sender::Transport::DevNull - happily throw away your mail
 
 =head1 VERSION
 
-version 0.091610_003
+version 0.091640_004
 
 =head1 DESCRIPTION
 

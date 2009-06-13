@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Test::Email::Sender::Util;
-our $VERSION = '0.091610_003';
+our $VERSION = '0.091640_004';
 
 use Exporter;
 BEGIN { our @ISA = qw(Exporter) }
