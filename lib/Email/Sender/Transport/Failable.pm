@@ -1,5 +1,5 @@
 package Email::Sender::Transport::Failable;
-our $VERSION = '0.091640_004';
+our $VERSION = '0.091660';
 
 use Moose;
 extends 'Email::Sender::Transport::Wrapper';
@@ -45,7 +45,7 @@ Email::Sender::Transport::Failable - a wrapper to makes things fail predictably
 
 =head1 VERSION
 
-version 0.091640_004
+version 0.091660
 
 =head1 DESCRIPTION
 

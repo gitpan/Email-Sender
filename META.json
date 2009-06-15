@@ -7,7 +7,7 @@
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
    "generated_by" : "Dist::Zilla::Plugin::MetaJSON version 1.091480",
-   "version" : "0.091640_004",
+   "version" : "0.091660",
    "name" : "Email-Sender",
    "author" : [
       "Ricardo Signes <rjbs@cpan.org>"
