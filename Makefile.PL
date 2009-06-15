@@ -9,7 +9,7 @@ WriteMakefile(
   NAME      => 'Email::Sender',
   AUTHOR    => 'Ricardo\ Signes\ \<rjbs\@cpan\.org\>',
   ABSTRACT  => 'a\ library\ for\ sending\ email',
-  VERSION   => '0.091660',
+  VERSION   => '0.091661',
   EXE_FILES => [ qw() ],
   (eval { ExtUtils::MakeMaker->VERSION(6.21) } ? (LICENSE => 'perl') : ()),
   PREREQ_PM    => {
