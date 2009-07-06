@@ -1,5 +1,5 @@
 package Test::Email::SMTPRig;
-our $VERSION = '0.091740';
+our $VERSION = '0.091870';
 
 use Moose;
 
