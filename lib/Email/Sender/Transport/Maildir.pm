@@ -1,5 +1,5 @@
 package Email::Sender::Transport::Maildir;
-our $VERSION = '0.091870';
+our $VERSION = '0.091930';
 
 use Moose;
 with 'Email::Sender::Transport';
@@ -127,7 +127,7 @@ Email::Sender::Transport::Maildir - deliver mail to a maildir on disk
 
 =head1 VERSION
 
-version 0.091870
+version 0.091930
 
 =head1 DESCRIPTION
 
