@@ -1,7 +1,8 @@
 use strict;
 use warnings;
 package Email::Sender::Manual;
-our $VERSION = '0.091940';
+our $VERSION = '0.092820';
+
 
 # ABSTRACT: table of contents for the Email::Sender manual
 
@@ -18,7 +19,7 @@ Email::Sender::Manual - table of contents for the Email::Sender manual
 
 =head1 VERSION
 
-version 0.091940
+version 0.092820
 
 =head1 THE MANAUL
 
@@ -34,7 +35,7 @@ start using Email::Sender.
 This software is copyright (c) 2009 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
 
 =cut 
 

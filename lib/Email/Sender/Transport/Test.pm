@@ -1,5 +1,6 @@
 package Email::Sender::Transport::Test;
-our $VERSION = '0.091940';
+our $VERSION = '0.092820';
+
 
 use Moose;
 with 'Email::Sender::Transport' => { excludes => 'allow_partial_success' };
@@ -92,7 +93,7 @@ Email::Sender::Transport::Test - deliver mail in memory for testing
 
 =head1 VERSION
 
-version 0.091940
+version 0.092820
 
 =head1 DESCRIPTION
 
@@ -146,7 +147,7 @@ Both successful and failed deliveries are stored.
 This software is copyright (c) 2009 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
 
 =cut 
 

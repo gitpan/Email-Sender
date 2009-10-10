@@ -1,5 +1,6 @@
 package Email::Sender::Transport::Failable;
-our $VERSION = '0.091940';
+our $VERSION = '0.092820';
+
 
 use Moose;
 extends 'Email::Sender::Transport::Wrapper';
@@ -45,7 +46,7 @@ Email::Sender::Transport::Failable - a wrapper to makes things fail predictably
 
 =head1 VERSION
 
-version 0.091940
+version 0.092820
 
 =head1 DESCRIPTION
 
@@ -71,7 +72,7 @@ If any coderef returns a true value, the value will be used to signal failure.
 This software is copyright (c) 2009 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
 
 =cut 
 

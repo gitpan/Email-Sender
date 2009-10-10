@@ -1,5 +1,6 @@
 package Email::Sender::Success::Partial;
-our $VERSION = '0.091940';
+our $VERSION = '0.092820';
+
 
 use Moose;
 extends 'Email::Sender::Success';
@@ -28,7 +29,7 @@ Email::Sender::Success::Partial - a report of partial success when delivering
 
 =head1 VERSION
 
-version 0.091940
+version 0.092820
 
 =head1 DESCRIPTION
 
@@ -45,7 +46,7 @@ L<Email::Sender::Failure::Multi> describing which parts of the delivery failed.
 This software is copyright (c) 2009 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
 
 =cut 
 

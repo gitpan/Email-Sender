@@ -1,5 +1,6 @@
 package Email::Sender::Failure;
-our $VERSION = '0.091940';
+our $VERSION = '0.092820';
+
 
 use Moose;
 # ABSTRACT: a report of failure from an email sending transport
@@ -68,7 +69,7 @@ Email::Sender::Failure - a report of failure from an email sending transport
 
 =head1 VERSION
 
-version 0.091940
+version 0.092820
 
 =head1 SEE ALSO
 
@@ -120,7 +121,7 @@ be used as the C<message> of the new failure.
 This software is copyright (c) 2009 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
 
 =cut 
 

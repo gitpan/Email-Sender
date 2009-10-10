@@ -1,5 +1,6 @@
 package Email::Sender::Transport::SMTP::Persistent;
-our $VERSION = '0.091940';
+our $VERSION = '0.092820';
+
 
 use Moose;
 extends 'Email::Sender::Transport::SMTP';
@@ -56,7 +57,7 @@ Email::Sender::Transport::SMTP::Persistent - an SMTP client that stays online
 
 =head1 VERSION
 
-version 0.091940
+version 0.092820
 
 =head1 DESCRIPTION
 
@@ -81,7 +82,7 @@ exists and is connected.
 This software is copyright (c) 2009 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
 
 =cut 
 

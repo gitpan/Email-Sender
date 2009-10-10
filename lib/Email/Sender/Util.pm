@@ -1,7 +1,8 @@
 use strict;
 use warnings;
 package Email::Sender::Util;
-our $VERSION = '0.091940';
+our $VERSION = '0.092820';
+
 
 # ABSTRACT: random stuff that makes Email::Sender go
 
@@ -66,7 +67,7 @@ Email::Sender::Util - random stuff that makes Email::Sender go
 
 =head1 VERSION
 
-version 0.091940
+version 0.092820
 
 =head1 AUTHOR
 
@@ -77,7 +78,7 @@ version 0.091940
 This software is copyright (c) 2009 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
 
 =cut 
 

@@ -1,5 +1,6 @@
 package Email::Sender::Transport::Mbox;
-our $VERSION = '0.091940';
+our $VERSION = '0.092820';
+
 
 use Moose;
 with 'Email::Sender::Transport';
@@ -115,7 +116,7 @@ Email::Sender::Transport::Mbox - deliver mail to an mbox on disk
 
 =head1 VERSION
 
-version 0.091940
+version 0.092820
 
 =head1 DESCRIPTION
 
@@ -134,7 +135,7 @@ this may change or be configurable in the future.
 This software is copyright (c) 2009 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
 
 =cut 
 

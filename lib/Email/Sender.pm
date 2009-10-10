@@ -1,5 +1,6 @@
 package Email::Sender;
-our $VERSION = '0.091940';
+our $VERSION = '0.092820';
+
 
 use Moose::Role;
 # ABSTRACT: a library for sending email
@@ -20,7 +21,7 @@ Email::Sender - a library for sending email
 
 =head1 VERSION
 
-version 0.091940
+version 0.092820
 
 =head1 OVERVIEW
 
@@ -53,7 +54,7 @@ L<Email::Sender::Failure> on failure.
 This software is copyright (c) 2009 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
 
 =cut 
 
