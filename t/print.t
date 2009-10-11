@@ -8,7 +8,7 @@ use Email::Sender::Transport::Print;
 
 {
   package CP;
-our $VERSION = '0.092820';
+our $VERSION = '0.092840';
 
 
   sub new    { bless { str => '' } => $_[0] }

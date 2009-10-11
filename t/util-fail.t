@@ -7,7 +7,7 @@ use Email::Sender::Util;
 
 {
   package FakeSMTP;
-our $VERSION = '0.092820';
+our $VERSION = '0.092840';
 
 
   use Moose;

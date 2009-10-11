@@ -9,7 +9,7 @@ WriteMakefile(
   NAME      => 'Email::Sender',
   AUTHOR    => 'Ricardo\ Signes\ \<rjbs\@cpan\.org\>',
   ABSTRACT  => 'a\ library\ for\ sending\ email',
-  VERSION   => '0.092820',
+  VERSION   => '0.092840',
   EXE_FILES => [ qw() ],
   (eval { ExtUtils::MakeMaker->VERSION(6.31) } ? (LICENSE => 'perl') : ()),
   PREREQ_PM    => {
@@ -32,6 +32,6 @@ WriteMakefile(
     "Email::Address" => '0',
     "Cwd" => '0',
   },
-  test => {TESTS => 't/*.t xt/manual/*.t'}
+  test => {TESTS => 't/*.t'}
 );
 

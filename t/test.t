@@ -69,7 +69,7 @@ is_deeply(
 
 {
   package Email::Sender::Transport::TestFail;
-our $VERSION = '0.092820';
+our $VERSION = '0.092840';
 
 
   use Moose;

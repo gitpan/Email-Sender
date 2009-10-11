@@ -1,5 +1,5 @@
 package Email::Sender::Simple;
-our $VERSION = '0.092820';
+our $VERSION = '0.092840';
 
 
 use Moose;
@@ -167,7 +167,7 @@ Email::Sender::Simple - the simple interface for sending mail with Sender
 
 =head1 VERSION
 
-version 0.092820
+version 0.092840
 
 =head1 SEE INSTEAD
 

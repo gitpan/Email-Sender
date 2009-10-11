@@ -1,5 +1,5 @@
 package Email::Sender::Role::CommonSending;
-our $VERSION = '0.092820';
+our $VERSION = '0.092840';
 
 
 use Moose::Role;
@@ -81,7 +81,7 @@ Email::Sender::Role::CommonSending - the common sending tasks most Email::Sender
 
 =head1 VERSION
 
-version 0.092820
+version 0.092840
 
 =head1 DESCRIPTION
 
