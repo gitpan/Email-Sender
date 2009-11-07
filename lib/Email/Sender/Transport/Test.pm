@@ -1,5 +1,5 @@
 package Email::Sender::Transport::Test;
-our $VERSION = '0.092840';
+our $VERSION = '0.093110';
 
 
 use Moose;
@@ -84,7 +84,6 @@ no Moose;
 1;
 
 __END__
-
 =pod
 
 =head1 NAME
@@ -93,12 +92,16 @@ Email::Sender::Transport::Test - deliver mail in memory for testing
 
 =head1 VERSION
 
-version 0.092840
+version 0.093110
 
 =head1 DESCRIPTION
 
 This transport is meant for testing email deliveries in memory.  It will store
 a record of any delivery made so that they can be inspected afterward.
+
+=head1 ATTRIBUTES
+
+=head2 deliveries
 
 =for Pod::Coverage recipient_failure delivery_failure
 
@@ -134,10 +137,6 @@ Each delivery is a hashref, in the following format:
 
 Both successful and failed deliveries are stored.
 
-=head1 ATTRIBUTES
-
-=head2 deliveries
-
 =head1 AUTHOR
 
   Ricardo Signes <rjbs@cpan.org>
@@ -149,6 +148,5 @@ This software is copyright (c) 2009 by Ricardo Signes.
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
-=cut 
-
+=cut
 

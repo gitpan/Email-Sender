@@ -1,7 +1,6 @@
 Changes
 LICENSE
 MANIFEST
-MANIFEST.SKIP
 META.json
 Makefile.PL
 README
@@ -14,6 +13,7 @@ lib/Email/Sender/Failure/Temporary.pm
 lib/Email/Sender/Manual.pm
 lib/Email/Sender/Manual/QuickStart.pm
 lib/Email/Sender/Role/CommonSending.pm
+lib/Email/Sender/Role/HasMessage.pm
 lib/Email/Sender/Simple.pm
 lib/Email/Sender/Success.pm
 lib/Email/Sender/Success/Partial.pm
@@ -29,6 +29,7 @@ lib/Email/Sender/Transport/Sendmail.pm
 lib/Email/Sender/Transport/Test.pm
 lib/Email/Sender/Transport/Wrapper.pm
 lib/Email/Sender/Util.pm
+smtp-test
 t/00-load.t
 t/a-perl-minver.t
 t/devnull.t
@@ -55,3 +56,4 @@ util/executable
 util/not-executable
 util/sendmail
 util/sendmail.bat
+xt/manual/smtp.t

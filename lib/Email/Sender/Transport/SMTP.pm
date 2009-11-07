@@ -1,5 +1,5 @@
 package Email::Sender::Transport::SMTP;
-our $VERSION = '0.092840';
+our $VERSION = '0.093110';
 
 
 use Moose;
@@ -97,7 +97,7 @@ sub send_email {
 
   my @failures;
   my @ok_rcpts;
-  
+
   for my $addr (@to) {
     if ($smtp->to(_quoteaddr($addr))) {
       push @ok_rcpts, $addr;
@@ -140,16 +140,44 @@ sub send_email {
   $smtp->datasend($email->as_string) or $FAULT->("error at during DATA");
   $smtp->dataend                     or $FAULT->("error at after DATA");
 
+  my $message = $smtp->message;
+
   $self->_message_complete($smtp);
 
-  # XXX: We must report partial success (failures) if applicable.
-  return $self->success unless @failures;
-  return Email::Sender::Success::Partial->new({
+  # We must report partial success (failures) if applicable.
+  return $self->success({ message => $message }) unless @failures;
+  return $self->partial_success({
+    message => $message,
     failure => Email::Sender::Failure::Multi->new({
       message  => 'some recipients were rejected during RCPT',
       failures => \@failures
     }),
   });
+}
+
+my %SUCCESS_CLASS;
+BEGIN {
+  $SUCCESS_CLASS{FULL} = Moose::Meta::Class->create_anon_class(
+    superclasses => [ 'Email::Sender::Success' ],
+    roles        => [ 'Email::Sender::Role::HasMessage' ],
+    cache        => 1,
+  );
+  $SUCCESS_CLASS{PARTIAL} = Moose::Meta::Class->create_anon_class(
+    superclasses => [ 'Email::Sender::Success::Partial' ],
+    roles        => [ 'Email::Sender::Role::HasMessage' ],
+    cache        => 1,
+  );
+}
+
+sub success {
+  my $self = shift;
+  my $success = $SUCCESS_CLASS{FULL}->name->new(@_);
+}
+
+sub partial_success {
+  my ($self, @args) = @_;
+  my $obj = $SUCCESS_CLASS{PARTIAL}->name->new(@args);
+  return $obj;
 }
 
 sub _message_complete { $_[1]->quit; }
@@ -160,7 +188,6 @@ no Moose;
 1;
 
 __END__
-
 =pod
 
 =head1 NAME
@@ -169,7 +196,7 @@ Email::Sender::Transport::SMTP - send email over SMTP
 
 =head1 VERSION
 
-version 0.092840
+version 0.093110
 
 =head1 DESCRIPTION
 
@@ -184,7 +211,7 @@ L<Email::Sender::Transport::SMTP::Persistent>.
 
 The following attributes may be passed to the constructor:
 
-=over 
+=over
 
 =item host - the name of the host to connect to; defaults to localhost
 
@@ -204,7 +231,7 @@ The following attributes may be passed to the constructor:
 
 =item localpart - local port from which to connect
 
-=back 
+=back
 
 =head1 PARTIAL SUCCESS
 
@@ -223,6 +250,5 @@ This software is copyright (c) 2009 by Ricardo Signes.
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
-=cut 
-
+=cut
 

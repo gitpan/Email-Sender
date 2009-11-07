@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Email::Sender::Manual::QuickStart;
-our $VERSION = '0.092840';
+our $VERSION = '0.093110';
 
 
 # ABSTRACT: how to start using Email::Sender right now
@@ -10,7 +10,6 @@ our $VERSION = '0.092840';
 1;
 
 __END__
-
 =pod
 
 =head1 NAME
@@ -19,7 +18,7 @@ Email::Sender::Manual::QuickStart - how to start using Email::Sender right now
 
 =head1 VERSION
 
-version 0.092840
+version 0.093110
 
 =head1 QUICK START
 
@@ -147,7 +146,10 @@ environment variables to change the default.  For example:
 It is important to note that if you have set the default transport by using the
 environment, I<< no subsequent C<transport> args to C<sendmail> will be
 respected >>.  If you set the default transport via the environment, that's it.
-Everything will use that transport.
+Everything will use that transport.  (Also, note that while we gave the host and
+port arguments above in lower case, the casing of arguments in the environment
+is flattened to support systems where environment variables are of a fixed
+case.  So, C<EMAIL_SENDER_TRANSPORT_PORT> woudl also work.
 
 This is extremely valuable behavior, as it allows you to audit every message
 that would be sent by a program by running something like this:
@@ -204,6 +206,5 @@ This software is copyright (c) 2009 by Ricardo Signes.
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
-=cut 
-
+=cut
 

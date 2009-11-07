@@ -1,5 +1,10 @@
 Revision history for Email-Sender
 
+
+0.093110  2009-11-07
+          allow uppercase env vars to set transport attributes (charsbar)
+          add "message" attribute to successes returned by SMTP transports
+
 0.092840  2009-10-10
           fix packaging error
 

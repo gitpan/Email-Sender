@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Test::Email::Sender::Util;
-our $VERSION = '0.092840';
+our $VERSION = '0.093110';
 
 
 use Exporter;

@@ -1,13 +1,17 @@
-package Email::Sender::Failure::Temporary;
+package Email::Sender::Role::HasMessage;
 our $VERSION = '0.093110';
 
 
-use Moose;
-extends 'Email::Sender::Failure';
-# ABSTRACT: a temporary delivery failure
+use Moose::Role;
+# ABSTRACT: an object that has a message
 
-__PACKAGE__->meta->make_immutable;
-no Moose;
+
+has message => (
+  is       => 'ro',
+  required => 1,
+);
+
+no Moose::Role;
 1;
 
 __END__
@@ -15,11 +19,17 @@ __END__
 
 =head1 NAME
 
-Email::Sender::Failure::Temporary - a temporary delivery failure
+Email::Sender::Role::HasMessage - an object that has a message
 
 =head1 VERSION
 
 version 0.093110
+
+=head1 ATTRIBUTES
+
+=head2 message
+
+This attribute is a message associated with the object.
 
 =head1 AUTHOR
 

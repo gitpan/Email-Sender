@@ -1,5 +1,5 @@
 package Email::Sender::Simple;
-our $VERSION = '0.092840';
+our $VERSION = '0.093110';
 
 
 use Moose;
@@ -44,7 +44,7 @@ use Email::Sender::Transport;
       my %arg;
       for my $key (grep { /^EMAIL_SENDER_TRANSPORT_\w+/ } keys %ENV) {
         (my $new_key = $key) =~ s/^EMAIL_SENDER_TRANSPORT_//;
-        $arg{$new_key} = $ENV{$key};
+        $arg{lc $new_key} = $ENV{$key};
       }
 
       $DEFAULT_FROM_ENV  = 1;
@@ -158,7 +158,6 @@ no Moose;
 "220 OK";
 
 __END__
-
 =pod
 
 =head1 NAME
@@ -167,7 +166,7 @@ Email::Sender::Simple - the simple interface for sending mail with Sender
 
 =head1 VERSION
 
-version 0.092840
+version 0.093110
 
 =head1 SEE INSTEAD
 
@@ -185,6 +184,5 @@ This software is copyright (c) 2009 by Ricardo Signes.
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
-=cut 
-
+=cut
 

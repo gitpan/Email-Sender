@@ -1,13 +1,13 @@
 {
    "resources" : {
-      "repository" : "http://github.com/rjbs/email-sender/tree"
+      "repository" : "http://github.com/rjbs/email-sender"
    },
    "meta-spec" : {
       "version" : 1.4,
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
-   "generated_by" : "Dist::Zilla version 1.092680",
-   "version" : "0.092840",
+   "generated_by" : "Dist::Zilla version 1.092990",
+   "version" : "0.093110",
    "name" : "Email-Sender",
    "author" : [
       "Ricardo Signes <rjbs@cpan.org>"
@@ -35,3 +35,4 @@
    },
    "abstract" : "a library for sending email"
 }
+

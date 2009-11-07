@@ -7,9 +7,9 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
   DISTNAME  => 'Email-Sender',
   NAME      => 'Email::Sender',
-  AUTHOR    => 'Ricardo\ Signes\ \<rjbs\@cpan\.org\>',
-  ABSTRACT  => 'a\ library\ for\ sending\ email',
-  VERSION   => '0.092840',
+  AUTHOR    => "Ricardo\ Signes\ \<rjbs\@cpan\.org\>",
+  ABSTRACT  => "a\ library\ for\ sending\ email",
+  VERSION   => '0.093110',
   EXE_FILES => [ qw() ],
   (eval { ExtUtils::MakeMaker->VERSION(6.31) } ? (LICENSE => 'perl') : ()),
   PREREQ_PM    => {

@@ -8,9 +8,6 @@ use Email::Sender::Transport::Print;
 
 {
   package CP;
-our $VERSION = '0.092840';
-
-
   sub new    { bless { str => '' } => $_[0] }
   sub print  { shift->{str} .= join '', @_ }
   sub printf { shift->{str} .= sprintf shift, @_ }

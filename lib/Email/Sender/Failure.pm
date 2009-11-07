@@ -1,17 +1,12 @@
 package Email::Sender::Failure;
-our $VERSION = '0.092840';
+our $VERSION = '0.093110';
 
 
 use Moose;
 # ABSTRACT: a report of failure from an email sending transport
 
+with 'Email::Sender::Role::HasMessage';
 use overload '""' => sub { $_[0]->message }, fallback => 1;
-
-
-has message => (
-  is       => 'ro',
-  required => 1,
-);
 
 
 has code => (
@@ -60,7 +55,6 @@ no Moose;
 1;
 
 __END__
-
 =pod
 
 =head1 NAME
@@ -69,19 +63,7 @@ Email::Sender::Failure - a report of failure from an email sending transport
 
 =head1 VERSION
 
-version 0.092840
-
-=head1 SEE ALSO
-
-=over 
-
-=item * L<Email::Sender::Permanent>
-
-=item * L<Email::Sender::Temporary>
-
-=item * L<Email::Sender::Multi>
-
-=back 
+version 0.093110
 
 =head1 ATTRIBUTES
 
@@ -112,6 +94,18 @@ object at once.
 Instead of a hashref of args, you can pass a single string argument which will
 be used as the C<message> of the new failure.
 
+=head1 SEE ALSO
+
+=over
+
+=item * L<Email::Sender::Permanent>
+
+=item * L<Email::Sender::Temporary>
+
+=item * L<Email::Sender::Multi>
+
+=back
+
 =head1 AUTHOR
 
   Ricardo Signes <rjbs@cpan.org>
@@ -123,6 +117,5 @@ This software is copyright (c) 2009 by Ricardo Signes.
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
-=cut 
-
+=cut
 

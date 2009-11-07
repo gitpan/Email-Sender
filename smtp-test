@@ -1,0 +1,33 @@
+#!perl
+use strict;
+use warnings;
+
+use lib 'lib';
+use Email::Abstract;
+use Email::Simple::Creator;
+use Email::Sender::Transport::SMTP;
+
+my $email = Email::Simple->create(
+  header => [
+    To   => 'rjbs@example.com',
+    From => 'root@example.com',
+    Subject => 'test message',
+  ],
+  body   => "Happiness makes them run!\n",
+);
+
+my $transport = Email::Sender::Transport::SMTP->new({
+  host => 'localhost',
+});
+
+my $success = $transport->send(
+  $email,
+  {
+    to   => 'rjbs@icgroup.com',
+    from => 'rjbs@pobox.com',
+  },
+);
+
+use Data::Dumper;
+printf "MESSAGE: %s\n", $success->message;
+
