@@ -2,6 +2,7 @@ Changes
 LICENSE
 MANIFEST
 META.json
+META.yml
 Makefile.PL
 README
 dist.ini
@@ -29,7 +30,6 @@ lib/Email/Sender/Transport/Sendmail.pm
 lib/Email/Sender/Transport/Test.pm
 lib/Email/Sender/Transport/Wrapper.pm
 lib/Email/Sender/Util.pm
-smtp-test
 t/00-load.t
 t/a-perl-minver.t
 t/devnull.t

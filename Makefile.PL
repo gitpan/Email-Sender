@@ -2,6 +2,8 @@
 use strict;
 use warnings;
 
+
+
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
@@ -9,7 +11,7 @@ WriteMakefile(
   NAME      => 'Email::Sender',
   AUTHOR    => "Ricardo\ Signes\ \<rjbs\@cpan\.org\>",
   ABSTRACT  => "a\ library\ for\ sending\ email",
-  VERSION   => '0.093110',
+  VERSION   => '0.093380',
   EXE_FILES => [ qw() ],
   (eval { ExtUtils::MakeMaker->VERSION(6.31) } ? (LICENSE => 'perl') : ()),
   PREREQ_PM    => {
@@ -23,7 +25,7 @@ WriteMakefile(
     "File::Path" => '0',
     "Email::Simple" => '1.998',
     "List::MoreUtils" => '0',
-    "Moose" => '0',
+    "Moose" => '0.70',
     "Sys::Hostname::Long" => '0',
     "Carp" => '0',
     "Net::SMTP" => '0',

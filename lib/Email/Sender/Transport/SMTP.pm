@@ -1,7 +1,5 @@
 package Email::Sender::Transport::SMTP;
-our $VERSION = '0.093110';
-
-
+our $VERSION = '0.093380';
 use Moose;
 with 'Email::Sender::Transport' => { excludes => 'allow_partial_success' };
 # ABSTRACT: send email over SMTP
@@ -196,7 +194,7 @@ Email::Sender::Transport::SMTP - send email over SMTP
 
 =head1 VERSION
 
-version 0.093110
+version 0.093380
 
 =head1 DESCRIPTION
 

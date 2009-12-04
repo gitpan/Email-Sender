@@ -1,7 +1,5 @@
 package Email::Sender::Failure;
-our $VERSION = '0.093110';
-
-
+our $VERSION = '0.093380';
 use Moose;
 # ABSTRACT: a report of failure from an email sending transport
 
@@ -63,7 +61,7 @@ Email::Sender::Failure - a report of failure from an email sending transport
 
 =head1 VERSION
 
-version 0.093110
+version 0.093380
 
 =head1 ATTRIBUTES
 

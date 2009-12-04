@@ -1,0 +1,32 @@
+---
+abstract: 'a library for sending email'
+author:
+  - 'Ricardo Signes <rjbs@cpan.org>'
+generated_by: 'Dist::Zilla version 1.093380'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Email-Sender
+requires:
+  Capture::Tiny: 0
+  Carp: 0
+  Cwd: 0
+  Email::Abstract: 3
+  Email::Address: 0
+  Email::Simple: 1.998
+  Fcntl: 0
+  File::Basename: 0
+  File::Find: 0
+  File::Path: 0
+  File::Spec: 0
+  File::Temp: 0
+  FindBin: 0
+  List::MoreUtils: 0
+  Moose: 0.70
+  Net::SMTP: 0
+  Scalar::Util: 0
+  Sys::Hostname::Long: 0
+resources:
+  repository: http://github.com/rjbs/email-sender
+version: 0.093380

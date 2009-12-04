@@ -1,9 +1,7 @@
 use strict;
 use warnings;
 package Email::Sender::Manual::QuickStart;
-our $VERSION = '0.093110';
-
-
+our $VERSION = '0.093380';
 # ABSTRACT: how to start using Email::Sender right now
 
 
@@ -18,7 +16,7 @@ Email::Sender::Manual::QuickStart - how to start using Email::Sender right now
 
 =head1 VERSION
 
-version 0.093110
+version 0.093380
 
 =head1 QUICK START
 

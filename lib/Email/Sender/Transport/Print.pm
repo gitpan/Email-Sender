@@ -1,7 +1,5 @@
 package Email::Sender::Transport::Print;
-our $VERSION = '0.093110';
-
-
+our $VERSION = '0.093380';
 use Moose;
 with 'Email::Sender::Transport';
 # ABSTRACT: print email to a filehandle (like stdout)
@@ -45,7 +43,7 @@ Email::Sender::Transport::Print - print email to a filehandle (like stdout)
 
 =head1 VERSION
 
-version 0.093110
+version 0.093380
 
 =head1 DESCRIPTION
 
