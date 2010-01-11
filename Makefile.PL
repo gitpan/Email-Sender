@@ -4,15 +4,17 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker;
+use ExtUtils::MakeMaker 6.11;
+
+
 
 WriteMakefile(
   DISTNAME  => 'Email-Sender',
   NAME      => 'Email::Sender',
   AUTHOR    => "Ricardo\ Signes\ \<rjbs\@cpan\.org\>",
   ABSTRACT  => "a\ library\ for\ sending\ email",
-  VERSION   => '0.093380',
-  EXE_FILES => [ qw() ],
+  VERSION   => '0.100110',
+  EXE_FILES => [  ],
   (eval { ExtUtils::MakeMaker->VERSION(6.31) } ? (LICENSE => 'perl') : ()),
   PREREQ_PM    => {
     "Scalar::Util" => '0',
@@ -20,20 +22,25 @@ WriteMakefile(
     "FindBin" => '0',
     "Fcntl" => '0',
     "File::Spec" => '0',
-    "Email::Abstract" => '3',
+    "Throwable::Error" => '0.100090',
     "File::Find" => '0',
+    "Email::Abstract" => '3',
     "File::Path" => '0',
     "Email::Simple" => '1.998',
     "List::MoreUtils" => '0',
-    "Moose" => '0.70',
     "Sys::Hostname::Long" => '0',
+    "Moose" => '0.70',
+    "Try::Tiny" => '0',
+    "ExtUtils::MakeMaker" => '6.11',
     "Carp" => '0',
     "Net::SMTP" => '0',
     "File::Temp" => '0',
     "File::Basename" => '0',
-    "Email::Address" => '0',
     "Cwd" => '0',
+    "Email::Address" => '0',
   },
   test => {TESTS => 't/*.t'}
 );
+
+
 

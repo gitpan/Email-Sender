@@ -1,5 +1,5 @@
 package Email::Sender::Transport::DevNull;
-our $VERSION = '0.093380';
+our $VERSION = '0.100110';
 use Moose;
 with 'Email::Sender::Transport';
 # ABSTRACT: happily throw away your mail
@@ -20,7 +20,7 @@ Email::Sender::Transport::DevNull - happily throw away your mail
 
 =head1 VERSION
 
-version 0.093380
+version 0.100110
 
 =head1 DESCRIPTION
 
@@ -33,7 +33,7 @@ DevNull transport will be silently discarded.
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by Ricardo Signes.
+This software is copyright (c) 2010 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

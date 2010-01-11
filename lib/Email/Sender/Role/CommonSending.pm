@@ -1,5 +1,5 @@
 package Email::Sender::Role::CommonSending;
-our $VERSION = '0.093380';
+our $VERSION = '0.100110';
 use Moose::Role;
 # ABSTRACT: the common sending tasks most Email::Sender classes will need
 
@@ -9,6 +9,7 @@ use Email::Sender::Success;
 use Email::Sender::Failure::Temporary;
 use Email::Sender::Failure::Permanent;
 use Scalar::Util ();
+use Try::Tiny;
 
 
 with 'Email::Sender';
@@ -20,18 +21,17 @@ sub send {
   my $email    = $self->prepare_email($message);
   my $envelope = $self->prepare_envelope($env);
 
-  my $return = eval {
-    $self->send_email($email, $envelope, @rest);
-  };
+  try {
+    return $self->send_email($email, $envelope, @rest);
+  } catch {
+    confess('unknown error') unless my $err = $_;
 
-  my $err = $@;
-  return $return if $return;
+    if (try { $err->isa('Email::Sender::Failure') } and ! $err->recipients) {
+      $err->_recipients([ @{ $envelope->{to} } ]);
+    }
 
-  if (eval { $err->isa('Email::Sender::Failure') } and ! $err->recipients) {
-    $err->_recipients([ @{ $envelope->{to} } ]);
+    die $err;
   }
-
-  defined($err) ? die($err) : confess('unknown error');
 }
 
 
@@ -78,7 +78,7 @@ Email::Sender::Role::CommonSending - the common sending tasks most Email::Sender
 
 =head1 VERSION
 
-version 0.093380
+version 0.100110
 
 =head1 DESCRIPTION
 
@@ -127,7 +127,7 @@ a convenience for returning success from subclasses' C<send_email> methods.
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by Ricardo Signes.
+This software is copyright (c) 2010 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

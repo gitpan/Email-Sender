@@ -1,5 +1,9 @@
 Revision history for Email-Sender
 
+0.100110  2010-01-11 10:43:57 America/New_York
+          Email::Sender::Failure is now a Throwable::Error
+          now uses Try::Tiny for internal exception handling
+
 0.093380  2009-12-04 12:29:55 America/New_York
           bump Moose prereq to 0.70 based on feedback from ANDK
 

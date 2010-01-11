@@ -1,5 +1,5 @@
 package Email::Sender::Simple;
-our $VERSION = '0.093380';
+our $VERSION = '0.100110';
 use Moose;
 with 'Email::Sender::Role::CommonSending';
 # ABSTRACT: the simple interface for sending mail with Sender
@@ -15,6 +15,7 @@ use Sub::Exporter -setup => {
 
 use Email::Address;
 use Email::Sender::Transport;
+use Try::Tiny;
 
 {
   my $DEFAULT_TRANSPORT;
@@ -37,7 +38,7 @@ use Email::Sender::Transport;
         $transport_class = "Email::Sender::Transport::$transport_class";
       }
 
-      eval "require $transport_class" or die $@;
+      Class::MOP::load_class($transport_class);
 
       my %arg;
       for my $key (grep { /^EMAIL_SENDER_TRANSPORT_\w+/ } keys %ENV) {
@@ -116,13 +117,13 @@ sub send_email {
 sub try_to_send {
   my ($self, $email, $arg) = @_;
 
-  my $succ = eval { $self->send($email, $arg); };
-
-  return $succ if $succ;
-  my $error = $@ || 'unknown error';
-  return if eval { $error->isa('Email::Sender::Failure') };
-
-  die $error;
+  try {
+    return $self->send($email, $arg);
+  } catch {
+    my $error = $_ || 'unknown error';
+    return if try { $error->isa('Email::Sender::Failure') };
+    die $error;
+  };
 }
 
 sub _get_to_from {
@@ -164,7 +165,7 @@ Email::Sender::Simple - the simple interface for sending mail with Sender
 
 =head1 VERSION
 
-version 0.093380
+version 0.100110
 
 =head1 SEE INSTEAD
 
@@ -177,7 +178,7 @@ L<Email::Sender::Manual::QuickStart>.
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by Ricardo Signes.
+This software is copyright (c) 2010 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

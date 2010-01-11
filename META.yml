@@ -2,7 +2,7 @@
 abstract: 'a library for sending email'
 author:
   - 'Ricardo Signes <rjbs@cpan.org>'
-generated_by: 'Dist::Zilla version 1.093380'
+generated_by: 'Dist::Zilla version 1.100060'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -15,6 +15,7 @@ requires:
   Email::Abstract: 3
   Email::Address: 0
   Email::Simple: 1.998
+  ExtUtils::MakeMaker: 6.11
   Fcntl: 0
   File::Basename: 0
   File::Find: 0
@@ -27,6 +28,8 @@ requires:
   Net::SMTP: 0
   Scalar::Util: 0
   Sys::Hostname::Long: 0
+  Throwable::Error: 0.100090
+  Try::Tiny: 0
 resources:
   repository: http://github.com/rjbs/email-sender
-version: 0.093380
+version: 0.100110

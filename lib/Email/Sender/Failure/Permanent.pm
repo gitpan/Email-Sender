@@ -1,10 +1,10 @@
 package Email::Sender::Failure::Permanent;
-our $VERSION = '0.093380';
+our $VERSION = '0.100110';
 use Moose;
 extends 'Email::Sender::Failure';
 # ABSTRACT: a permanent delivery failure
 
-__PACKAGE__->meta->make_immutable;
+__PACKAGE__->meta->make_immutable(inline_constructor => 0);
 no Moose;
 1;
 
@@ -17,7 +17,7 @@ Email::Sender::Failure::Permanent - a permanent delivery failure
 
 =head1 VERSION
 
-version 0.093380
+version 0.100110
 
 =head1 AUTHOR
 
@@ -25,7 +25,7 @@ version 0.093380
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by Ricardo Signes.
+This software is copyright (c) 2010 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

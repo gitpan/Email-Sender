@@ -1,5 +1,5 @@
 package Test::Email::SMTPRig;
-our $VERSION = '0.093380';
+our $VERSION = '0.100110';
 use Moose;
 
 has 'smtp_host' => (is => 'ro', required => 1);
