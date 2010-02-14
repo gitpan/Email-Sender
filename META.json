@@ -1,40 +1,59 @@
 {
    "resources" : {
-      "repository" : "http://github.com/rjbs/email-sender"
+      "repository" : "git://git.codesimply.com/Email-Sender.git"
    },
+   "generated_by" : "Dist::Zilla version 1.100160",
    "meta-spec" : {
       "version" : 1.4,
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
-   "generated_by" : "Dist::Zilla version 1.100060",
-   "version" : "0.100110",
+   "version" : "0.100450",
    "name" : "Email-Sender",
    "author" : [
       "Ricardo Signes <rjbs@cpan.org>"
    ],
    "license" : "perl",
    "requires" : {
-      "Scalar::Util" : "0",
       "Capture::Tiny" : "0",
-      "FindBin" : "0",
-      "Fcntl" : "0",
-      "File::Spec" : "0",
-      "Throwable::Error" : "0.100090",
-      "File::Find" : "0",
+      "Sub::Exporter" : 0,
+      "Config" : 0,
       "Email::Abstract" : "3",
       "File::Path" : "0",
       "Email::Simple" : "1.998",
       "List::MoreUtils" : "0",
+      "Errno" : 0,
+      "Test::MockObject" : 0,
+      "Moose::Role" : "0",
+      "Try::Tiny" : "0",
+      "IO::File" : 0,
+      "ExtUtils::MakeMaker" : "6.11",
+      "Data::Dumper" : "0",
+      "Test::More" : "0",
+      "Email::Sender::Transport::SMTP_X" : 0,
+      "Test::Email::SMTPRig" : 0,
+      "File::Temp" : "0",
+      "Test::Email::Sender::Util" : "0",
+      "Scalar::Util" : "0",
+      "FindBin" : "0",
+      "Fcntl" : "0",
+      "File::Spec" : "0",
+      "IO::Handle" : 0,
+      "Throwable::Error" : "0.100090",
+      "Sub::Override" : 0,
+      "File::Find" : "0",
       "Sys::Hostname::Long" : "0",
       "Moose" : "0.70",
-      "Try::Tiny" : "0",
-      "ExtUtils::MakeMaker" : "6.11",
+      "Exporter" : 0,
       "Carp" : "0",
+      "Sub::Exporter::Util" : 0,
       "Net::SMTP" : "0",
-      "File::Temp" : "0",
+      "Net::SMTP::SSL" : 0,
       "File::Basename" : "0",
+      "JSON" : 0,
+      "Test::MinimumVersion" : 0,
       "Cwd" : "0",
-      "Email::Address" : "0"
+      "Email::Address" : "0",
+      "Sys::Hostname" : 0
    },
    "abstract" : "a library for sending email"
 }

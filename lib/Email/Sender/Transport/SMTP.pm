@@ -1,5 +1,5 @@
 package Email::Sender::Transport::SMTP;
-our $VERSION = '0.100110';
+our $VERSION = '0.100450';
 use Moose;
 with 'Email::Sender::Transport' => { excludes => 'allow_partial_success' };
 # ABSTRACT: send email over SMTP
@@ -17,6 +17,8 @@ has port => (
   lazy    => 1,
   default => sub { return $_[0]->ssl ? 465 : 25; },
 );
+
+has timeout => (is => 'ro', isa => 'Int', default => 120);
 
 
 has sasl_username => (is => 'ro', isa => 'Str');
@@ -54,13 +56,7 @@ sub _smtp_client {
     require Net::SMTP;
   }
 
-  my $smtp = $class->new(
-    $self->host,
-    Port => $self->port,
-    $self->helo      ? (Hello     => $self->helo)      : (),
-    $self->localaddr ? (LocalAddr => $self->localaddr) : (),
-    $self->localport ? (LocalPort => $self->localport) : (),
-  );
+  my $smtp = $class->new( $self->_net_smtp_args );
 
   $self->_throw("unable to establish SMTP connection") unless $smtp;
 
@@ -73,6 +69,19 @@ sub _smtp_client {
   }
 
   return $smtp;
+}
+
+sub _net_smtp_args {
+  my ($self) = @_;
+
+  return (
+    $self->host,
+    Port    => $self->port,
+    Timeout => $self->timeout,
+    $self->helo      ? (Hello     => $self->helo)      : (),
+    $self->localaddr ? (LocalAddr => $self->localaddr) : (),
+    $self->localport ? (LocalPort => $self->localport) : (),
+  );
 }
 
 sub _throw {
@@ -194,7 +203,7 @@ Email::Sender::Transport::SMTP - send email over SMTP
 
 =head1 VERSION
 
-version 0.100110
+version 0.100450
 
 =head1 DESCRIPTION
 
@@ -209,25 +218,27 @@ L<Email::Sender::Transport::SMTP::Persistent>.
 
 The following attributes may be passed to the constructor:
 
-=over
+=over 4
 
-=item host - the name of the host to connect to; defaults to localhost
+=item C<host>: the name of the host to connect to; defaults to C<localhost>
 
-=item ssl - if true, connect via SSL; defaults to false
+=item C<ssl>: if true, connect via SSL; defaults to false
 
-=item port - port to connect to; defaults to 25 for non-SSL, 465 for SSL
+=item C<port>: port to connect to; defaults to 25 for non-SSL, 465 for SSL
 
-=item sasl_username - the username to use for auth; optional
+=item C<timeout>: maximum time in secs to wait for server; default is 120
 
-=item sasl_password - the password to use for auth; must be provided if username is provided
+=item C<sasl_username>: the username to use for auth; optional
 
-=item allow_partial_success - if true, will send data even if some recipients were rejected
+=item C<sasl_password>: the password to use for auth; required if C<username> is provided
 
-=item helo - what to say when saying HELO; no default
+=item C<allow_partial_success>: if true, will send data even if some recipients were rejected; defaults to false
 
-=item localaddr - local address from which to connect
+=item C<helo>: what to say when saying HELO; no default
 
-=item localpart - local port from which to connect
+=item C<localaddr>: local address from which to connect
+
+=item C<localport>: local port from which to connect
 
 =back
 
