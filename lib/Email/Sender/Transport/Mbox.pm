@@ -1,5 +1,5 @@
 package Email::Sender::Transport::Mbox;
-our $VERSION = '0.100450';
+our $VERSION = '0.100460';
 use Moose;
 with 'Email::Sender::Transport';
 # ABSTRACT: deliver mail to an mbox on disk
@@ -113,7 +113,7 @@ Email::Sender::Transport::Mbox - deliver mail to an mbox on disk
 
 =head1 VERSION
 
-version 0.100450
+version 0.100460
 
 =head1 DESCRIPTION
 

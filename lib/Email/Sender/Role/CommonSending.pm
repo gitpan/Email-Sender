@@ -1,5 +1,5 @@
 package Email::Sender::Role::CommonSending;
-our $VERSION = '0.100450';
+our $VERSION = '0.100460';
 use Moose::Role;
 # ABSTRACT: the common sending tasks most Email::Sender classes will need
 
@@ -78,7 +78,7 @@ Email::Sender::Role::CommonSending - the common sending tasks most Email::Sender
 
 =head1 VERSION
 
-version 0.100450
+version 0.100460
 
 =head1 DESCRIPTION
 
@@ -96,7 +96,7 @@ A C<success> method will also be provided as a shortcut for calling:
 A few other minor details are handled by CommonSending; for more information,
 consult the source.
 
-The methods documented here may be overriden to alter the behavior of the
+The methods documented here may be overridden to alter the behavior of the
 CommonSending role.
 
 =head1 METHODS

@@ -1,5 +1,5 @@
 package Email::Sender::Transport::SMTP::Persistent;
-our $VERSION = '0.100450';
+our $VERSION = '0.100460';
 use Moose;
 extends 'Email::Sender::Transport::SMTP';
 # ABSTRACT: an SMTP client that stays online
@@ -54,7 +54,7 @@ Email::Sender::Transport::SMTP::Persistent - an SMTP client that stays online
 
 =head1 VERSION
 
-version 0.100450
+version 0.100460
 
 =head1 DESCRIPTION
 
