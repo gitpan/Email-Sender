@@ -1,5 +1,7 @@
 package Email::Sender::Success;
-our $VERSION = '0.100460';
+BEGIN {
+  $Email::Sender::Success::VERSION = '0.101760';
+}
 use Moose;
 # ABSTRACT: the result of successfully sending mail
 
@@ -17,7 +19,7 @@ Email::Sender::Success - the result of successfully sending mail
 
 =head1 VERSION
 
-version 0.100460
+version 0.101760
 
 =head1 DESCRIPTION
 
@@ -26,7 +28,7 @@ successfully sent.  Unless extended, it has no properties of its own.
 
 =head1 AUTHOR
 
-  Ricardo Signes <rjbs@cpan.org>
+Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

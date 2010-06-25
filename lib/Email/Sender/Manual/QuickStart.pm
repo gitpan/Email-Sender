@@ -1,7 +1,9 @@
 use strict;
 use warnings;
 package Email::Sender::Manual::QuickStart;
-our $VERSION = '0.100460';
+BEGIN {
+  $Email::Sender::Manual::QuickStart::VERSION = '0.101760';
+}
 # ABSTRACT: how to start using Email::Sender right now
 
 
@@ -16,7 +18,7 @@ Email::Sender::Manual::QuickStart - how to start using Email::Sender right now
 
 =head1 VERSION
 
-version 0.100460
+version 0.101760
 
 =head1 QUICK START
 
@@ -195,7 +197,7 @@ and the various Email::Sender::Transport classes.
 
 =head1 AUTHOR
 
-  Ricardo Signes <rjbs@cpan.org>
+Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

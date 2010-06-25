@@ -2,7 +2,7 @@ use Test::More tests => 5;
 use strict;
 $^W = 1;
 
-use Capture::Tiny 'capture';
+use Capture::Tiny 0.08 'capture';
 use Cwd;
 use Config;
 use Email::Sender::Transport::Sendmail;
@@ -64,6 +64,7 @@ SKIP:
     sendmail => File::Spec->catfile(qw/. util not-executable/)
   });
 
+  my $error;
   capture { # hide errors from cmd.exe on Win32
     eval {
       no warnings;
@@ -75,11 +76,12 @@ SKIP:
         }
       );
     };
+    $error = $@;
   };
 
   my $error_re = $IS_WIN32 ? qr/closing pipe/ : qr/open pipe/;
   like(
-    $@->message,
+    $error->message,
     $error_re,
     'error message says what we expect',
   );

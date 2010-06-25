@@ -1,5 +1,7 @@
 package Email::Sender;
-our $VERSION = '0.100460';
+BEGIN {
+  $Email::Sender::VERSION = '0.101760';
+}
 use Moose::Role;
 # ABSTRACT: a library for sending email
 
@@ -18,7 +20,32 @@ Email::Sender - a library for sending email
 
 =head1 VERSION
 
-version 0.100460
+version 0.101760
+
+=head1 SYNOPSIS
+
+  my $message = Email::MIME->create( ... );
+  # produce an Email::Abstract compatible message object,
+  # e.g. produced by Email::Simple, Email::MIME, Email::Stuff
+
+  use Email::Sender::Simple qw(sendmail);
+  use Email::Sender::Transport::SMTP qw();
+  use Try::Tiny;
+
+  try {
+    sendmail(
+      $message,
+      {
+        from => $SMTP_ENVELOPE_FROM_ADDRESS,
+        transport => Email::Sender::Transport::SMTP->new({
+            host => $SMTP_HOSTNAME,
+            port => $SMTP_PORT,
+        })
+      }
+    );
+  } catch {
+      warn "sending failed: $_";
+  };
 
 =head1 OVERVIEW
 
@@ -44,7 +71,7 @@ L<Email::Sender::Failure> on failure.
 
 =head1 AUTHOR
 
-  Ricardo Signes <rjbs@cpan.org>
+Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

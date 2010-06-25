@@ -1,5 +1,7 @@
 package Email::Sender::Transport::DevNull;
-our $VERSION = '0.100460';
+BEGIN {
+  $Email::Sender::Transport::DevNull::VERSION = '0.101760';
+}
 use Moose;
 with 'Email::Sender::Transport';
 # ABSTRACT: happily throw away your mail
@@ -20,7 +22,7 @@ Email::Sender::Transport::DevNull - happily throw away your mail
 
 =head1 VERSION
 
-version 0.100460
+version 0.101760
 
 =head1 DESCRIPTION
 
@@ -29,7 +31,7 @@ DevNull transport will be silently discarded.
 
 =head1 AUTHOR
 
-  Ricardo Signes <rjbs@cpan.org>
+Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

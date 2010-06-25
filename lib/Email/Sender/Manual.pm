@@ -1,7 +1,9 @@
 use strict;
 use warnings;
 package Email::Sender::Manual;
-our $VERSION = '0.100460';
+BEGIN {
+  $Email::Sender::Manual::VERSION = '0.101760';
+}
 # ABSTRACT: table of contents for the Email::Sender manual
 
 
@@ -16,7 +18,7 @@ Email::Sender::Manual - table of contents for the Email::Sender manual
 
 =head1 VERSION
 
-version 0.100460
+version 0.101760
 
 =head1 THE MANAUL
 
@@ -25,7 +27,7 @@ start using Email::Sender.
 
 =head1 AUTHOR
 
-  Ricardo Signes <rjbs@cpan.org>
+Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

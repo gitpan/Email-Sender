@@ -1,5 +1,7 @@
 package Email::Sender::Transport::Wrapper;
-our $VERSION = '0.100460';
+BEGIN {
+  $Email::Sender::Transport::Wrapper::VERSION = '0.101760';
+}
 use Moose;
 with 'Email::Sender::Transport';
 # ABSTRACT: a mailer to wrap a mailer for mailing mail
@@ -30,7 +32,7 @@ Email::Sender::Transport::Wrapper - a mailer to wrap a mailer for mailing mail
 
 =head1 VERSION
 
-version 0.100460
+version 0.101760
 
 =head1 DESCRIPTION
 
@@ -40,7 +42,7 @@ use method modifiers to create wrapping classes.
 
 =head1 AUTHOR
 
-  Ricardo Signes <rjbs@cpan.org>
+Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

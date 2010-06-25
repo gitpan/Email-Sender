@@ -1,5 +1,7 @@
 package Email::Sender::Transport;
-our $VERSION = '0.100460';
+BEGIN {
+  $Email::Sender::Transport::VERSION = '0.101760';
+}
 use Moose::Role;
 # ABSTRACT: a role for email transports
 
@@ -26,7 +28,7 @@ Email::Sender::Transport - a role for email transports
 
 =head1 VERSION
 
-version 0.100460
+version 0.101760
 
 =head1 DESCRIPTION
 
@@ -52,7 +54,7 @@ all times.
 
 =head1 AUTHOR
 
-  Ricardo Signes <rjbs@cpan.org>
+Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

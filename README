@@ -1,7 +1,7 @@
 
 
-This archive contains the distribution Email-Sender, version
-0.100460:
+This archive contains the distribution Email-Sender,
+version 0.101760:
 
   a library for sending email
 
@@ -9,4 +9,5 @@ This software is copyright (c) 2010 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
+
 

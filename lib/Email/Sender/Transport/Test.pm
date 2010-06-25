@@ -1,5 +1,7 @@
 package Email::Sender::Transport::Test;
-our $VERSION = '0.100460';
+BEGIN {
+  $Email::Sender::Transport::Test::VERSION = '0.101760';
+}
 use Moose;
 with 'Email::Sender::Transport' => { excludes => 'allow_partial_success' };
 # ABSTRACT: deliver mail in memory for testing
@@ -90,7 +92,7 @@ Email::Sender::Transport::Test - deliver mail in memory for testing
 
 =head1 VERSION
 
-version 0.100460
+version 0.101760
 
 =head1 DESCRIPTION
 
@@ -137,7 +139,7 @@ Both successful and failed deliveries are stored.
 
 =head1 AUTHOR
 
-  Ricardo Signes <rjbs@cpan.org>
+Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

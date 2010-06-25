@@ -1,5 +1,7 @@
 package Email::Sender::Simple;
-our $VERSION = '0.100460';
+BEGIN {
+  $Email::Sender::Simple::VERSION = '0.101760';
+}
 use Moose;
 with 'Email::Sender::Role::CommonSending';
 # ABSTRACT: the simple interface for sending mail with Sender
@@ -165,7 +167,7 @@ Email::Sender::Simple - the simple interface for sending mail with Sender
 
 =head1 VERSION
 
-version 0.100460
+version 0.101760
 
 =head1 SEE INSTEAD
 
@@ -174,7 +176,7 @@ L<Email::Sender::Manual::QuickStart>.
 
 =head1 AUTHOR
 
-  Ricardo Signes <rjbs@cpan.org>
+Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
