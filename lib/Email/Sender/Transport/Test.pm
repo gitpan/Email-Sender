@@ -1,9 +1,8 @@
 package Email::Sender::Transport::Test;
 BEGIN {
-  $Email::Sender::Transport::Test::VERSION = '0.101760';
+  $Email::Sender::Transport::Test::VERSION = '0.102360';
 }
 use Moose;
-with 'Email::Sender::Transport' => { excludes => 'allow_partial_success' };
 # ABSTRACT: deliver mail in memory for testing
 
 use Email::Sender::Failure::Multi;
@@ -79,6 +78,7 @@ sub send_email {
   });
 }
 
+with 'Email::Sender::Transport';
 __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
@@ -92,7 +92,7 @@ Email::Sender::Transport::Test - deliver mail in memory for testing
 
 =head1 VERSION
 
-version 0.101760
+version 0.102360
 
 =head1 DESCRIPTION
 

@@ -1,9 +1,8 @@
 package Email::Sender::Transport::SMTP;
 BEGIN {
-  $Email::Sender::Transport::SMTP::VERSION = '0.101760';
+  $Email::Sender::Transport::SMTP::VERSION = '0.102360';
 }
-use Moose;
-with 'Email::Sender::Transport' => { excludes => 'allow_partial_success' };
+use Moose 0.90;
 # ABSTRACT: send email over SMTP
 
 use Email::Sender::Failure::Multi;
@@ -192,6 +191,7 @@ sub partial_success {
 sub _message_complete { $_[1]->quit; }
 
 
+with 'Email::Sender::Transport';
 __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
@@ -205,7 +205,7 @@ Email::Sender::Transport::SMTP - send email over SMTP
 
 =head1 VERSION
 
-version 0.101760
+version 0.102360
 
 =head1 DESCRIPTION
 
