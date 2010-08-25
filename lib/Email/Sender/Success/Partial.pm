@@ -1,6 +1,6 @@
 package Email::Sender::Success::Partial;
 BEGIN {
-  $Email::Sender::Success::Partial::VERSION = '0.102360';
+  $Email::Sender::Success::Partial::VERSION = '0.102370';
 }
 use Moose;
 extends 'Email::Sender::Success';
@@ -28,7 +28,7 @@ Email::Sender::Success::Partial - a report of partial success when delivering
 
 =head1 VERSION
 
-version 0.102360
+version 0.102370
 
 =head1 DESCRIPTION
 

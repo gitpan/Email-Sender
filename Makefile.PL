@@ -37,11 +37,11 @@ my %WriteMakefileArgs = (
     'Moose' => '0.70',
     'Net::SMTP' => '0',
     'Scalar::Util' => '0',
-    'Sys::Hostname::Long' => '0',
+    'Sys::Hostname' => '0',
     'Throwable::Error' => '0.100090',
     'Try::Tiny' => '0'
   },
-  'VERSION' => '0.102360',
+  'VERSION' => '0.102370',
   'test' => {
     'TESTS' => 't/*.t'
   }

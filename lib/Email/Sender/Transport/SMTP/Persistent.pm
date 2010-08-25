@@ -1,6 +1,6 @@
 package Email::Sender::Transport::SMTP::Persistent;
 BEGIN {
-  $Email::Sender::Transport::SMTP::Persistent::VERSION = '0.102360';
+  $Email::Sender::Transport::SMTP::Persistent::VERSION = '0.102370';
 }
 use Moose;
 extends 'Email::Sender::Transport::SMTP';
@@ -8,7 +8,6 @@ extends 'Email::Sender::Transport::SMTP';
 
 
 use Net::SMTP;
-use Sys::Hostname::Long ();
 
 has _cached_client => (
   is => 'rw',
@@ -56,7 +55,7 @@ Email::Sender::Transport::SMTP::Persistent - an SMTP client that stays online
 
 =head1 VERSION
 
-version 0.102360
+version 0.102370
 
 =head1 DESCRIPTION
 
