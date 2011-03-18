@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Maildir;
 BEGIN {
-  $Email::Sender::Transport::Maildir::VERSION = '0.102370';
+  $Email::Sender::Transport::Maildir::VERSION = '0.110000';
 }
 use Moose;
 with 'Email::Sender::Transport';
@@ -127,7 +127,7 @@ Email::Sender::Transport::Maildir - deliver mail to a maildir on disk
 
 =head1 VERSION
 
-version 0.102370
+version 0.110000
 
 =head1 DESCRIPTION
 
@@ -149,7 +149,7 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Ricardo Signes.
+This software is copyright (c) 2011 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

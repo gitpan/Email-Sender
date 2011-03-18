@@ -1,6 +1,6 @@
 package Email::Sender::Transport::SMTP;
 BEGIN {
-  $Email::Sender::Transport::SMTP::VERSION = '0.102370';
+  $Email::Sender::Transport::SMTP::VERSION = '0.110000';
 }
 use Moose 0.90;
 # ABSTRACT: send email over SMTP
@@ -65,8 +65,13 @@ sub _smtp_client {
     $self->_throw("sasl_username but no sasl_password")
       unless defined $self->sasl_password;
 
-    $self->_throw('failed AUTH', $smtp)
-      unless $smtp->auth($self->sasl_username, $self->sasl_password)
+    unless ($smtp->auth($self->sasl_username, $self->sasl_password)) {
+      if ($smtp->message =~ /MIME::Base64|Authen::SASL/) {
+        Carp::confess("SMTP auth requires MIME::Base64 and Authen::SASL");
+      }
+
+      $self->_throw('failed AUTH', $smtp);
+    }
   }
 
   return $smtp;
@@ -205,7 +210,7 @@ Email::Sender::Transport::SMTP - send email over SMTP
 
 =head1 VERSION
 
-version 0.102370
+version 0.110000
 
 =head1 DESCRIPTION
 
@@ -256,7 +261,7 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Ricardo Signes.
+This software is copyright (c) 2011 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
