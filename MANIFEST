@@ -31,7 +31,6 @@ lib/Email/Sender/Transport/Test.pm
 lib/Email/Sender/Transport/Wrapper.pm
 lib/Email/Sender/Util.pm
 t/00-load.t
-t/a-perl-minver.t
 t/devnull.t
 t/fail-multi.t
 t/fail.t
@@ -42,6 +41,7 @@ t/mbox.t
 t/messages/simple.msg
 t/pobox-rig.json
 t/print.t
+t/release-a-perl-minver.t
 t/release-pod-syntax.t
 t/sendmail.t
 t/simple-simple.t
