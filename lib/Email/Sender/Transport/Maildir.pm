@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Maildir;
-BEGIN {
-  $Email::Sender::Transport::Maildir::VERSION = '0.110001';
+{
+  $Email::Sender::Transport::Maildir::VERSION = '0.110002';
 }
 use Moose;
 with 'Email::Sender::Transport';
@@ -12,6 +12,21 @@ use File::Path;
 use File::Spec;
 
 use Sys::Hostname;
+
+
+{
+  package
+    Email::Sender::Success::MaildirSuccess;
+  use Moose;
+  extends 'Email::Sender::Success';
+  has filename => (
+    is  => 'ro',
+    isa => 'Str',
+    required => 1,
+  );
+  __PACKAGE__->meta->make_immutable;
+  no Moose;
+}
 
 
 my $HOSTNAME;
@@ -40,9 +55,11 @@ sub send_email {
   $self->_add_lines_header($dupe);
   $self->_update_time;
 
-  $self->_deliver_email($dupe);
+  my $fn = $self->_deliver_email($dupe);
 
-  return $self->success;
+  return Email::Sender::Success::MaildirSuccess->new({
+    filename => $fn,
+  });
 }
 
 sub _ensure_maildir_exists {
@@ -88,13 +105,17 @@ sub _deliver_email {
   close $tmp_fh
     or Email::Sender::Failure->throw("error closing $tmp_filename: $!");
 
+  my $target_name = File::Spec->catfile($self->dir, 'new', $tmp_filename);
+
   my $ok = rename(
     File::Spec->catfile($self->dir, 'tmp', $tmp_filename),
-    File::Spec->catfile($self->dir, 'new', $tmp_filename),
+    $target_name,
   );
 
   Email::Sender::Failure->throw("could not move $tmp_filename from tmp to new")
     unless $ok;
+
+  return $target_name;
 }
 
 sub _delivery_fh {
@@ -127,7 +148,7 @@ Email::Sender::Transport::Maildir - deliver mail to a maildir on disk
 
 =head1 VERSION
 
-version 0.110001
+version 0.110002
 
 =head1 DESCRIPTION
 
@@ -143,13 +164,16 @@ Three headers will be added:
  * X-Email-Sender-To   - the envelope recipients (one header per rcpt)
  * Lines               - the number of lines in the body
 
+The L<Email::Sender::Success> object returned on success has a C<filename>
+method that returns the filename to which the message was delivered.
+
 =head1 AUTHOR
 
 Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Ricardo Signes.
+This software is copyright (c) 2012 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

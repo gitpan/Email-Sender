@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Test;
-BEGIN {
-  $Email::Sender::Transport::Test::VERSION = '0.110001';
+{
+  $Email::Sender::Transport::Test::VERSION = '0.110002';
 }
 use Moose;
 # ABSTRACT: deliver mail in memory for testing
@@ -92,7 +92,7 @@ Email::Sender::Transport::Test - deliver mail in memory for testing
 
 =head1 VERSION
 
-version 0.110001
+version 0.110002
 
 =head1 DESCRIPTION
 
@@ -143,7 +143,7 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Ricardo Signes.
+This software is copyright (c) 2012 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
