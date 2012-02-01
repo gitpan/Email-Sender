@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Test;
 {
-  $Email::Sender::Transport::Test::VERSION = '0.110002';
+  $Email::Sender::Transport::Test::VERSION = '0.110003';
 }
 use Moose;
 # ABSTRACT: deliver mail in memory for testing
@@ -92,7 +92,7 @@ Email::Sender::Transport::Test - deliver mail in memory for testing
 
 =head1 VERSION
 
-version 0.110002
+version 0.110003
 
 =head1 DESCRIPTION
 

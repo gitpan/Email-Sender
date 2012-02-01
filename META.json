@@ -58,7 +58,7 @@
          "web" : "https://github.com/rjbs/email-sender"
       }
    },
-   "version" : "0.110002",
+   "version" : "0.110003",
    "x_Dist_Zilla" : {
       "plugins" : [
          {

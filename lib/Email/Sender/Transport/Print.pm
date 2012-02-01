@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Print;
 {
-  $Email::Sender::Transport::Print::VERSION = '0.110002';
+  $Email::Sender::Transport::Print::VERSION = '0.110003';
 }
 use Moose;
 with 'Email::Sender::Transport';
@@ -45,7 +45,7 @@ Email::Sender::Transport::Print - print email to a filehandle (like stdout)
 
 =head1 VERSION
 
-version 0.110002
+version 0.110003
 
 =head1 DESCRIPTION
 

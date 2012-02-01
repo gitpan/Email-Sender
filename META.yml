@@ -37,7 +37,7 @@ requires:
 resources:
   homepage: https://github.com/rjbs/email-sender
   repository: https://github.com/rjbs/email-sender.git
-version: 0.110002
+version: 0.110003
 x_Dist_Zilla:
   plugins:
     -
