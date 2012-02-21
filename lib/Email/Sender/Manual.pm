@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Email::Sender::Manual;
 {
-  $Email::Sender::Manual::VERSION = '0.110003';
+  $Email::Sender::Manual::VERSION = '0.110004';
 }
 # ABSTRACT: table of contents for the Email::Sender manual
 
@@ -18,7 +18,7 @@ Email::Sender::Manual - table of contents for the Email::Sender manual
 
 =head1 VERSION
 
-version 0.110003
+version 0.110004
 
 =head1 THE MANUAL
 
