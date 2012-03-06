@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Mbox;
 {
-  $Email::Sender::Transport::Mbox::VERSION = '0.110004';
+  $Email::Sender::Transport::Mbox::VERSION = '0.110005';
 }
 use Moose;
 with 'Email::Sender::Transport';
@@ -57,6 +57,8 @@ sub _open_fh {
 
   my $fh = IO::File->new($file, '>>')
     or Carp::confess "couldn't open $file for appending: $!";
+
+  $fh->binmode(':raw');
 
   $class->_getlock($fh, $file);
 
@@ -115,7 +117,7 @@ Email::Sender::Transport::Mbox - deliver mail to an mbox on disk
 
 =head1 VERSION
 
-version 0.110004
+version 0.110005
 
 =head1 DESCRIPTION
 

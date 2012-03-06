@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Maildir;
 {
-  $Email::Sender::Transport::Maildir::VERSION = '0.110004';
+  $Email::Sender::Transport::Maildir::VERSION = '0.110005';
 }
 use Moose;
 with 'Email::Sender::Transport';
@@ -136,6 +136,7 @@ sub _delivery_fh {
     $filename = join q{.}, $MAILDIR_TIME, $$, ++$MAILDIR_COUNTER, $hostname;
     my $filespec = File::Spec->catfile($self->dir, 'tmp', $filename);
     sysopen $fh, $filespec, O_CREAT|O_EXCL|O_WRONLY;
+    binmode $fh;
     Email::Sender::Failure->throw("cannot create $filespec for delivery: $!")
       unless $fh or $!{EEXIST};
   }
@@ -156,7 +157,7 @@ Email::Sender::Transport::Maildir - deliver mail to a maildir on disk
 
 =head1 VERSION
 
-version 0.110004
+version 0.110005
 
 =head1 DESCRIPTION
 
