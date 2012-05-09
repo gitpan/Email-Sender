@@ -1,6 +1,6 @@
 package Email::Sender::Role::CommonSending;
 {
-  $Email::Sender::Role::CommonSending::VERSION = '0.110005';
+  $Email::Sender::Role::CommonSending::VERSION = '0.120000'; # TRIAL
 }
 use Moose::Role;
 # ABSTRACT: the common sending tasks most Email::Sender classes will need
@@ -28,8 +28,11 @@ sub send {
   } catch {
     confess('unknown error') unless my $err = $_;
 
-    if (try { $err->isa('Email::Sender::Failure') } and ! $err->recipients) {
-      $err->_recipients([ @{ $envelope->{to} } ]);
+    if (
+      try { $err->isa('Email::Sender::Failure') }
+      and ! (my @tmp = $err->recipients)
+    ) {
+      $err->_set_recipients([ @{ $envelope->{to} } ]);
     }
 
     die $err;
@@ -80,7 +83,7 @@ Email::Sender::Role::CommonSending - the common sending tasks most Email::Sender
 
 =head1 VERSION
 
-version 0.110005
+version 0.120000
 
 =head1 DESCRIPTION
 

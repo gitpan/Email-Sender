@@ -43,7 +43,7 @@ my %WriteMakefileArgs = (
     "Throwable::Error" => "0.100090",
     "Try::Tiny" => 0
   },
-  "VERSION" => "0.110005",
+  "VERSION" => "0.120000",
   "test" => {
     "TESTS" => "t/*.t"
   }

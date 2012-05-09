@@ -1,6 +1,6 @@
 package Email::Sender::Failure::Multi;
 {
-  $Email::Sender::Failure::Multi::VERSION = '0.110005';
+  $Email::Sender::Failure::Multi::VERSION = '0.120000'; # TRIAL
 }
 use Moose;
 extends 'Email::Sender::Failure';
@@ -8,15 +8,31 @@ extends 'Email::Sender::Failure';
 
 
 has failures => (
-  is  => 'ro',
   isa => 'ArrayRef',
-  auto_deref => 1,
+  traits  => [ 'Array' ],
+  handles  => { __failures => 'elements' },
+  required => 1,
+  reader   => '__get_failures',
 );
+
+sub failures {
+  my ($self) = @_;
+  return $self->__failures if wantarray;
+  return if ! defined wantarray;
+
+  Carp::carp("failures in scalar context is deprecated and WILL BE REMOVED");
+  return $self->__get_failures;
+}
 
 sub recipients {
   my ($self) = @_;
   my @rcpts = map { $_->recipients } $self->failures;
-  return wantarray ? @rcpts : \@rcpts;
+
+  return @rcpts if wantarray;
+  return if ! defined wantarray;
+
+  Carp::carp("recipients in scalar context is deprecated and WILL BE REMOVED");
+  return \@rcpts;
 }
 
 
@@ -48,7 +64,7 @@ Email::Sender::Failure::Multi - an aggregate of multiple failures
 
 =head1 VERSION
 
-version 0.110005
+version 0.120000
 
 =head1 DESCRIPTION
 
@@ -59,8 +75,8 @@ when sending a single message, or when mixed states were encountered.
 
 =head2 failures
 
-This method returns a list (or arrayref, in scalar context) of other
-Email::Sender::Failure objects represented by this multi.
+This method returns a list of other Email::Sender::Failure objects represented
+by this multi.
 
 =head1 METHODS
 

@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Failable;
 {
-  $Email::Sender::Transport::Failable::VERSION = '0.110005';
+  $Email::Sender::Transport::Failable::VERSION = '0.120000'; # TRIAL
 }
 use Moose;
 extends 'Email::Sender::Transport::Wrapper';
@@ -8,17 +8,15 @@ extends 'Email::Sender::Transport::Wrapper';
 
 
 has 'failure_conditions' => (
-  is  => 'ro',
   isa => 'ArrayRef',
-  clearer    => 'clear_failure_conditions',
-  auto_deref => 1,
-  default    => sub { [] },
+  default => sub { [] },
+  traits  => [ 'Array' ],
+  handles => {
+    failure_conditions       => 'elements',
+    clear_failure_conditions => 'clear',
+    fail_if                  => 'push',
+  },
 );
-
-sub fail_if {
-  my ($self, $cond) = @_;
-  push @{ scalar $self->failure_conditions }, $cond;
-}
 
 around send_email => sub {
   my ($orig, $self, $email, $env, @rest) = @_;
@@ -45,7 +43,7 @@ Email::Sender::Transport::Failable - a wrapper to makes things fail predictably
 
 =head1 VERSION
 
-version 0.110005
+version 0.120000
 
 =head1 DESCRIPTION
 

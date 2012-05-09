@@ -1,6 +1,6 @@
 package Email::Sender::Failure;
 {
-  $Email::Sender::Failure::VERSION = '0.110005';
+  $Email::Sender::Failure::VERSION = '0.120000'; # TRIAL
 }
 use Moose;
 extends 'Throwable::Error';
@@ -12,14 +12,23 @@ has code => (
 );
 
 
-has _recipients => (
-  is         => 'rw',
-  isa        => 'ArrayRef',
-  auto_deref => 1,
-  init_arg   => 'recipients',
+has recipients => (
+  isa     => 'ArrayRef',
+  traits  => [ 'Array' ],
+  handles => { __recipients => 'elements' },
+  default => sub {  []  },
+  writer  => '_set_recipients',
+  reader  => '__get_recipients',
 );
 
-sub recipients { shift->_recipients }
+sub recipients {
+  my ($self) = @_;
+  return $self->__recipients if wantarray;
+  return $self->__recipients if ! defined wantarray;
+
+  Carp::carp("recipients in scalar context is deprecated and WILL BE REMOVED");
+  return $self->__get_recipients;
+}
 
 
 sub BUILD {
@@ -42,7 +51,7 @@ Email::Sender::Failure - a report of failure from an email sending transport
 
 =head1 VERSION
 
-version 0.110005
+version 0.120000
 
 =head1 ATTRIBUTES
 
@@ -58,8 +67,7 @@ for network protocol transports like SMTP.  This may be undefined.
 
 =head2 recipients
 
-This returns a list (or, in scalar context, an arrayref) of addresses to which
-the email could not be sent.
+This returns a list of addresses to which the email could not be sent.
 
 =head1 METHODS
 

@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Test;
 {
-  $Email::Sender::Transport::Test::VERSION = '0.110005';
+  $Email::Sender::Transport::Test::VERSION = '0.120000'; # TRIAL
 }
 use Moose;
 # ABSTRACT: deliver mail in memory for testing
@@ -15,17 +15,17 @@ sub recipient_failure { }
 sub delivery_failure  { }
 
 has deliveries => (
-  is  => 'ro',
   isa => 'ArrayRef',
+  traits     => [ 'Array' ],
   init_arg   => undef,
   default    => sub { [] },
-  auto_deref => 1,
+  handles    => {
+    deliveries       => 'elements',
+    delivery_count   => 'count',
+    clear_deliveries => 'clear',
+    record_delivery  => 'push',
+  },
 );
-
-sub clear_deliveries {
-  @{ $_[0]->deliveries } = ();
-  return;
-}
 
 sub send_email {
   my ($self, $email, $envelope) = @_;
@@ -60,13 +60,12 @@ sub send_email {
     );
   }
 
-  $self->{deliveries} ||= [];
-  push @{ $self->{deliveries} }, {
+  $self->record_delivery({
     email     => $email,
     envelope  => $envelope,
     successes => \@ok_rcpts,
     failures  => \@failures,
-  };
+  });
 
   # XXX: We must report partial success (failures) if applicable.
   return $self->success unless @failures;
@@ -92,7 +91,7 @@ Email::Sender::Transport::Test - deliver mail in memory for testing
 
 =head1 VERSION
 
-version 0.110005
+version 0.120000
 
 =head1 DESCRIPTION
 
