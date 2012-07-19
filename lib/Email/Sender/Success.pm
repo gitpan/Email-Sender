@@ -1,6 +1,6 @@
 package Email::Sender::Success;
 {
-  $Email::Sender::Success::VERSION = '0.120000'; # TRIAL
+  $Email::Sender::Success::VERSION = '0.120001';
 }
 use Moose;
 # ABSTRACT: the result of successfully sending mail
@@ -19,7 +19,7 @@ Email::Sender::Success - the result of successfully sending mail
 
 =head1 VERSION
 
-version 0.120000
+version 0.120001
 
 =head1 DESCRIPTION
 

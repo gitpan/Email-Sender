@@ -31,7 +31,9 @@ lib/Email/Sender/Transport/Test.pm
 lib/Email/Sender/Transport/Wrapper.pm
 lib/Email/Sender/Util.pm
 misc/smtp.t
+t/00-compile.t
 t/00-load.t
+t/000-report-versions-tiny.t
 t/devnull.t
 t/fail-multi.t
 t/fail.t
@@ -55,4 +57,5 @@ util/not-executable
 util/sendmail
 util/sendmail.bat
 xt/release/a-perl-minver.t
+xt/release/changes_has_content.t
 xt/release/pod-syntax.t
