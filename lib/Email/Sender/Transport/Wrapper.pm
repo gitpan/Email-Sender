@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Wrapper;
 {
-  $Email::Sender::Transport::Wrapper::VERSION = '0.120001';
+  $Email::Sender::Transport::Wrapper::VERSION = '0.120002';
 }
 use Moose;
 with 'Email::Sender::Transport';
@@ -32,7 +32,7 @@ Email::Sender::Transport::Wrapper - a mailer to wrap a mailer for mailing mail
 
 =head1 VERSION
 
-version 0.120001
+version 0.120002
 
 =head1 DESCRIPTION
 

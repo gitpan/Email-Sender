@@ -1,6 +1,6 @@
 package Email::Sender::Failure::Multi;
 {
-  $Email::Sender::Failure::Multi::VERSION = '0.120001';
+  $Email::Sender::Failure::Multi::VERSION = '0.120002';
 }
 use Moose;
 extends 'Email::Sender::Failure';
@@ -64,7 +64,7 @@ Email::Sender::Failure::Multi - an aggregate of multiple failures
 
 =head1 VERSION
 
-version 0.120001
+version 0.120002
 
 =head1 DESCRIPTION
 

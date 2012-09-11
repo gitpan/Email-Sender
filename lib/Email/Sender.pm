@@ -1,6 +1,6 @@
 package Email::Sender;
 {
-  $Email::Sender::VERSION = '0.120001';
+  $Email::Sender::VERSION = '0.120002';
 }
 use Moose::Role;
 # ABSTRACT: a library for sending email
@@ -20,7 +20,7 @@ Email::Sender - a library for sending email
 
 =head1 VERSION
 
-version 0.120001
+version 0.120002
 
 =head1 SYNOPSIS
 

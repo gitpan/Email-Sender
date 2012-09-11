@@ -1,6 +1,6 @@
 package Email::Sender::Role::HasMessage;
 {
-  $Email::Sender::Role::HasMessage::VERSION = '0.120001';
+  $Email::Sender::Role::HasMessage::VERSION = '0.120002';
 }
 use Moose::Role;
 # ABSTRACT: an object that has a message
@@ -23,7 +23,7 @@ Email::Sender::Role::HasMessage - an object that has a message
 
 =head1 VERSION
 
-version 0.120001
+version 0.120002
 
 =head1 ATTRIBUTES
 

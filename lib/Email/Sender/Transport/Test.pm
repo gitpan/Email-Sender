@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Test;
 {
-  $Email::Sender::Transport::Test::VERSION = '0.120001';
+  $Email::Sender::Transport::Test::VERSION = '0.120002';
 }
 use Moose;
 # ABSTRACT: deliver mail in memory for testing
@@ -24,6 +24,7 @@ has deliveries => (
     delivery_count   => 'count',
     clear_deliveries => 'clear',
     record_delivery  => 'push',
+    shift_deliveries => 'shift',
   },
 );
 
@@ -91,7 +92,7 @@ Email::Sender::Transport::Test - deliver mail in memory for testing
 
 =head1 VERSION
 
-version 0.120001
+version 0.120002
 
 =head1 DESCRIPTION
 
@@ -123,7 +124,6 @@ L<Email::Sender::Transport::Failable>.
 =for Pod::Coverage clear_deliveries
 
 This attribute stores an arrayref of all the deliveries made via the transport.
-It can be emptied by calling C<clear_deliveries>.
 
 Each delivery is a hashref, in the following format:
 
@@ -135,6 +135,24 @@ Each delivery is a hashref, in the following format:
   }
 
 Both successful and failed deliveries are stored.
+
+A number of methods related to this attribute are provided:
+
+=over 4
+
+=item *
+
+delivery_count
+
+=item *
+
+clear_deliveries
+
+=item *
+
+shift_deliveries
+
+=back
 
 =head1 AUTHOR
 

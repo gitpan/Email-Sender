@@ -1,6 +1,6 @@
 package Email::Sender::Transport::SMTP;
 {
-  $Email::Sender::Transport::SMTP::VERSION = '0.120001';
+  $Email::Sender::Transport::SMTP::VERSION = '0.120002';
 }
 use Moose 0.90;
 # ABSTRACT: send email over SMTP
@@ -210,7 +210,7 @@ Email::Sender::Transport::SMTP - send email over SMTP
 
 =head1 VERSION
 
-version 0.120001
+version 0.120002
 
 =head1 DESCRIPTION
 

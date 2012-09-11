@@ -1,6 +1,6 @@
 package Email::Sender::Simple;
 {
-  $Email::Sender::Simple::VERSION = '0.120001';
+  $Email::Sender::Simple::VERSION = '0.120002';
 }
 use Moose;
 with 'Email::Sender::Role::CommonSending';
@@ -167,7 +167,7 @@ Email::Sender::Simple - the simple interface for sending mail with Sender
 
 =head1 VERSION
 
-version 0.120001
+version 0.120002
 
 =head1 SEE INSTEAD
 
