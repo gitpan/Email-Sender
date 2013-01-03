@@ -1,5 +1,11 @@
 Revision history for Email-Sender
 
+1.300000  2013-01-02 22:42:58 America/New_York
+          THIS IS A BIG DEAL:
+
+          use Moo instead of Moose (thanks to Justin Hunter and Christian
+          Walde!)
+
 0.120002  2012-09-11 14:43:07 America/New_York
           added shift_deliveries to the Test transport, for treating the
           sent messages like a queue of things to inspect

@@ -1,8 +1,9 @@
 package Email::Sender::Transport::SMTP;
 {
-  $Email::Sender::Transport::SMTP::VERSION = '0.120002';
+  $Email::Sender::Transport::SMTP::VERSION = '1.300000'; # TRIAL
 }
-use Moose 0.90;
+use Moo;
+use MooX::Types::MooseLike::Base qw(Bool Int Str);
 # ABSTRACT: send email over SMTP
 
 use Email::Sender::Failure::Multi;
@@ -10,27 +11,27 @@ use Email::Sender::Success::Partial;
 use Email::Sender::Util;
 
 
-has host => (is => 'ro', isa => 'Str',  default => 'localhost');
-has ssl  => (is => 'ro', isa => 'Bool', default => 0);
+has host => (is => 'ro', isa => Str,  default => sub { 'localhost' });
+has ssl  => (is => 'ro', isa => Bool, default => sub { 0 });
 has port => (
   is  => 'ro',
-  isa => 'Int',
+  isa => Int,
   lazy    => 1,
   default => sub { return $_[0]->ssl ? 465 : 25; },
 );
 
-has timeout => (is => 'ro', isa => 'Int', default => 120);
+has timeout => (is => 'ro', isa => Int, default => sub { 120 });
 
 
-has sasl_username => (is => 'ro', isa => 'Str');
-has sasl_password => (is => 'ro', isa => 'Str');
+has sasl_username => (is => 'ro', isa => Str);
+has sasl_password => (is => 'ro', isa => Str);
 
-has allow_partial_success => (is => 'ro', isa => 'Bool', default => 0);
+has allow_partial_success => (is => 'ro', isa => Bool, default => sub { 0 });
 
 
-has helo      => (is => 'ro', isa => 'Str');
+has helo      => (is => 'ro', isa => Str);
 has localaddr => (is => 'ro');
-has localport => (is => 'ro', isa => 'Int');
+has localport => (is => 'ro', isa => Int);
 
 # I am basically -sure- that this is wrong, but sending hundreds of millions of
 # messages has shown that it is right enough.  I will try to make it textbook
@@ -168,40 +169,25 @@ sub send_email {
   });
 }
 
-my %SUCCESS_CLASS;
-BEGIN {
-  $SUCCESS_CLASS{FULL} = Moose::Meta::Class->create_anon_class(
-    superclasses => [ 'Email::Sender::Success' ],
-    roles        => [ 'Email::Sender::Role::HasMessage' ],
-    cache        => 1,
-  );
-  $SUCCESS_CLASS{PARTIAL} = Moose::Meta::Class->create_anon_class(
-    superclasses => [ 'Email::Sender::Success::Partial' ],
-    roles        => [ 'Email::Sender::Role::HasMessage' ],
-    cache        => 1,
-  );
-}
-
 sub success {
   my $self = shift;
-  my $success = $SUCCESS_CLASS{FULL}->name->new(@_);
+  my $success = Moo::Role->create_class_with_roles('Email::Sender::Success', 'Email::Sender::Role::HasMessage')->new(@_);
 }
 
 sub partial_success {
-  my ($self, @args) = @_;
-  my $obj = $SUCCESS_CLASS{PARTIAL}->name->new(@args);
-  return $obj;
+  my $self = shift;
+  my $partial_success = Moo::Role->create_class_with_roles('Email::Sender::Success::Partial', 'Email::Sender::Role::HasMessage')->new(@_);
 }
 
 sub _message_complete { $_[1]->quit; }
 
 
 with 'Email::Sender::Transport';
-__PACKAGE__->meta->make_immutable;
-no Moose;
+no Moo;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -210,7 +196,7 @@ Email::Sender::Transport::SMTP - send email over SMTP
 
 =head1 VERSION
 
-version 0.120002
+version 1.300000
 
 =head1 DESCRIPTION
 
@@ -261,10 +247,9 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo Signes.
+This software is copyright (c) 2013 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

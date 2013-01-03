@@ -1,8 +1,8 @@
 package Email::Sender::Transport;
 {
-  $Email::Sender::Transport::VERSION = '0.120002';
+  $Email::Sender::Transport::VERSION = '1.300000'; # TRIAL
 }
-use Moose::Role;
+use Moo::Role;
 # ABSTRACT: a role for email transports
 
 
@@ -16,10 +16,11 @@ sub is_simple {
 
 sub allow_partial_success { 0 }
 
-no Moose::Role;
+no Moo::Role;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -28,11 +29,11 @@ Email::Sender::Transport - a role for email transports
 
 =head1 VERSION
 
-version 0.120002
+version 1.300000
 
 =head1 DESCRIPTION
 
-Email::Sender::Transport is a Moose role to aid in writing classes used to send
+Email::Sender::Transport is a Moo role to aid in writing classes used to send
 mail.  For the most part, its behavior comes entirely from the role
 L<Email::Sender::Role::CommonSending>, which it includes. The important
 difference is that Transports are often intended to be used by
@@ -58,10 +59,9 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo Signes.
+This software is copyright (c) 2013 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

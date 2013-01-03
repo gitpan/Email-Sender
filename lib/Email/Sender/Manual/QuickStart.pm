@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Email::Sender::Manual::QuickStart;
 {
-  $Email::Sender::Manual::QuickStart::VERSION = '0.120002';
+  $Email::Sender::Manual::QuickStart::VERSION = '1.300000'; # TRIAL
 }
 # ABSTRACT: how to start using Email::Sender right now
 
@@ -10,6 +10,7 @@ package Email::Sender::Manual::QuickStart;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -18,7 +19,7 @@ Email::Sender::Manual::QuickStart - how to start using Email::Sender right now
 
 =head1 VERSION
 
-version 0.120002
+version 1.300000
 
 =head1 QUICK START
 
@@ -265,10 +266,9 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo Signes.
+This software is copyright (c) 2013 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

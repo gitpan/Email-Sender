@@ -1,32 +1,34 @@
 package Email::Sender::Transport::Test;
 {
-  $Email::Sender::Transport::Test::VERSION = '0.120002';
+  $Email::Sender::Transport::Test::VERSION = '1.300000'; # TRIAL
 }
-use Moose;
+use Moo;
+use MooX::Types::MooseLike::Base qw(ArrayRef Bool);
 # ABSTRACT: deliver mail in memory for testing
 
+with 'Email::Sender::Transport';
 use Email::Sender::Failure::Multi;
 use Email::Sender::Success::Partial;
 
 
-has allow_partial_success => (is => 'ro', isa => 'Bool', default => 0);
+has allow_partial_success => (is => 'ro', isa => Bool, default => sub { 0 });
 
 sub recipient_failure { }
 sub delivery_failure  { }
 
 has deliveries => (
-  isa => 'ArrayRef',
-  traits     => [ 'Array' ],
+  isa => ArrayRef,
   init_arg   => undef,
   default    => sub { [] },
-  handles    => {
-    deliveries       => 'elements',
-    delivery_count   => 'count',
-    clear_deliveries => 'clear',
-    record_delivery  => 'push',
-    shift_deliveries => 'shift',
-  },
+  is         => 'ro',
+  reader     => '_deliveries',
 );
+
+sub delivery_count { scalar @{ $_[0]->_deliveries } }
+sub record_delivery { push @{ shift->_deliveries }, @_ }
+sub deliveries { @{ $_[0]->_deliveries } }
+sub shift_deliveries { shift @{ $_[0]->_deliveries } }
+sub clear_deliveries { @{ $_[0]->_deliveries } = () }
 
 sub send_email {
   my ($self, $email, $envelope) = @_;
@@ -78,12 +80,11 @@ sub send_email {
   });
 }
 
-with 'Email::Sender::Transport';
-__PACKAGE__->meta->make_immutable;
-no Moose;
+no Moo;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -92,7 +93,7 @@ Email::Sender::Transport::Test - deliver mail in memory for testing
 
 =head1 VERSION
 
-version 0.120002
+version 1.300000
 
 =head1 DESCRIPTION
 
@@ -160,10 +161,9 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo Signes.
+This software is copyright (c) 2013 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

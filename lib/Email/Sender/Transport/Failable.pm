@@ -1,22 +1,23 @@
 package Email::Sender::Transport::Failable;
 {
-  $Email::Sender::Transport::Failable::VERSION = '0.120002';
+  $Email::Sender::Transport::Failable::VERSION = '1.300000'; # TRIAL
 }
-use Moose;
+use Moo;
+use MooX::Types::MooseLike::Base qw(ArrayRef);
 extends 'Email::Sender::Transport::Wrapper';
 # ABSTRACT: a wrapper to makes things fail predictably
 
 
 has 'failure_conditions' => (
-  isa => 'ArrayRef',
+  isa => ArrayRef,
   default => sub { [] },
-  traits  => [ 'Array' ],
-  handles => {
-    failure_conditions       => 'elements',
-    clear_failure_conditions => 'clear',
-    fail_if                  => 'push',
-  },
+  is      => 'ro',
+  reader  => '_failure_conditions',
 );
+
+sub failure_conditions { @{$_[0]->_failure_conditions} }
+sub fail_if { push @{shift->_failure_conditions}, @_ }
+sub clear_failure_conditions { @{$_[0]->{failure_conditions}} = () }
 
 around send_email => sub {
   my ($orig, $self, $email, $env, @rest) = @_;
@@ -30,11 +31,11 @@ around send_email => sub {
   return $self->$orig($email, $env, @rest);
 };
 
-__PACKAGE__->meta->make_immutable;
-no Moose;
+no Moo;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -43,7 +44,7 @@ Email::Sender::Transport::Failable - a wrapper to makes things fail predictably
 
 =head1 VERSION
 
-version 0.120002
+version 1.300000
 
 =head1 DESCRIPTION
 
@@ -66,10 +67,9 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo Signes.
+This software is copyright (c) 2013 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

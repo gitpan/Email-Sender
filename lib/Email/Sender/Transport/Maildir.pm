@@ -1,8 +1,8 @@
 package Email::Sender::Transport::Maildir;
 {
-  $Email::Sender::Transport::Maildir::VERSION = '0.120002';
+  $Email::Sender::Transport::Maildir::VERSION = '1.300000'; # TRIAL
 }
-use Moose;
+use Moo;
 with 'Email::Sender::Transport';
 # ABSTRACT: deliver mail to a maildir on disk
 
@@ -13,19 +13,21 @@ use File::Spec;
 
 use Sys::Hostname;
 
+use MooX::Types::MooseLike::Base qw(Bool);
+
 
 {
   package
     Email::Sender::Success::MaildirSuccess;
-  use Moose;
+  use Moo;
+  use MooX::Types::MooseLike::Base qw(Str);
   extends 'Email::Sender::Success';
   has filename => (
     is  => 'ro',
-    isa => 'Str',
+    isa => Str,
     required => 1,
   );
-  __PACKAGE__->meta->make_immutable;
-  no Moose;
+  no Moo;
 }
 
 
@@ -38,8 +40,8 @@ my $MAILDIR_COUNTER = 0;
 
 has [ qw(add_lines_header add_envelope_headers) ] => (
   is  => 'ro',
-  isa => 'Bool',
-  default => 1,
+  isa => Bool,
+  default => sub { 1 },
 );
 
 has dir => (
@@ -144,11 +146,11 @@ sub _delivery_fh {
   return ($filename, $fh);
 }
 
-__PACKAGE__->meta->make_immutable;
-no Moose;
+no Moo;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -157,7 +159,7 @@ Email::Sender::Transport::Maildir - deliver mail to a maildir on disk
 
 =head1 VERSION
 
-version 0.120002
+version 1.300000
 
 =head1 DESCRIPTION
 
@@ -185,10 +187,9 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo Signes.
+This software is copyright (c) 2013 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

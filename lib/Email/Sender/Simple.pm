@@ -1,8 +1,8 @@
 package Email::Sender::Simple;
 {
-  $Email::Sender::Simple::VERSION = '0.120002';
+  $Email::Sender::Simple::VERSION = '1.300000'; # TRIAL
 }
-use Moose;
+use Moo;
 with 'Email::Sender::Role::CommonSending';
 # ABSTRACT: the simple interface for sending mail with Sender
 
@@ -18,6 +18,7 @@ use Sub::Exporter -setup => {
 use Email::Address;
 use Email::Sender::Transport;
 use Try::Tiny;
+use Module::Runtime qw(require_module);
 
 {
   my $DEFAULT_TRANSPORT;
@@ -40,7 +41,7 @@ use Try::Tiny;
         $transport_class = "Email::Sender::Transport::$transport_class";
       }
 
-      Class::MOP::load_class($transport_class);
+      require_module($transport_class);
 
       my %arg;
       for my $key (grep { /^EMAIL_SENDER_TRANSPORT_\w+/ } keys %ENV) {
@@ -99,7 +100,7 @@ sub send_email {
     $transport = delete $arg->{transport} unless $self->_default_was_from_env;
   }
 
-  confess("transport $transport not safe for use with Email::Sender::Simple")
+  Carp::confess("transport $transport not safe for use with Email::Sender::Simple")
     unless $transport->is_simple;
 
   my ($to, $from) = $self->_get_to_from($email, $arg);
@@ -155,10 +156,11 @@ sub _get_to_from {
   return ($to, $from);
 }
 
-no Moose;
+no Moo;
 "220 OK";
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -167,7 +169,7 @@ Email::Sender::Simple - the simple interface for sending mail with Sender
 
 =head1 VERSION
 
-version 0.120002
+version 1.300000
 
 =head1 SEE INSTEAD
 
@@ -180,10 +182,9 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo Signes.
+This software is copyright (c) 2013 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

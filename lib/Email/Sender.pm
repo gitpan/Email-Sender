@@ -1,17 +1,18 @@
 package Email::Sender;
 {
-  $Email::Sender::VERSION = '0.120002';
+  $Email::Sender::VERSION = '1.300000'; # TRIAL
 }
-use Moose::Role;
+use Moo::Role;
 # ABSTRACT: a library for sending email
 
 requires 'send';
 
 
-no Moose::Role;
+no Moo::Role;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -20,7 +21,7 @@ Email::Sender - a library for sending email
 
 =head1 VERSION
 
-version 0.120002
+version 1.300000
 
 =head1 SYNOPSIS
 
@@ -62,7 +63,7 @@ start with L<Email::Sender::Manual::QuickStart>.
 
 =head1 IMPLEMENTING
 
-Email::Sender itelf is a Moose role.  Any class that implements Email::Sender
+Email::Sender itelf is a Moo role.  Any class that implements Email::Sender
 is required to provide a method called C<send>.  This method should accept any
 input that can be understood by L<Email::Abstract>, followed by a hashref
 containing C<to> and C<from> arguments to be used as the envelope.  The method
@@ -75,10 +76,9 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo Signes.
+This software is copyright (c) 2013 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

@@ -1,8 +1,8 @@
 package Email::Sender::Transport::Mbox;
 {
-  $Email::Sender::Transport::Mbox::VERSION = '0.120002';
+  $Email::Sender::Transport::Mbox::VERSION = '1.300000'; # TRIAL
 }
-use Moose;
+use Moo;
 with 'Email::Sender::Transport';
 # ABSTRACT: deliver mail to an mbox on disk
 
@@ -14,7 +14,7 @@ use Email::Simple 1.998;  # needed for ->header_obj
 use Fcntl ':flock';
 
 
-has 'filename' => (is => 'ro', default => 'mbox', required => 1);
+has 'filename' => (is => 'ro', default => sub { 'mbox' }, required => 1);
 
 sub send_email {
   my ($self, $email, $env) = @_;
@@ -104,11 +104,11 @@ sub _unlock {
   flock($fh, LOCK_UN);
 }
 
-__PACKAGE__->meta->make_immutable;
-no Moose;
+no Moo;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -117,7 +117,7 @@ Email::Sender::Transport::Mbox - deliver mail to an mbox on disk
 
 =head1 VERSION
 
-version 0.120002
+version 1.300000
 
 =head1 DESCRIPTION
 
@@ -133,10 +133,9 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo Signes.
+This software is copyright (c) 2013 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

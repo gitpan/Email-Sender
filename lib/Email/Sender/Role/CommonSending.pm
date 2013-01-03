@@ -1,11 +1,11 @@
 package Email::Sender::Role::CommonSending;
 {
-  $Email::Sender::Role::CommonSending::VERSION = '0.120002';
+  $Email::Sender::Role::CommonSending::VERSION = '1.300000'; # TRIAL
 }
-use Moose::Role;
+use Moo::Role;
 # ABSTRACT: the common sending tasks most Email::Sender classes will need
 
-use Carp;
+use Carp ();
 use Email::Abstract;
 use Email::Sender::Success;
 use Email::Sender::Failure::Temporary;
@@ -26,7 +26,7 @@ sub send {
   try {
     return $self->send_email($email, $envelope, @rest);
   } catch {
-    confess('unknown error') unless my $err = $_;
+    Carp::confess('unknown error') unless my $err = $_;
 
     if (
       try { $err->isa('Email::Sender::Failure') }
@@ -43,13 +43,13 @@ sub send {
 sub prepare_email {
   my ($self, $msg) = @_;
 
-  confess("no email passed in to sender") unless defined $msg;
+  Carp::confess("no email passed in to sender") unless defined $msg;
 
   # We check blessed because if someone would pass in a large message, in some
   # perls calling isa on the string would create a package with the string as
   # the name.  If the message was (say) two megs, now you'd have a two meg hash
   # key in the stash.  Oops! -- rjbs, 2008-12-04
-  return $msg if blessed $msg and eval { $msg->isa('Email::Abstract') };
+  return $msg if Scalar::Util::blessed($msg) and eval { $msg->isa('Email::Abstract') };
 
   return Email::Abstract->new($msg);
 }
@@ -71,10 +71,11 @@ sub success {
   my $success = Email::Sender::Success->new(@_);
 }
 
-no Moose::Role;
+no Moo::Role;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -83,7 +84,7 @@ Email::Sender::Role::CommonSending - the common sending tasks most Email::Sender
 
 =head1 VERSION
 
-version 0.120002
+version 1.300000
 
 =head1 DESCRIPTION
 
@@ -132,10 +133,9 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo Signes.
+This software is copyright (c) 2013 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

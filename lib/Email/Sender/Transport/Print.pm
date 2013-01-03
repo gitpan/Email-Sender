@@ -1,17 +1,18 @@
 package Email::Sender::Transport::Print;
 {
-  $Email::Sender::Transport::Print::VERSION = '0.120002';
+  $Email::Sender::Transport::Print::VERSION = '1.300000'; # TRIAL
 }
-use Moose;
+use Moo;
 with 'Email::Sender::Transport';
 # ABSTRACT: print email to a filehandle (like stdout)
 
 
 use IO::Handle;
+use MooX::Types::MooseLike::Base qw(InstanceOf);
 
 has 'fh' => (
   is       => 'ro',
-  isa      => 'IO::Handle',
+  isa      => InstanceOf['IO::Handle'],
   required => 1,
   default  => sub { IO::Handle->new_from_fd(fileno(STDOUT), 'w') },
 );
@@ -32,11 +33,11 @@ sub send_email {
   return $self->success;
 }
 
-__PACKAGE__->meta->make_immutable;
-no Moose;
+no Moo;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -45,7 +46,7 @@ Email::Sender::Transport::Print - print email to a filehandle (like stdout)
 
 =head1 VERSION
 
-version 0.120002
+version 1.300000
 
 =head1 DESCRIPTION
 
@@ -59,10 +60,9 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo Signes.
+This software is copyright (c) 2013 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
