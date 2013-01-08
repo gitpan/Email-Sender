@@ -64,7 +64,7 @@ eval { $v .= pmver('File::Temp','any version') };
 eval { $v .= pmver('FindBin','any version') };
 eval { $v .= pmver('List::MoreUtils','any version') };
 eval { $v .= pmver('Module::Runtime','any version') };
-eval { $v .= pmver('Moo','1.000001') };
+eval { $v .= pmver('Moo','1.000007') };
 eval { $v .= pmver('Moo::Role','any version') };
 eval { $v .= pmver('MooX::Types::MooseLike::Base','any version') };
 eval { $v .= pmver('Net::SMTP','any version') };
@@ -73,7 +73,7 @@ eval { $v .= pmver('Sub::Override','any version') };
 eval { $v .= pmver('Sys::Hostname','any version') };
 eval { $v .= pmver('Test::More','0.96') };
 eval { $v .= pmver('Test::Pod','1.41') };
-eval { $v .= pmver('Throwable::Error','0.100090') };
+eval { $v .= pmver('Throwable::Error','0.200003') };
 eval { $v .= pmver('Try::Tiny','any version') };
 eval { $v .= pmver('version','0.9901') };
 

@@ -37,16 +37,16 @@ my %WriteMakefileArgs = (
     "FindBin" => 0,
     "List::MoreUtils" => 0,
     "Module::Runtime" => 0,
-    "Moo" => "1.000001",
+    "Moo" => "1.000007",
     "Moo::Role" => 0,
     "MooX::Types::MooseLike::Base" => 0,
     "Net::SMTP" => 0,
     "Scalar::Util" => 0,
     "Sys::Hostname" => 0,
-    "Throwable::Error" => "0.100090",
+    "Throwable::Error" => "0.200003",
     "Try::Tiny" => 0
   },
-  "VERSION" => "1.300000",
+  "VERSION" => "1.300001",
   "test" => {
     "TESTS" => "t/*.t"
   }

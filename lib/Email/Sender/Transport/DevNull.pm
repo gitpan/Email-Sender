@@ -1,6 +1,6 @@
 package Email::Sender::Transport::DevNull;
 {
-  $Email::Sender::Transport::DevNull::VERSION = '1.300000'; # TRIAL
+  $Email::Sender::Transport::DevNull::VERSION = '1.300001'; # TRIAL
 }
 use Moo;
 with 'Email::Sender::Transport';
@@ -22,7 +22,7 @@ Email::Sender::Transport::DevNull - happily throw away your mail
 
 =head1 VERSION
 
-version 1.300000
+version 1.300001
 
 =head1 DESCRIPTION
 
