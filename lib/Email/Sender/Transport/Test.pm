@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Test;
 {
-  $Email::Sender::Transport::Test::VERSION = '1.300001'; # TRIAL
+  $Email::Sender::Transport::Test::VERSION = '1.300002';
 }
 use Moo;
 use MooX::Types::MooseLike::Base qw(ArrayRef Bool);
@@ -93,7 +93,7 @@ Email::Sender::Transport::Test - deliver mail in memory for testing
 
 =head1 VERSION
 
-version 1.300001
+version 1.300002
 
 =head1 DESCRIPTION
 

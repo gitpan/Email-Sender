@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Email::Sender::Util;
 {
-  $Email::Sender::Util::VERSION = '1.300001'; # TRIAL
+  $Email::Sender::Util::VERSION = '1.300002';
 }
 # ABSTRACT: random stuff that makes Email::Sender go
 
@@ -67,7 +67,7 @@ Email::Sender::Util - random stuff that makes Email::Sender go
 
 =head1 VERSION
 
-version 1.300001
+version 1.300002
 
 =head1 AUTHOR
 

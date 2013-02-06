@@ -1,6 +1,6 @@
 package Email::Sender::Transport::SMTP;
 {
-  $Email::Sender::Transport::SMTP::VERSION = '1.300001'; # TRIAL
+  $Email::Sender::Transport::SMTP::VERSION = '1.300002';
 }
 use Moo;
 use MooX::Types::MooseLike::Base qw(Bool Int Str);
@@ -196,7 +196,7 @@ Email::Sender::Transport::SMTP - send email over SMTP
 
 =head1 VERSION
 
-version 1.300001
+version 1.300002
 
 =head1 DESCRIPTION
 
