@@ -1,6 +1,6 @@
 package Email::Sender::Simple;
 {
-  $Email::Sender::Simple::VERSION = '1.300002';
+  $Email::Sender::Simple::VERSION = '1.300003';
 }
 use Moo;
 with 'Email::Sender::Role::CommonSending';
@@ -17,43 +17,47 @@ use Sub::Exporter -setup => {
 
 use Email::Address;
 use Email::Sender::Transport;
+use Email::Sender::Util;
 use Try::Tiny;
-use Module::Runtime qw(require_module);
 
 {
   my $DEFAULT_TRANSPORT;
   my $DEFAULT_FROM_ENV;
 
   sub _default_was_from_env {
-    my ($self) = @_;
-    $self->default_transport;
+    my ($class) = @_;
+    $class->default_transport;
     return $DEFAULT_FROM_ENV;
+  }
+
+  sub transport_from_env {
+    my ($class, $env_base) = @_;
+    $env_base ||= 'EMAIL_SENDER_TRANSPORT';
+
+    my $transport_class = $ENV{$env_base};
+    return unless defined $transport_class and length $transport_class;
+
+    my %arg;
+    for my $key (grep { /^\Q$env_base\E_[_0-9A-Za-z]+$/ } keys %ENV) {
+      (my $new_key = $key) =~ s/^\Q$env_base\E_//;
+      $arg{lc $new_key} = $ENV{$key};
+    }
+
+    return Email::Sender::Util->_easy_transport($transport_class, \%arg);
   }
 
   sub default_transport {
     return $DEFAULT_TRANSPORT if $DEFAULT_TRANSPORT;
-    my ($self) = @_;
-    
-    if ($ENV{EMAIL_SENDER_TRANSPORT}) {
-      my $transport_class = $ENV{EMAIL_SENDER_TRANSPORT};
+    my ($class) = @_;
 
-      if ($transport_class !~ tr/://) {
-        $transport_class = "Email::Sender::Transport::$transport_class";
-      }
+    my $transport = $class->transport_from_env;
 
-      require_module($transport_class);
-
-      my %arg;
-      for my $key (grep { /^EMAIL_SENDER_TRANSPORT_\w+/ } keys %ENV) {
-        (my $new_key = $key) =~ s/^EMAIL_SENDER_TRANSPORT_//;
-        $arg{lc $new_key} = $ENV{$key};
-      }
-
+    if ($transport) {
       $DEFAULT_FROM_ENV  = 1;
-      $DEFAULT_TRANSPORT = $transport_class->new(\%arg);
+      $DEFAULT_TRANSPORT = $transport;
     } else {
       $DEFAULT_FROM_ENV  = 0;
-      $DEFAULT_TRANSPORT = $self->build_default_transport;
+      $DEFAULT_TRANSPORT = $class->build_default_transport;
     }
 
     return $DEFAULT_TRANSPORT;
@@ -78,9 +82,9 @@ use Module::Runtime qw(require_module);
 # Maybe this should be an around, but I'm just not excited about figuring out
 # order at the moment.  It just has to work. -- rjbs, 2009-06-05
 around prepare_envelope => sub {
-  my ($orig, $self, $arg) = @_;
+  my ($orig, $class, $arg) = @_;
   $arg ||= {};
-  my $env = $self->$orig($arg);
+  my $env = $class->$orig($arg);
 
   $env = {
     %$arg,
@@ -91,19 +95,19 @@ around prepare_envelope => sub {
 };
 
 sub send_email {
-  my ($self, $email, $arg) = @_;
+  my ($class, $email, $arg) = @_;
 
-  my $transport = $self->default_transport;
+  my $transport = $class->default_transport;
 
   if ($arg->{transport}) {
     $arg = { %$arg }; # So we can delete transport without ill effects.
-    $transport = delete $arg->{transport} unless $self->_default_was_from_env;
+    $transport = delete $arg->{transport} unless $class->_default_was_from_env;
   }
 
   Carp::confess("transport $transport not safe for use with Email::Sender::Simple")
     unless $transport->is_simple;
 
-  my ($to, $from) = $self->_get_to_from($email, $arg);
+  my ($to, $from) = $class->_get_to_from($email, $arg);
 
   Email::Sender::Failure::Permanent->throw("no recipients") if ! @$to;
   Email::Sender::Failure::Permanent->throw("no sender") if ! defined $from;
@@ -118,10 +122,10 @@ sub send_email {
 }
 
 sub try_to_send {
-  my ($self, $email, $arg) = @_;
+  my ($class, $email, $arg) = @_;
 
   try {
-    return $self->send($email, $arg);
+    return $class->send($email, $arg);
   } catch {
     my $error = $_ || 'unknown error';
     return if try { $error->isa('Email::Sender::Failure') };
@@ -130,7 +134,7 @@ sub try_to_send {
 }
 
 sub _get_to_from {
-  my ($self, $email, $arg) = @_;
+  my ($class, $email, $arg) = @_;
 
   my $to = $arg->{to};
   unless (@$to) {
@@ -169,7 +173,7 @@ Email::Sender::Simple - the simple interface for sending mail with Sender
 
 =head1 VERSION
 
-version 1.300002
+version 1.300003
 
 =head1 SEE INSTEAD
 

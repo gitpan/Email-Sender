@@ -38,6 +38,7 @@ t/devnull.t
 t/fail-multi.t
 t/fail.t
 t/lib/Test/Email/SMTPRig.pm
+t/lib/Test/Email/Sender/Transport/FailEvery.pm
 t/lib/Test/Email/Sender/Util.pm
 t/maildir.t
 t/mbox.t
@@ -46,6 +47,7 @@ t/pobox-rig.json
 t/print.t
 t/sendmail.t
 t/simple-simple.t
+t/simple-wrapper.t
 t/smtp-via-mock.t
 t/smtp-via-rig.t
 t/test.t

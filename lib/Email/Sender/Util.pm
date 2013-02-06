@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Email::Sender::Util;
 {
-  $Email::Sender::Util::VERSION = '1.300002';
+  $Email::Sender::Util::VERSION = '1.300003';
 }
 # ABSTRACT: random stuff that makes Email::Sender go
 
@@ -11,6 +11,7 @@ use Email::Sender::Failure;
 use Email::Sender::Failure::Permanent;
 use Email::Sender::Failure::Temporary;
 use List::MoreUtils ();
+use Module::Runtime qw(require_module);
 
 # This code will be used by Email::Sender::Simple. -- rjbs, 2008-12-04
 sub _recipients_from_email {
@@ -55,6 +56,17 @@ sub _failure {
   });
 }
 
+sub _easy_transport {
+  my ($self, $transport_class, $arg) = @_;
+
+  if ($transport_class !~ tr/://) {
+    $transport_class = "Email::Sender::Transport::$transport_class";
+  }
+
+  require_module($transport_class);
+  return $transport_class->new($arg);
+}
+
 1;
 
 __END__
@@ -67,7 +79,7 @@ Email::Sender::Util - random stuff that makes Email::Sender go
 
 =head1 VERSION
 
-version 1.300002
+version 1.300003
 
 =head1 AUTHOR
 
