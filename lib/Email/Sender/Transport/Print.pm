@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Print;
 {
-  $Email::Sender::Transport::Print::VERSION = '1.300003';
+  $Email::Sender::Transport::Print::VERSION = '1.300004';
 }
 use Moo;
 with 'Email::Sender::Transport';
@@ -46,7 +46,7 @@ Email::Sender::Transport::Print - print email to a filehandle (like stdout)
 
 =head1 VERSION
 
-version 1.300003
+version 1.300004
 
 =head1 DESCRIPTION
 

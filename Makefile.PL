@@ -39,14 +39,14 @@ my %WriteMakefileArgs = (
     "Module::Runtime" => 0,
     "Moo" => "1.000008",
     "Moo::Role" => 0,
-    "MooX::Types::MooseLike::Base" => 0,
+    "MooX::Types::MooseLike" => "0.15",
     "Net::SMTP" => 0,
     "Scalar::Util" => 0,
     "Sys::Hostname" => 0,
     "Throwable::Error" => "0.200003",
     "Try::Tiny" => 0
   },
-  "VERSION" => "1.300003",
+  "VERSION" => "1.300004",
   "test" => {
     "TESTS" => "t/*.t"
   }

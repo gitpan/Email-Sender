@@ -45,7 +45,7 @@
             "Module::Runtime" : "0",
             "Moo" : "1.000008",
             "Moo::Role" : "0",
-            "MooX::Types::MooseLike::Base" : "0",
+            "MooX::Types::MooseLike" : "0.15",
             "Net::SMTP" : "0",
             "Scalar::Util" : "0",
             "Sys::Hostname" : "0",
@@ -68,7 +68,7 @@
          "web" : "https://github.com/rjbs/email-sender"
       }
    },
-   "version" : "1.300003",
+   "version" : "1.300004",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.017008"
