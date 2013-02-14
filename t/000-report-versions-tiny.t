@@ -69,6 +69,7 @@ eval { $v .= pmver('Moo::Role','any version') };
 eval { $v .= pmver('MooX::Types::MooseLike','0.15') };
 eval { $v .= pmver('Net::SMTP','any version') };
 eval { $v .= pmver('Scalar::Util','any version') };
+eval { $v .= pmver('Sub::Exporter','any version') };
 eval { $v .= pmver('Sub::Override','any version') };
 eval { $v .= pmver('Sys::Hostname','any version') };
 eval { $v .= pmver('Test::More','0.96') };

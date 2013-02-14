@@ -34,13 +34,14 @@ requires:
   MooX::Types::MooseLike: 0.15
   Net::SMTP: 0
   Scalar::Util: 0
+  Sub::Exporter: 0
   Sys::Hostname: 0
   Throwable::Error: 0.200003
   Try::Tiny: 0
 resources:
   homepage: https://github.com/rjbs/email-sender
   repository: https://github.com/rjbs/email-sender.git
-version: 1.300004
+version: 1.300005
 x_Dist_Zilla:
   perl:
     version: 5.017008

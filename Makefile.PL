@@ -42,11 +42,12 @@ my %WriteMakefileArgs = (
     "MooX::Types::MooseLike" => "0.15",
     "Net::SMTP" => 0,
     "Scalar::Util" => 0,
+    "Sub::Exporter" => 0,
     "Sys::Hostname" => 0,
     "Throwable::Error" => "0.200003",
     "Try::Tiny" => 0
   },
-  "VERSION" => "1.300004",
+  "VERSION" => "1.300005",
   "test" => {
     "TESTS" => "t/*.t"
   }

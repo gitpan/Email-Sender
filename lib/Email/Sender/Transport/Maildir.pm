@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Maildir;
 {
-  $Email::Sender::Transport::Maildir::VERSION = '1.300004';
+  $Email::Sender::Transport::Maildir::VERSION = '1.300005';
 }
 use Moo;
 with 'Email::Sender::Transport';
@@ -159,7 +159,7 @@ Email::Sender::Transport::Maildir - deliver mail to a maildir on disk
 
 =head1 VERSION
 
-version 1.300004
+version 1.300005
 
 =head1 DESCRIPTION
 
