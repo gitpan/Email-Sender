@@ -69,16 +69,16 @@
          "web" : "https://github.com/rjbs/email-sender"
       }
    },
-   "version" : "1.300005",
+   "version" : "1.300006",
    "x_Dist_Zilla" : {
       "perl" : {
-         "version" : "5.017008"
+         "version" : "5.017009"
       },
       "plugins" : [
          {
             "class" : "Dist::Zilla::Plugin::Git::GatherDir",
             "name" : "@Filter/Git::GatherDir",
-            "version" : "2.008"
+            "version" : "2.009"
          },
          {
             "class" : "Dist::Zilla::Plugin::CheckPrereqsIndexed",
@@ -88,7 +88,7 @@
          {
             "class" : "Dist::Zilla::Plugin::CheckExtraTests",
             "name" : "@Filter/CheckExtraTests",
-            "version" : "0.008"
+            "version" : "0.011"
          },
          {
             "class" : "Dist::Zilla::Plugin::PruneCruft",
@@ -153,7 +153,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Git::NextVersion",
             "name" : "@Filter/Git::NextVersion",
-            "version" : "2.008"
+            "version" : "2.009"
          },
          {
             "class" : "Dist::Zilla::Plugin::PkgVersion",
@@ -188,7 +188,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Test::Compile",
             "name" : "@Filter/Test::Compile",
-            "version" : "1.112820"
+            "version" : "2.001"
          },
          {
             "class" : "Dist::Zilla::Plugin::ReportVersions::Tiny",
@@ -219,22 +219,22 @@
          {
             "class" : "Dist::Zilla::Plugin::Git::Check",
             "name" : "@Filter/@Git/Check",
-            "version" : "2.008"
+            "version" : "2.009"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Commit",
             "name" : "@Filter/@Git/Commit",
-            "version" : "2.008"
+            "version" : "2.009"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Tag",
             "name" : "@Filter/@Git/Tag",
-            "version" : "2.008"
+            "version" : "2.009"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Push",
             "name" : "@Filter/@Git/Push",
-            "version" : "2.008"
+            "version" : "2.009"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs",

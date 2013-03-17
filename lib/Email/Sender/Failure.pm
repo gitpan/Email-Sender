@@ -1,6 +1,6 @@
 package Email::Sender::Failure;
 {
-  $Email::Sender::Failure::VERSION = '1.300005';
+  $Email::Sender::Failure::VERSION = '1.300006';
 }
 use Moo;
 use MooX::Types::MooseLike::Base qw(ArrayRef);
@@ -28,7 +28,7 @@ sub __recipients { @{$_[0]->__get_recipients} }
 sub recipients {
   my ($self) = @_;
   return $self->__recipients if wantarray;
-  return $self->__recipients if ! defined wantarray;
+  return if ! defined wantarray;
 
   Carp::carp("recipients in scalar context is deprecated and WILL BE REMOVED");
   return $self->__get_recipients;
@@ -55,7 +55,7 @@ Email::Sender::Failure - a report of failure from an email sending transport
 
 =head1 VERSION
 
-version 1.300005
+version 1.300006
 
 =head1 ATTRIBUTES
 
