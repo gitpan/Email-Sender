@@ -1,6 +1,6 @@
 package Email::Sender::Transport::SMTP::Persistent;
 {
-  $Email::Sender::Transport::SMTP::Persistent::VERSION = '1.300006';
+  $Email::Sender::Transport::SMTP::Persistent::VERSION = '1.300007'; # TRIAL
 }
 use Moo;
 extends 'Email::Sender::Transport::SMTP';
@@ -55,7 +55,7 @@ Email::Sender::Transport::SMTP::Persistent - an SMTP client that stays online
 
 =head1 VERSION
 
-version 1.300006
+version 1.300007
 
 =head1 DESCRIPTION
 

@@ -1,6 +1,6 @@
 package Email::Sender::Transport::SMTP;
 {
-  $Email::Sender::Transport::SMTP::VERSION = '1.300006';
+  $Email::Sender::Transport::SMTP::VERSION = '1.300007'; # TRIAL
 }
 use Moo;
 use MooX::Types::MooseLike::Base qw(Bool Int Str);
@@ -151,7 +151,15 @@ sub send_email {
   # -- rjbs, 2008-12-04
 
   $smtp->data                        or $FAULT->("error at DATA start");
-  $smtp->datasend($email->as_string) or $FAULT->("error at during DATA");
+
+  my $msg_string = $email->as_string;
+  my $hunk_size  = $self->_hunk_size;
+
+  while (length $msg_string) {
+    my $next_hunk = substr $msg_string, 0, $hunk_size, '';
+    $smtp->datasend($next_hunk) or $FAULT->("error at during DATA");
+  }
+
   $smtp->dataend                     or $FAULT->("error at after DATA");
 
   my $message = $smtp->message;
@@ -168,6 +176,8 @@ sub send_email {
     }),
   });
 }
+
+sub _hunk_size { 2**20 } # send messages to DATA in hunks of 1 mebibyte
 
 sub success {
   my $self = shift;
@@ -196,7 +206,7 @@ Email::Sender::Transport::SMTP - send email over SMTP
 
 =head1 VERSION
 
-version 1.300006
+version 1.300007
 
 =head1 DESCRIPTION
 

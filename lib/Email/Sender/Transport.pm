@@ -1,6 +1,6 @@
 package Email::Sender::Transport;
 {
-  $Email::Sender::Transport::VERSION = '1.300006';
+  $Email::Sender::Transport::VERSION = '1.300007'; # TRIAL
 }
 use Moo::Role;
 # ABSTRACT: a role for email transports
@@ -29,7 +29,7 @@ Email::Sender::Transport - a role for email transports
 
 =head1 VERSION
 
-version 1.300006
+version 1.300007
 
 =head1 DESCRIPTION
 
