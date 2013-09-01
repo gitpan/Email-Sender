@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Failable;
 {
-  $Email::Sender::Transport::Failable::VERSION = '1.300007'; # TRIAL
+  $Email::Sender::Transport::Failable::VERSION = '1.300008'; # TRIAL
 }
 use Moo;
 use MooX::Types::MooseLike::Base qw(ArrayRef);
@@ -44,7 +44,7 @@ Email::Sender::Transport::Failable - a wrapper to makes things fail predictably
 
 =head1 VERSION
 
-version 1.300007
+version 1.300008
 
 =head1 DESCRIPTION
 

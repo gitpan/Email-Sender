@@ -1,12 +1,12 @@
 package Email::Sender::Role::CommonSending;
 {
-  $Email::Sender::Role::CommonSending::VERSION = '1.300007'; # TRIAL
+  $Email::Sender::Role::CommonSending::VERSION = '1.300008'; # TRIAL
 }
 use Moo::Role;
 # ABSTRACT: the common sending tasks most Email::Sender classes will need
 
 use Carp ();
-use Email::Abstract;
+use Email::Abstract 3.006;
 use Email::Sender::Success;
 use Email::Sender::Failure::Temporary;
 use Email::Sender::Failure::Permanent;
@@ -84,7 +84,7 @@ Email::Sender::Role::CommonSending - the common sending tasks most Email::Sender
 
 =head1 VERSION
 
-version 1.300007
+version 1.300008
 
 =head1 DESCRIPTION
 

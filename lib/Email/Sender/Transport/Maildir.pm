@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Maildir;
 {
-  $Email::Sender::Transport::Maildir::VERSION = '1.300007'; # TRIAL
+  $Email::Sender::Transport::Maildir::VERSION = '1.300008'; # TRIAL
 }
 use Moo;
 with 'Email::Sender::Transport';
@@ -109,7 +109,9 @@ sub _deliver_email {
   # if (eval { $email->can('stream_to') }) {
   #  eval { $mail->stream_to($fh); 1 } or return;
   #} else {
-  print $tmp_fh $email->as_string
+  my $string = $email->as_string;
+  $string =~ s/\x0D\x0A/\x0A/g unless $^O eq 'MSWin32';
+  print $tmp_fh $string
     or Email::Sender::Failure->throw("could not write to $tmp_filename: $!");
 
   close $tmp_fh
@@ -159,7 +161,7 @@ Email::Sender::Transport::Maildir - deliver mail to a maildir on disk
 
 =head1 VERSION
 
-version 1.300007
+version 1.300008
 
 =head1 DESCRIPTION
 

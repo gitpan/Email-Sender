@@ -1,5 +1,17 @@
 Revision history for Email-Sender
 
+1.300008  2013-09-01 09:39:13 America/New_York
+          [THIS MIGHT BREAK YOUR CODE]
+          at long last, Sendmail and Maildir transports replaces CRLF with CR
+          before piping
+
+          [BUG FIXES]
+          fixes a bug where recipients beginning with a - would not work with
+          the Sendmail transport [rt.perl.org #66246]
+
+          require Email-Abstract 3.006, to get Email-Simple 1.998, to get
+          Email::Simple->new(\$str), resolving [rt.perl.org #85926]
+
 1.300007  2013-03-19 14:58:27 America/New_York
           when sending over SMTP, send DATA in hunks of 1 mebibyte or smaller
 

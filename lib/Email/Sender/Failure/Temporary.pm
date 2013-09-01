@@ -1,6 +1,6 @@
 package Email::Sender::Failure::Temporary;
 {
-  $Email::Sender::Failure::Temporary::VERSION = '1.300007'; # TRIAL
+  $Email::Sender::Failure::Temporary::VERSION = '1.300008'; # TRIAL
 }
 use Moo;
 extends 'Email::Sender::Failure';
@@ -19,7 +19,7 @@ Email::Sender::Failure::Temporary - a temporary delivery failure
 
 =head1 VERSION
 
-version 1.300007
+version 1.300008
 
 =head1 AUTHOR
 

@@ -1,6 +1,6 @@
 package Email::Sender::Failure::Multi;
 {
-  $Email::Sender::Failure::Multi::VERSION = '1.300007'; # TRIAL
+  $Email::Sender::Failure::Multi::VERSION = '1.300008'; # TRIAL
 }
 use Moo;
 use MooX::Types::MooseLike::Base qw(ArrayRef);
@@ -66,7 +66,7 @@ Email::Sender::Failure::Multi - an aggregate of multiple failures
 
 =head1 VERSION
 
-version 1.300007
+version 1.300008
 
 =head1 DESCRIPTION
 

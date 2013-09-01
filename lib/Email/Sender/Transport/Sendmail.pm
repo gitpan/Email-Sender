@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Sendmail;
 {
-  $Email::Sender::Transport::Sendmail::VERSION = '1.300007'; # TRIAL
+  $Email::Sender::Transport::Sendmail::VERSION = '1.300008'; # TRIAL
 }
 use Moo;
 use MooX::Types::MooseLike::Base qw(Str);
@@ -59,7 +59,7 @@ sub _sendmail_pipe {
 
   my ($first, @args) = $^O eq 'MSWin32'
            ? qq(| "$prog" -f $envelope->{from} @{$envelope->{to}})
-           : (q{|-}, $prog, '-f', $envelope->{from}, @{$envelope->{to}});
+           : (q{|-}, $prog, '-f', $envelope->{from}, '--', @{$envelope->{to}});
 
   no warnings 'exec'; ## no critic
   my $pipe;
@@ -73,6 +73,9 @@ sub send_email {
   my ($self, $email, $envelope) = @_;
 
   my $pipe = $self->_sendmail_pipe($envelope);
+
+  my $string = $email->as_string;
+  $string =~ s/\x0D\x0A/\x0A/g unless $^O eq 'MSWin32';
 
   print $pipe $email->as_string
     or Email::Sender::Failure->throw("couldn't send message to sendmail: $!");
@@ -96,7 +99,7 @@ Email::Sender::Transport::Sendmail - send mail via sendmail(1)
 
 =head1 VERSION
 
-version 1.300007
+version 1.300008
 
 =head2 DESCRIPTION
 
