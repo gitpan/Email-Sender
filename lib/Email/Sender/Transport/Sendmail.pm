@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Sendmail;
 {
-  $Email::Sender::Transport::Sendmail::VERSION = '1.300008'; # TRIAL
+  $Email::Sender::Transport::Sendmail::VERSION = '1.300009'; # TRIAL
 }
 use Moo;
 use MooX::Types::MooseLike::Base qw(Str);
@@ -99,7 +99,7 @@ Email::Sender::Transport::Sendmail - send mail via sendmail(1)
 
 =head1 VERSION
 
-version 1.300008
+version 1.300009
 
 =head2 DESCRIPTION
 

@@ -51,33 +51,38 @@ sub pmver {
 eval { $v .= pmver('Capture::Tiny','0.08') };
 eval { $v .= pmver('Carp','any version') };
 eval { $v .= pmver('Cwd','any version') };
-eval { $v .= pmver('Email::Abstract','3') };
+eval { $v .= pmver('Email::Abstract','3.006') };
 eval { $v .= pmver('Email::Address','any version') };
 eval { $v .= pmver('Email::Simple','1.998') };
+eval { $v .= pmver('Exporter','any version') };
 eval { $v .= pmver('ExtUtils::MakeMaker','6.30') };
 eval { $v .= pmver('Fcntl','any version') };
 eval { $v .= pmver('File::Basename','any version') };
-eval { $v .= pmver('File::Find','any version') };
 eval { $v .= pmver('File::Path','any version') };
 eval { $v .= pmver('File::Spec','any version') };
 eval { $v .= pmver('File::Temp','any version') };
-eval { $v .= pmver('FindBin','any version') };
+eval { $v .= pmver('IO::File','any version') };
+eval { $v .= pmver('IO::Handle','any version') };
 eval { $v .= pmver('List::MoreUtils','any version') };
 eval { $v .= pmver('Module::Runtime','any version') };
 eval { $v .= pmver('Moo','1.000008') };
 eval { $v .= pmver('Moo::Role','any version') };
 eval { $v .= pmver('MooX::Types::MooseLike','0.15') };
+eval { $v .= pmver('MooX::Types::MooseLike::Base','any version') };
 eval { $v .= pmver('Net::SMTP','any version') };
 eval { $v .= pmver('Scalar::Util','any version') };
 eval { $v .= pmver('Sub::Exporter','any version') };
-eval { $v .= pmver('Sub::Override','any version') };
+eval { $v .= pmver('Sub::Exporter::Util','any version') };
 eval { $v .= pmver('Sys::Hostname','any version') };
 eval { $v .= pmver('Test::More','0.96') };
 eval { $v .= pmver('Test::Pod','1.41') };
 eval { $v .= pmver('Throwable::Error','0.200003') };
 eval { $v .= pmver('Try::Tiny','any version') };
 eval { $v .= pmver('blib','any version') };
+eval { $v .= pmver('lib','any version') };
+eval { $v .= pmver('strict','any version') };
 eval { $v .= pmver('version','0.9901') };
+eval { $v .= pmver('warnings','any version') };
 
 
 # All done.

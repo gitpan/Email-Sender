@@ -1,6 +1,6 @@
 package Email::Sender::Role::CommonSending;
 {
-  $Email::Sender::Role::CommonSending::VERSION = '1.300008'; # TRIAL
+  $Email::Sender::Role::CommonSending::VERSION = '1.300009'; # TRIAL
 }
 use Moo::Role;
 # ABSTRACT: the common sending tasks most Email::Sender classes will need
@@ -84,7 +84,7 @@ Email::Sender::Role::CommonSending - the common sending tasks most Email::Sender
 
 =head1 VERSION
 
-version 1.300008
+version 1.300009
 
 =head1 DESCRIPTION
 

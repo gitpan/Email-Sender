@@ -1,6 +1,6 @@
 package Email::Sender;
 {
-  $Email::Sender::VERSION = '1.300008'; # TRIAL
+  $Email::Sender::VERSION = '1.300009'; # TRIAL
 }
 use Moo::Role;
 # ABSTRACT: a library for sending email
@@ -21,7 +21,7 @@ Email::Sender - a library for sending email
 
 =head1 VERSION
 
-version 1.300008
+version 1.300009
 
 =head1 SYNOPSIS
 
