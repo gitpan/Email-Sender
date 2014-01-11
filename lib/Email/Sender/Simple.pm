@@ -1,10 +1,16 @@
 package Email::Sender::Simple;
 {
-  $Email::Sender::Simple::VERSION = '1.300009'; # TRIAL
+  $Email::Sender::Simple::VERSION = '1.300010';
 }
 use Moo;
 with 'Email::Sender::Role::CommonSending';
 # ABSTRACT: the simple interface for sending mail with Sender
+
+
+
+
+
+
 
 
 use Sub::Exporter::Util ();
@@ -167,13 +173,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Email::Sender::Simple - the simple interface for sending mail with Sender
 
 =head1 VERSION
 
-version 1.300009
+version 1.300010
 
 =head1 SEE INSTEAD
 
@@ -186,7 +194,7 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Ricardo Signes.
+This software is copyright (c) 2014 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

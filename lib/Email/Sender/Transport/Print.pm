@@ -1,10 +1,17 @@
 package Email::Sender::Transport::Print;
 {
-  $Email::Sender::Transport::Print::VERSION = '1.300009'; # TRIAL
+  $Email::Sender::Transport::Print::VERSION = '1.300010';
 }
 use Moo;
 with 'Email::Sender::Transport';
 # ABSTRACT: print email to a filehandle (like stdout)
+
+
+
+
+
+
+
 
 
 use IO::Handle;
@@ -40,13 +47,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Email::Sender::Transport::Print - print email to a filehandle (like stdout)
 
 =head1 VERSION
 
-version 1.300009
+version 1.300010
 
 =head1 DESCRIPTION
 
@@ -60,7 +69,7 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Ricardo Signes.
+This software is copyright (c) 2014 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,6 +1,6 @@
 package Email::Sender::Transport::SMTP;
 {
-  $Email::Sender::Transport::SMTP::VERSION = '1.300009'; # TRIAL
+  $Email::Sender::Transport::SMTP::VERSION = '1.300010';
 }
 use Moo;
 use MooX::Types::MooseLike::Base qw(Bool Int Str);
@@ -8,7 +8,32 @@ use MooX::Types::MooseLike::Base qw(Bool Int Str);
 
 use Email::Sender::Failure::Multi;
 use Email::Sender::Success::Partial;
+use Email::Sender::Role::HasMessage ();
 use Email::Sender::Util;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 has host => (is => 'ro', isa => Str,  default => sub { 'localhost' });
@@ -23,15 +48,37 @@ has port => (
 has timeout => (is => 'ro', isa => Int, default => sub { 120 });
 
 
+
+
+
+
+
+
+
 has sasl_username => (is => 'ro', isa => Str);
 has sasl_password => (is => 'ro', isa => Str);
 
 has allow_partial_success => (is => 'ro', isa => Bool, default => sub { 0 });
 
 
+
+
+
+
+
+
+
 has helo      => (is => 'ro', isa => Str);
 has localaddr => (is => 'ro');
 has localport => (is => 'ro', isa => Int);
+
+
+
+
+
+
+
+has debug => (is => 'ro', isa => Bool, default => sub { 0 });
 
 # I am basically -sure- that this is wrong, but sending hundreds of millions of
 # messages has shown that it is right enough.  I will try to make it textbook
@@ -85,6 +132,7 @@ sub _net_smtp_args {
     $self->host,
     Port    => $self->port,
     Timeout => $self->timeout,
+    Debug   => $self->debug,
     defined $self->helo      ? (Hello     => $self->helo)      : (),
     defined $self->localaddr ? (LocalAddr => $self->localaddr) : (),
     defined $self->localport ? (LocalPort => $self->localport) : (),
@@ -192,6 +240,13 @@ sub partial_success {
 sub _message_complete { $_[1]->quit; }
 
 
+
+
+
+
+
+
+
 with 'Email::Sender::Transport';
 no Moo;
 1;
@@ -200,13 +255,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Email::Sender::Transport::SMTP - send email over SMTP
 
 =head1 VERSION
 
-version 1.300009
+version 1.300010
 
 =head1 DESCRIPTION
 
@@ -243,6 +300,8 @@ The following attributes may be passed to the constructor:
 
 =item C<localport>: local port from which to connect
 
+=item C<debug>: if true, put the L<Net::SMTP> object in debug mode
+
 =back
 
 =head1 PARTIAL SUCCESS
@@ -257,7 +316,7 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Ricardo Signes.
+This software is copyright (c) 2014 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,11 +1,22 @@
 package Email::Sender::Failure::Multi;
 {
-  $Email::Sender::Failure::Multi::VERSION = '1.300009'; # TRIAL
+  $Email::Sender::Failure::Multi::VERSION = '1.300010';
 }
 use Moo;
 use MooX::Types::MooseLike::Base qw(ArrayRef);
 extends 'Email::Sender::Failure';
 # ABSTRACT: an aggregate of multiple failures
+
+
+
+
+
+
+
+
+
+
+
 
 
 has failures => (
@@ -38,6 +49,12 @@ sub recipients {
 }
 
 
+
+
+
+
+
+
 sub isa {
   my ($self, $class) = @_;
 
@@ -60,13 +77,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Email::Sender::Failure::Multi - an aggregate of multiple failures
 
 =head1 VERSION
 
-version 1.300009
+version 1.300010
 
 =head1 DESCRIPTION
 
@@ -93,7 +112,7 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Ricardo Signes.
+This software is copyright (c) 2014 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

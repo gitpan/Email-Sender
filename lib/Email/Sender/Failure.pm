@@ -1,6 +1,6 @@
 package Email::Sender::Failure;
 {
-  $Email::Sender::Failure::VERSION = '1.300009'; # TRIAL
+  $Email::Sender::Failure::VERSION = '1.300010';
 }
 use Moo;
 use MooX::Types::MooseLike::Base qw(ArrayRef);
@@ -9,9 +9,25 @@ extends 'Throwable::Error';
 # ABSTRACT: a report of failure from an email sending transport
 
 
+
+
+
+
+
+
+
+
+
+
+
 has code => (
   is => 'ro',
 );
+
+
+
+
+
 
 
 has recipients => (
@@ -35,11 +51,35 @@ sub recipients {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 sub BUILD {
   my ($self) = @_;
   Carp::confess("message must contain non-space characters")
     unless $self->message =~ /\S/;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 no Moo;
@@ -49,13 +89,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Email::Sender::Failure - a report of failure from an email sending transport
 
 =head1 VERSION
 
-version 1.300009
+version 1.300010
 
 =head1 ATTRIBUTES
 
@@ -103,7 +145,7 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Ricardo Signes.
+This software is copyright (c) 2014 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

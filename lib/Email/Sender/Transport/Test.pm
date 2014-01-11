@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Test;
 {
-  $Email::Sender::Transport::Test::VERSION = '1.300009'; # TRIAL
+  $Email::Sender::Transport::Test::VERSION = '1.300010';
 }
 use Moo;
 use MooX::Types::MooseLike::Base qw(ArrayRef Bool);
@@ -8,6 +8,54 @@ use MooX::Types::MooseLike::Base qw(ArrayRef Bool);
 
 use Email::Sender::Failure::Multi;
 use Email::Sender::Success::Partial;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 has allow_partial_success => (is => 'ro', isa => Bool, default => sub { 0 });
@@ -87,13 +135,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Email::Sender::Transport::Test - deliver mail in memory for testing
 
 =head1 VERSION
 
-version 1.300009
+version 1.300010
 
 =head1 DESCRIPTION
 
@@ -161,7 +211,7 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Ricardo Signes.
+This software is copyright (c) 2014 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

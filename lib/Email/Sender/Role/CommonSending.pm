@@ -1,6 +1,6 @@
 package Email::Sender::Role::CommonSending;
 {
-  $Email::Sender::Role::CommonSending::VERSION = '1.300009'; # TRIAL
+  $Email::Sender::Role::CommonSending::VERSION = '1.300010';
 }
 use Moo::Role;
 # ABSTRACT: the common sending tasks most Email::Sender classes will need
@@ -12,6 +12,26 @@ use Email::Sender::Failure::Temporary;
 use Email::Sender::Failure::Permanent;
 use Scalar::Util ();
 use Try::Tiny;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 with 'Email::Sender';
@@ -40,6 +60,12 @@ sub send {
 }
 
 
+
+
+
+
+
+
 sub prepare_email {
   my ($self, $msg) = @_;
 
@@ -55,6 +81,13 @@ sub prepare_email {
 }
 
 
+
+
+
+
+
+
+
 sub prepare_envelope {
   my ($self, $env) = @_;
 
@@ -64,6 +97,16 @@ sub prepare_envelope {
 
   return \%new_env;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 sub success {
@@ -78,13 +121,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Email::Sender::Role::CommonSending - the common sending tasks most Email::Sender classes will need
 
 =head1 VERSION
 
-version 1.300009
+version 1.300010
 
 =head1 DESCRIPTION
 
@@ -133,7 +178,7 @@ Ricardo Signes <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Ricardo Signes.
+This software is copyright (c) 2014 by Ricardo Signes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
