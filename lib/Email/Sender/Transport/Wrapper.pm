@@ -1,20 +1,18 @@
 package Email::Sender::Transport::Wrapper;
-{
-  $Email::Sender::Transport::Wrapper::VERSION = '1.300010';
-}
+# ABSTRACT: a mailer to wrap a mailer for mailing mail
+$Email::Sender::Transport::Wrapper::VERSION = '1.300011';
 use Moo;
 with 'Email::Sender::Transport';
-# ABSTRACT: a mailer to wrap a mailer for mailing mail
 
 use Email::Sender::Util;
 
-
-
-
-
-
-
-
+# =head1 DESCRIPTION
+#
+# Email::Sender::Transport::Wrapper wraps a transport, provided as the
+# C<transport> argument to the constructor.  It is provided as a simple way to
+# use method modifiers to create wrapping classes.
+#
+# =cut
 
 has transport => (
   is   => 'ro',
@@ -70,7 +68,7 @@ Email::Sender::Transport::Wrapper - a mailer to wrap a mailer for mailing mail
 
 =head1 VERSION
 
-version 1.300010
+version 1.300011
 
 =head1 DESCRIPTION
 

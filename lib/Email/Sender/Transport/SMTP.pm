@@ -1,40 +1,38 @@
 package Email::Sender::Transport::SMTP;
-{
-  $Email::Sender::Transport::SMTP::VERSION = '1.300010';
-}
-use Moo;
-use MooX::Types::MooseLike::Base qw(Bool Int Str);
 # ABSTRACT: send email over SMTP
+$Email::Sender::Transport::SMTP::VERSION = '1.300011';
+use Moo;
 
 use Email::Sender::Failure::Multi;
 use Email::Sender::Success::Partial;
 use Email::Sender::Role::HasMessage ();
 use Email::Sender::Util;
+use MooX::Types::MooseLike::Base qw(Bool Int Str);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# =head1 DESCRIPTION
+#
+# This transport is used to send email over SMTP, either with or without secure
+# sockets (SSL).  It is one of the most complex transports available, capable of
+# partial success.
+#
+# For a potentially more efficient version of this transport, see
+# L<Email::Sender::Transport::SMTP::Persistent>.
+#
+# =head1 ATTRIBUTES
+#
+# The following attributes may be passed to the constructor:
+#
+# =over 4
+#
+# =item C<host>: the name of the host to connect to; defaults to C<localhost>
+#
+# =item C<ssl>: if true, connect via SSL; defaults to false
+#
+# =item C<port>: port to connect to; defaults to 25 for non-SSL, 465 for SSL
+#
+# =item C<timeout>: maximum time in secs to wait for server; default is 120
+#
+# =cut
 
 has host => (is => 'ro', isa => Str,  default => sub { 'localhost' });
 has ssl  => (is => 'ro', isa => Bool, default => sub { 0 });
@@ -47,36 +45,36 @@ has port => (
 
 has timeout => (is => 'ro', isa => Int, default => sub { 120 });
 
-
-
-
-
-
-
-
+# =item C<sasl_username>: the username to use for auth; optional
+#
+# =item C<sasl_password>: the password to use for auth; required if C<username> is provided
+#
+# =item C<allow_partial_success>: if true, will send data even if some recipients were rejected; defaults to false
+#
+# =cut
 
 has sasl_username => (is => 'ro', isa => Str);
 has sasl_password => (is => 'ro', isa => Str);
 
 has allow_partial_success => (is => 'ro', isa => Bool, default => sub { 0 });
 
-
-
-
-
-
-
-
+# =item C<helo>: what to say when saying HELO; no default
+#
+# =item C<localaddr>: local address from which to connect
+#
+# =item C<localport>: local port from which to connect
+#
+# =cut
 
 has helo      => (is => 'ro', isa => Str);
 has localaddr => (is => 'ro');
 has localport => (is => 'ro', isa => Int);
 
-
-
-
-
-
+# =item C<debug>: if true, put the L<Net::SMTP> object in debug mode
+#
+# =back
+#
+# =cut
 
 has debug => (is => 'ro', isa => Bool, default => sub { 0 });
 
@@ -155,7 +153,7 @@ sub send_email {
   my $FAULT = sub { $self->_throw($_[0], $smtp); };
 
   $smtp->mail(_quoteaddr($env->{from}))
-    or $FAULT->("$env->{from} failed after MAIL FROM:");
+    or $FAULT->("$env->{from} failed after MAIL FROM");
 
   my @failures;
   my @ok_rcpts;
@@ -239,13 +237,13 @@ sub partial_success {
 
 sub _message_complete { $_[1]->quit; }
 
-
-
-
-
-
-
-
+# =head1 PARTIAL SUCCESS
+#
+# If C<allow_partial_success> was set when creating the transport, the transport
+# may return L<Email::Sender::Success::Partial> objects.  Consult that module's
+# documentation.
+#
+# =cut
 
 with 'Email::Sender::Transport';
 no Moo;
@@ -263,7 +261,7 @@ Email::Sender::Transport::SMTP - send email over SMTP
 
 =head1 VERSION
 
-version 1.300010
+version 1.300011
 
 =head1 DESCRIPTION
 

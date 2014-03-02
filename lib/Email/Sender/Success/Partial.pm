@@ -1,19 +1,18 @@
 package Email::Sender::Success::Partial;
-{
-  $Email::Sender::Success::Partial::VERSION = '1.300010';
-}
+# ABSTRACT: a report of partial success when delivering
+$Email::Sender::Success::Partial::VERSION = '1.300011';
 use Moo;
 extends 'Email::Sender::Success';
+
 use MooX::Types::MooseLike::Base qw(InstanceOf);
-# ABSTRACT: a report of partial success when delivering
 
-
-
-
-
-
-
-
+# =head1 DESCRIPTION
+#
+# These objects indicate that some deliver was accepted for some recipients and
+# not others.  The success object's C<failure> attribute will return a
+# L<Email::Sender::Failure::Multi> describing which parts of the delivery failed.
+#
+# =cut
 
 use Email::Sender::Failure::Multi;
 
@@ -38,7 +37,7 @@ Email::Sender::Success::Partial - a report of partial success when delivering
 
 =head1 VERSION
 
-version 1.300010
+version 1.300011
 
 =head1 DESCRIPTION
 

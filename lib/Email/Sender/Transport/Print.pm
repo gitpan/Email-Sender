@@ -1,18 +1,16 @@
 package Email::Sender::Transport::Print;
-{
-  $Email::Sender::Transport::Print::VERSION = '1.300010';
-}
+# ABSTRACT: print email to a filehandle (like stdout)
+$Email::Sender::Transport::Print::VERSION = '1.300011';
 use Moo;
 with 'Email::Sender::Transport';
-# ABSTRACT: print email to a filehandle (like stdout)
 
-
-
-
-
-
-
-
+# =head1 DESCRIPTION
+#
+# When this transport is handed mail, it prints it to a filehandle.  By default,
+# it will print to STDOUT, but it can be given any L<IO::Handle> object to print
+# to as its C<fh> attribute.
+#
+# =cut
 
 use IO::Handle;
 use MooX::Types::MooseLike::Base qw(InstanceOf);
@@ -55,7 +53,7 @@ Email::Sender::Transport::Print - print email to a filehandle (like stdout)
 
 =head1 VERSION
 
-version 1.300010
+version 1.300011
 
 =head1 DESCRIPTION
 

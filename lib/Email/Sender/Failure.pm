@@ -1,34 +1,33 @@
 package Email::Sender::Failure;
-{
-  $Email::Sender::Failure::VERSION = '1.300010';
-}
-use Moo;
-use MooX::Types::MooseLike::Base qw(ArrayRef);
-use Carp ();
-extends 'Throwable::Error';
 # ABSTRACT: a report of failure from an email sending transport
+$Email::Sender::Failure::VERSION = '1.300011';
+use Moo;
+extends 'Throwable::Error';
 
+use Carp ();
+use MooX::Types::MooseLike::Base qw(ArrayRef);
 
-
-
-
-
-
-
-
-
-
-
+# =attr message
+#
+# This method returns the failure message, which should describe the failure.
+# Failures stringify to this message.
+#
+# =attr code
+#
+# This returns the numeric code of the failure, if any.  This is mostly useful
+# for network protocol transports like SMTP.  This may be undefined.
+#
+# =cut
 
 has code => (
   is => 'ro',
 );
 
-
-
-
-
-
+# =attr recipients
+#
+# This returns a list of addresses to which the email could not be sent.
+#
+# =cut
 
 has recipients => (
   isa     => ArrayRef,
@@ -50,17 +49,17 @@ sub recipients {
   return $self->__get_recipients;
 }
 
-
-
-
-
-
-
-
-
-
-
-
+# =method throw
+#
+# This method can be used to instantiate and throw an Email::Sender::Failure
+# object at once.
+#
+#   Email::Sender::Failure->throw(\%arg);
+#
+# Instead of a hashref of args, you can pass a single string argument which will
+# be used as the C<message> of the new failure.
+#
+# =cut
 
 sub BUILD {
   my ($self) = @_;
@@ -68,19 +67,19 @@ sub BUILD {
     unless $self->message =~ /\S/;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+# =head1 SEE ALSO
+#
+# =over
+#
+# =item * L<Email::Sender::Permanent>
+#
+# =item * L<Email::Sender::Temporary>
+#
+# =item * L<Email::Sender::Multi>
+#
+# =back
+#
+# =cut
 
 no Moo;
 1;
@@ -97,7 +96,7 @@ Email::Sender::Failure - a report of failure from an email sending transport
 
 =head1 VERSION
 
-version 1.300010
+version 1.300011
 
 =head1 ATTRIBUTES
 

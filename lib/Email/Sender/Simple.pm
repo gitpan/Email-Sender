@@ -1,17 +1,15 @@
 package Email::Sender::Simple;
-{
-  $Email::Sender::Simple::VERSION = '1.300010';
-}
+# ABSTRACT: the simple interface for sending mail with Sender
+$Email::Sender::Simple::VERSION = '1.300011';
 use Moo;
 with 'Email::Sender::Role::CommonSending';
-# ABSTRACT: the simple interface for sending mail with Sender
 
-
-
-
-
-
-
+# =head1 SEE INSTEAD
+#
+# For now, the best documentation of this class is in
+# L<Email::Sender::Manual::QuickStart>.
+#
+# =cut
 
 use Sub::Exporter::Util ();
 use Sub::Exporter -setup => {
@@ -181,7 +179,7 @@ Email::Sender::Simple - the simple interface for sending mail with Sender
 
 =head1 VERSION
 
-version 1.300010
+version 1.300011
 
 =head1 SEE INSTEAD
 

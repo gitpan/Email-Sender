@@ -1,41 +1,39 @@
 package Email::Sender::Transport::Maildir;
-{
-  $Email::Sender::Transport::Maildir::VERSION = '1.300010';
-}
+# ABSTRACT: deliver mail to a maildir on disk
+$Email::Sender::Transport::Maildir::VERSION = '1.300011';
 use Moo;
 with 'Email::Sender::Transport';
-# ABSTRACT: deliver mail to a maildir on disk
 
 use Errno ();
 use Fcntl;
-use File::Path;
+use File::Path 2.06;
 use File::Spec;
 
 use Sys::Hostname;
 
 use MooX::Types::MooseLike::Base qw(Bool);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# =head1 DESCRIPTION
+#
+# This transport delivers into a maildir.  The maildir's location may be given as
+# the F<dir> argument to the constructor, and defaults to F<Maildir> in the
+# current directory (at the time of transport initialization).
+#
+# If the directory does not exist, it will be created.
+#
+# By default, three headers will be added:
+#
+#  * X-Email-Sender-From - the envelope sender
+#  * X-Email-Sender-To   - the envelope recipients (one header per rcpt)
+#  * Lines               - the number of lines in the body
+#
+# These can be controlled with the C<add_lines_header> and
+# C<add_envelope_headers> constructor arguments.
+#
+# The L<Email::Sender::Success> object returned on success has a C<filename>
+# method that returns the filename to which the message was delivered.
+#
+# =cut
 
 {
   package
@@ -101,7 +99,7 @@ sub _ensure_maildir_exists {
     next if -d $subdir;
 
     Email::Sender::Failure->throw("couldn't create $subdir: $!")
-      unless File::Path::mkpath($subdir);
+      unless File::Path::make_path($subdir) || -d $subdir;
   }
 }
 
@@ -184,7 +182,7 @@ Email::Sender::Transport::Maildir - deliver mail to a maildir on disk
 
 =head1 VERSION
 
-version 1.300010
+version 1.300011
 
 =head1 DESCRIPTION
 

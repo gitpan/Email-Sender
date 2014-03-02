@@ -1,62 +1,60 @@
 package Email::Sender::Transport::Test;
-{
-  $Email::Sender::Transport::Test::VERSION = '1.300010';
-}
-use Moo;
-use MooX::Types::MooseLike::Base qw(ArrayRef Bool);
 # ABSTRACT: deliver mail in memory for testing
+$Email::Sender::Transport::Test::VERSION = '1.300011';
+use Moo;
 
 use Email::Sender::Failure::Multi;
 use Email::Sender::Success::Partial;
+use MooX::Types::MooseLike::Base qw(ArrayRef Bool);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# =head1 DESCRIPTION
+#
+# This transport is meant for testing email deliveries in memory.  It will store
+# a record of any delivery made so that they can be inspected afterward.
+#
+# =for Pod::Coverage recipient_failure delivery_failure
+#
+# By default, the Test transport will not allow partial success and will always
+# succeed.  It can be made to fail predictably, however, if it is extended and
+# its C<recipient_failure> or C<delivery_failure> methods are overridden.  These
+# methods are called as follows:
+#
+#   $self->delivery_failure($email, $envelope);
+#
+#   $self->recipient_failure($to);
+#
+# If they return true, the sending will fail.  If the transport was created with
+# a true C<allow_partial_success> attribute, recipient failures can cause partial
+# success to be returned.
+#
+# For more flexible failure modes, you can override more aggressively or can use
+# L<Email::Sender::Transport::Failable>.
+#
+# =attr deliveries
+#
+# =for Pod::Coverage clear_deliveries
+#
+# This attribute stores an arrayref of all the deliveries made via the transport.
+#
+# Each delivery is a hashref, in the following format:
+#
+#   {
+#     email     => $email,
+#     envelope  => $envelope,
+#     successes => \@ok_rcpts,
+#     failures  => \@failures,
+#   }
+#
+# Both successful and failed deliveries are stored.
+#
+# A number of methods related to this attribute are provided:
+#
+# =for :list
+# * delivery_count
+# * clear_deliveries
+# * shift_deliveries
+#
+# =cut
 
 has allow_partial_success => (is => 'ro', isa => Bool, default => sub { 0 });
 
@@ -143,7 +141,7 @@ Email::Sender::Transport::Test - deliver mail in memory for testing
 
 =head1 VERSION
 
-version 1.300010
+version 1.300011
 
 =head1 DESCRIPTION
 

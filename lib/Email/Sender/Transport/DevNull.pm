@@ -1,17 +1,15 @@
 package Email::Sender::Transport::DevNull;
-{
-  $Email::Sender::Transport::DevNull::VERSION = '1.300010';
-}
+# ABSTRACT: happily throw away your mail
+$Email::Sender::Transport::DevNull::VERSION = '1.300011';
 use Moo;
 with 'Email::Sender::Transport';
-# ABSTRACT: happily throw away your mail
 
-
-
-
-
-
-
+# =head1 DESCRIPTION
+#
+# This class implements L<Email::Sender::Transport>.  Any mail sent through a
+# DevNull transport will be silently discarded.
+#
+# =cut
 
 sub send_email { return $_[0]->success }
 
@@ -30,7 +28,7 @@ Email::Sender::Transport::DevNull - happily throw away your mail
 
 =head1 VERSION
 
-version 1.300010
+version 1.300011
 
 =head1 DESCRIPTION
 

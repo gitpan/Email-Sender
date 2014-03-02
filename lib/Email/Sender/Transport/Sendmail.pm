@@ -1,24 +1,23 @@
 package Email::Sender::Transport::Sendmail;
-{
-  $Email::Sender::Transport::Sendmail::VERSION = '1.300010';
-}
-use Moo;
-use MooX::Types::MooseLike::Base qw(Str);
-with 'Email::Sender::Transport';
 # ABSTRACT: send mail via sendmail(1)
+$Email::Sender::Transport::Sendmail::VERSION = '1.300011';
+use Moo;
+with 'Email::Sender::Transport';
 
+use MooX::Types::MooseLike::Base qw(Str);
 
-
-
-
-
-
-
-
-
-
-
-
+# =head2 DESCRIPTION
+#
+# This transport sends mail by piping it to the F<sendmail> command.  If the
+# location of the F<sendmail> command is not provided in the constructor (see
+# below) then the library will look for an executable file called F<sendmail> in
+# the path.
+#
+# To specify the location of sendmail:
+#
+#   my $sender = Email::Sender::Transport::Sendmail->new({ sendmail => $path });
+#
+# =cut
 
 use File::Spec ();
 
@@ -70,8 +69,8 @@ sub _sendmail_pipe {
   my $prog = $self->sendmail;
 
   my ($first, @args) = $^O eq 'MSWin32'
-           ? qq(| "$prog" -f $envelope->{from} @{$envelope->{to}})
-           : (q{|-}, $prog, '-f', $envelope->{from}, '--', @{$envelope->{to}});
+           ? qq(| "$prog" -i -f $envelope->{from} @{$envelope->{to}})
+           : (q{|-}, $prog, '-i', '-f', $envelope->{from}, '--', @{$envelope->{to}});
 
   no warnings 'exec'; ## no critic
   my $pipe;
@@ -113,7 +112,7 @@ Email::Sender::Transport::Sendmail - send mail via sendmail(1)
 
 =head1 VERSION
 
-version 1.300010
+version 1.300011
 
 =head2 DESCRIPTION
 

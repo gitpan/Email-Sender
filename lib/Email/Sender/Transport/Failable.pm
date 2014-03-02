@@ -1,28 +1,27 @@
 package Email::Sender::Transport::Failable;
-{
-  $Email::Sender::Transport::Failable::VERSION = '1.300010';
-}
-use Moo;
-use MooX::Types::MooseLike::Base qw(ArrayRef);
-extends 'Email::Sender::Transport::Wrapper';
 # ABSTRACT: a wrapper to makes things fail predictably
+$Email::Sender::Transport::Failable::VERSION = '1.300011';
+use Moo;
+extends 'Email::Sender::Transport::Wrapper';
 
+use MooX::Types::MooseLike::Base qw(ArrayRef);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# =head1 DESCRIPTION
+#
+# This transport extends L<Email::Sender::Transport::Wrapper>, meaning that it
+# must be created with a C<transport> attribute of another
+# Email::Sender::Transport.  It will proxy all email sending to that transport,
+# but only after first deciding if it should fail.
+#
+# It does this by calling each coderef in its C<failure_conditions> attribute,
+# which must be an arrayref of code references.  Each coderef will be called and
+# will be passed the Failable transport, the Email::Abstract object, the
+# envelope, and a reference to an array containing the rest of the arguments to
+# C<send>.
+#
+# If any coderef returns a true value, the value will be used to signal failure.
+#
+# =cut
 
 has 'failure_conditions' => (
   isa => ArrayRef,
@@ -62,7 +61,7 @@ Email::Sender::Transport::Failable - a wrapper to makes things fail predictably
 
 =head1 VERSION
 
-version 1.300010
+version 1.300011
 
 =head1 DESCRIPTION
 
