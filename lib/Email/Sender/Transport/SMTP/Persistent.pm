@@ -1,15 +1,15 @@
 package Email::Sender::Transport::SMTP::Persistent;
 # ABSTRACT: an SMTP client that stays online
-$Email::Sender::Transport::SMTP::Persistent::VERSION = '1.300011';
+$Email::Sender::Transport::SMTP::Persistent::VERSION = '1.300012';
 use Moo;
 extends 'Email::Sender::Transport::SMTP';
 
-# =head1 DESCRIPTION
-#
-# The stock L<Email::Sender::Transport::SMTP> reconnects each time it sends a
-# message.  This transport only reconnects when the existing connection fails.
-#
-# =cut
+#pod =head1 DESCRIPTION
+#pod
+#pod The stock L<Email::Sender::Transport::SMTP> reconnects each time it sends a
+#pod message.  This transport only reconnects when the existing connection fails.
+#pod
+#pod =cut
 
 use Net::SMTP;
 
@@ -38,14 +38,14 @@ sub _smtp_client {
 
 sub _message_complete { }
 
-# =method disconnect
-#
-#   $transport->disconnect;
-#
-# This method sends an SMTP QUIT command and destroys the SMTP client, if on
-# exists and is connected.
-#
-# =cut
+#pod =method disconnect
+#pod
+#pod   $transport->disconnect;
+#pod
+#pod This method sends an SMTP QUIT command and destroys the SMTP client, if on
+#pod exists and is connected.
+#pod
+#pod =cut
 
 sub disconnect {
   my ($self) = @_;
@@ -69,7 +69,7 @@ Email::Sender::Transport::SMTP::Persistent - an SMTP client that stays online
 
 =head1 VERSION
 
-version 1.300011
+version 1.300012
 
 =head1 DESCRIPTION
 

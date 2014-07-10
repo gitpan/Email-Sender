@@ -2,13 +2,13 @@ use strict;
 use warnings;
 package Email::Sender::Manual;
 # ABSTRACT: table of contents for the Email::Sender manual
-$Email::Sender::Manual::VERSION = '1.300011';
-# =head1 THE MANUAL
-#
-# L<Email::Sender::Manual::QuickStart> tells you just what you need to know to
-# start using Email::Sender.
-#
-# =cut
+$Email::Sender::Manual::VERSION = '1.300012';
+#pod =head1 THE MANUAL
+#pod
+#pod L<Email::Sender::Manual::QuickStart> tells you just what you need to know to
+#pod start using Email::Sender.
+#pod
+#pod =cut
 
 1;
 
@@ -24,7 +24,7 @@ Email::Sender::Manual - table of contents for the Email::Sender manual
 
 =head1 VERSION
 
-version 1.300011
+version 1.300012
 
 =head1 THE MANUAL
 

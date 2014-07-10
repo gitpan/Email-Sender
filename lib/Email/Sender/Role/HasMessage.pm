@@ -1,13 +1,13 @@
 package Email::Sender::Role::HasMessage;
 # ABSTRACT: an object that has a message
-$Email::Sender::Role::HasMessage::VERSION = '1.300011';
+$Email::Sender::Role::HasMessage::VERSION = '1.300012';
 use Moo::Role;
 
-# =attr message
-#
-# This attribute is a message associated with the object.
-#
-# =cut
+#pod =attr message
+#pod
+#pod This attribute is a message associated with the object.
+#pod
+#pod =cut
 
 has message => (
   is       => 'ro',
@@ -29,7 +29,7 @@ Email::Sender::Role::HasMessage - an object that has a message
 
 =head1 VERSION
 
-version 1.300011
+version 1.300012
 
 =head1 ATTRIBUTES
 

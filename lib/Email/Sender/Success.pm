@@ -1,14 +1,14 @@
 package Email::Sender::Success;
 # ABSTRACT: the result of successfully sending mail
-$Email::Sender::Success::VERSION = '1.300011';
+$Email::Sender::Success::VERSION = '1.300012';
 use Moo;
 
-# =head1 DESCRIPTION
-#
-# An Email::Sender::Success object is just an indicator that an email message was
-# successfully sent.  Unless extended, it has no properties of its own.
-#
-# =cut
+#pod =head1 DESCRIPTION
+#pod
+#pod An Email::Sender::Success object is just an indicator that an email message was
+#pod successfully sent.  Unless extended, it has no properties of its own.
+#pod
+#pod =cut
 
 no Moo;
 1;
@@ -25,7 +25,7 @@ Email::Sender::Success - the result of successfully sending mail
 
 =head1 VERSION
 
-version 1.300011
+version 1.300012
 
 =head1 DESCRIPTION
 

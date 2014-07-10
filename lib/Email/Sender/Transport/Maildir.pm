@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Maildir;
 # ABSTRACT: deliver mail to a maildir on disk
-$Email::Sender::Transport::Maildir::VERSION = '1.300011';
+$Email::Sender::Transport::Maildir::VERSION = '1.300012';
 use Moo;
 with 'Email::Sender::Transport';
 
@@ -13,27 +13,27 @@ use Sys::Hostname;
 
 use MooX::Types::MooseLike::Base qw(Bool);
 
-# =head1 DESCRIPTION
-#
-# This transport delivers into a maildir.  The maildir's location may be given as
-# the F<dir> argument to the constructor, and defaults to F<Maildir> in the
-# current directory (at the time of transport initialization).
-#
-# If the directory does not exist, it will be created.
-#
-# By default, three headers will be added:
-#
-#  * X-Email-Sender-From - the envelope sender
-#  * X-Email-Sender-To   - the envelope recipients (one header per rcpt)
-#  * Lines               - the number of lines in the body
-#
-# These can be controlled with the C<add_lines_header> and
-# C<add_envelope_headers> constructor arguments.
-#
-# The L<Email::Sender::Success> object returned on success has a C<filename>
-# method that returns the filename to which the message was delivered.
-#
-# =cut
+#pod =head1 DESCRIPTION
+#pod
+#pod This transport delivers into a maildir.  The maildir's location may be given as
+#pod the F<dir> argument to the constructor, and defaults to F<Maildir> in the
+#pod current directory (at the time of transport initialization).
+#pod
+#pod If the directory does not exist, it will be created.
+#pod
+#pod By default, three headers will be added:
+#pod
+#pod  * X-Email-Sender-From - the envelope sender
+#pod  * X-Email-Sender-To   - the envelope recipients (one header per rcpt)
+#pod  * Lines               - the number of lines in the body
+#pod
+#pod These can be controlled with the C<add_lines_header> and
+#pod C<add_envelope_headers> constructor arguments.
+#pod
+#pod The L<Email::Sender::Success> object returned on success has a C<filename>
+#pod method that returns the filename to which the message was delivered.
+#pod
+#pod =cut
 
 {
   package
@@ -182,7 +182,7 @@ Email::Sender::Transport::Maildir - deliver mail to a maildir on disk
 
 =head1 VERSION
 
-version 1.300011
+version 1.300012
 
 =head1 DESCRIPTION
 

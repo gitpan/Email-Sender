@@ -1,33 +1,33 @@
 package Email::Sender::Failure;
 # ABSTRACT: a report of failure from an email sending transport
-$Email::Sender::Failure::VERSION = '1.300011';
+$Email::Sender::Failure::VERSION = '1.300012';
 use Moo;
 extends 'Throwable::Error';
 
 use Carp ();
 use MooX::Types::MooseLike::Base qw(ArrayRef);
 
-# =attr message
-#
-# This method returns the failure message, which should describe the failure.
-# Failures stringify to this message.
-#
-# =attr code
-#
-# This returns the numeric code of the failure, if any.  This is mostly useful
-# for network protocol transports like SMTP.  This may be undefined.
-#
-# =cut
+#pod =attr message
+#pod
+#pod This method returns the failure message, which should describe the failure.
+#pod Failures stringify to this message.
+#pod
+#pod =attr code
+#pod
+#pod This returns the numeric code of the failure, if any.  This is mostly useful
+#pod for network protocol transports like SMTP.  This may be undefined.
+#pod
+#pod =cut
 
 has code => (
   is => 'ro',
 );
 
-# =attr recipients
-#
-# This returns a list of addresses to which the email could not be sent.
-#
-# =cut
+#pod =attr recipients
+#pod
+#pod This returns a list of addresses to which the email could not be sent.
+#pod
+#pod =cut
 
 has recipients => (
   isa     => ArrayRef,
@@ -49,17 +49,17 @@ sub recipients {
   return $self->__get_recipients;
 }
 
-# =method throw
-#
-# This method can be used to instantiate and throw an Email::Sender::Failure
-# object at once.
-#
-#   Email::Sender::Failure->throw(\%arg);
-#
-# Instead of a hashref of args, you can pass a single string argument which will
-# be used as the C<message> of the new failure.
-#
-# =cut
+#pod =method throw
+#pod
+#pod This method can be used to instantiate and throw an Email::Sender::Failure
+#pod object at once.
+#pod
+#pod   Email::Sender::Failure->throw(\%arg);
+#pod
+#pod Instead of a hashref of args, you can pass a single string argument which will
+#pod be used as the C<message> of the new failure.
+#pod
+#pod =cut
 
 sub BUILD {
   my ($self) = @_;
@@ -67,19 +67,19 @@ sub BUILD {
     unless $self->message =~ /\S/;
 }
 
-# =head1 SEE ALSO
-#
-# =over
-#
-# =item * L<Email::Sender::Permanent>
-#
-# =item * L<Email::Sender::Temporary>
-#
-# =item * L<Email::Sender::Multi>
-#
-# =back
-#
-# =cut
+#pod =head1 SEE ALSO
+#pod
+#pod =over
+#pod
+#pod =item * L<Email::Sender::Permanent>
+#pod
+#pod =item * L<Email::Sender::Temporary>
+#pod
+#pod =item * L<Email::Sender::Multi>
+#pod
+#pod =back
+#pod
+#pod =cut
 
 no Moo;
 1;
@@ -96,7 +96,7 @@ Email::Sender::Failure - a report of failure from an email sending transport
 
 =head1 VERSION
 
-version 1.300011
+version 1.300012
 
 =head1 ATTRIBUTES
 

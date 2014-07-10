@@ -1,23 +1,23 @@
 package Email::Sender::Transport::Sendmail;
 # ABSTRACT: send mail via sendmail(1)
-$Email::Sender::Transport::Sendmail::VERSION = '1.300011';
+$Email::Sender::Transport::Sendmail::VERSION = '1.300012';
 use Moo;
 with 'Email::Sender::Transport';
 
 use MooX::Types::MooseLike::Base qw(Str);
 
-# =head2 DESCRIPTION
-#
-# This transport sends mail by piping it to the F<sendmail> command.  If the
-# location of the F<sendmail> command is not provided in the constructor (see
-# below) then the library will look for an executable file called F<sendmail> in
-# the path.
-#
-# To specify the location of sendmail:
-#
-#   my $sender = Email::Sender::Transport::Sendmail->new({ sendmail => $path });
-#
-# =cut
+#pod =head2 DESCRIPTION
+#pod
+#pod This transport sends mail by piping it to the F<sendmail> command.  If the
+#pod location of the F<sendmail> command is not provided in the constructor (see
+#pod below) then the library will look for an executable file called F<sendmail> in
+#pod the path.
+#pod
+#pod To specify the location of sendmail:
+#pod
+#pod   my $sender = Email::Sender::Transport::Sendmail->new({ sendmail => $path });
+#pod
+#pod =cut
 
 use File::Spec ();
 
@@ -112,7 +112,7 @@ Email::Sender::Transport::Sendmail - send mail via sendmail(1)
 
 =head1 VERSION
 
-version 1.300011
+version 1.300012
 
 =head2 DESCRIPTION
 

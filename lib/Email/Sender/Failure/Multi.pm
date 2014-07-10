@@ -1,22 +1,22 @@
 package Email::Sender::Failure::Multi;
 # ABSTRACT: an aggregate of multiple failures
-$Email::Sender::Failure::Multi::VERSION = '1.300011';
+$Email::Sender::Failure::Multi::VERSION = '1.300012';
 use Moo;
 extends 'Email::Sender::Failure';
 
 use MooX::Types::MooseLike::Base qw(ArrayRef);
 
-# =head1 DESCRIPTION
-#
-# A multiple failure report is raised when more than one failure is encountered
-# when sending a single message, or when mixed states were encountered.
-#
-# =attr failures
-#
-# This method returns a list of other Email::Sender::Failure objects represented
-# by this multi.
-#
-# =cut
+#pod =head1 DESCRIPTION
+#pod
+#pod A multiple failure report is raised when more than one failure is encountered
+#pod when sending a single message, or when mixed states were encountered.
+#pod
+#pod =attr failures
+#pod
+#pod This method returns a list of other Email::Sender::Failure objects represented
+#pod by this multi.
+#pod
+#pod =cut
 
 has failures => (
   is       => 'ro',
@@ -47,12 +47,12 @@ sub recipients {
   return \@rcpts;
 }
 
-# =method isa
-#
-# A multiple failure will report that it is a Permanent or Temporary if all of
-# its contained failures are failures of that type.
-#
-# =cut
+#pod =method isa
+#pod
+#pod A multiple failure will report that it is a Permanent or Temporary if all of
+#pod its contained failures are failures of that type.
+#pod
+#pod =cut
 
 sub isa {
   my ($self, $class) = @_;
@@ -84,7 +84,7 @@ Email::Sender::Failure::Multi - an aggregate of multiple failures
 
 =head1 VERSION
 
-version 1.300011
+version 1.300012
 
 =head1 DESCRIPTION
 

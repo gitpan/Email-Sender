@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Mbox;
 # ABSTRACT: deliver mail to an mbox on disk
-$Email::Sender::Transport::Mbox::VERSION = '1.300011';
+$Email::Sender::Transport::Mbox::VERSION = '1.300012';
 use Moo;
 with 'Email::Sender::Transport';
 
@@ -11,15 +11,15 @@ use IO::File;
 use Email::Simple 1.998;  # needed for ->header_obj
 use Fcntl ':flock';
 
-# =head1 DESCRIPTION
-#
-# This transport delivers into an mbox.  The mbox file may be given by the 
-# F<filename> argument to the constructor, and defaults to F<mbox>.
-#
-# The transport I<currently> assumes that the mbox is in F<mboxo> format, but
-# this may change or be configurable in the future.
-#
-# =cut
+#pod =head1 DESCRIPTION
+#pod
+#pod This transport delivers into an mbox.  The mbox file may be given by the 
+#pod F<filename> argument to the constructor, and defaults to F<mbox>.
+#pod
+#pod The transport I<currently> assumes that the mbox is in F<mboxo> format, but
+#pod this may change or be configurable in the future.
+#pod
+#pod =cut
 
 has 'filename' => (is => 'ro', default => sub { 'mbox' }, required => 1);
 
@@ -126,7 +126,7 @@ Email::Sender::Transport::Mbox - deliver mail to an mbox on disk
 
 =head1 VERSION
 
-version 1.300011
+version 1.300012
 
 =head1 DESCRIPTION
 

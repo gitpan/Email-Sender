@@ -1,27 +1,27 @@
 package Email::Sender::Transport::Failable;
 # ABSTRACT: a wrapper to makes things fail predictably
-$Email::Sender::Transport::Failable::VERSION = '1.300011';
+$Email::Sender::Transport::Failable::VERSION = '1.300012';
 use Moo;
 extends 'Email::Sender::Transport::Wrapper';
 
 use MooX::Types::MooseLike::Base qw(ArrayRef);
 
-# =head1 DESCRIPTION
-#
-# This transport extends L<Email::Sender::Transport::Wrapper>, meaning that it
-# must be created with a C<transport> attribute of another
-# Email::Sender::Transport.  It will proxy all email sending to that transport,
-# but only after first deciding if it should fail.
-#
-# It does this by calling each coderef in its C<failure_conditions> attribute,
-# which must be an arrayref of code references.  Each coderef will be called and
-# will be passed the Failable transport, the Email::Abstract object, the
-# envelope, and a reference to an array containing the rest of the arguments to
-# C<send>.
-#
-# If any coderef returns a true value, the value will be used to signal failure.
-#
-# =cut
+#pod =head1 DESCRIPTION
+#pod
+#pod This transport extends L<Email::Sender::Transport::Wrapper>, meaning that it
+#pod must be created with a C<transport> attribute of another
+#pod Email::Sender::Transport.  It will proxy all email sending to that transport,
+#pod but only after first deciding if it should fail.
+#pod
+#pod It does this by calling each coderef in its C<failure_conditions> attribute,
+#pod which must be an arrayref of code references.  Each coderef will be called and
+#pod will be passed the Failable transport, the Email::Abstract object, the
+#pod envelope, and a reference to an array containing the rest of the arguments to
+#pod C<send>.
+#pod
+#pod If any coderef returns a true value, the value will be used to signal failure.
+#pod
+#pod =cut
 
 has 'failure_conditions' => (
   isa => ArrayRef,
@@ -61,7 +61,7 @@ Email::Sender::Transport::Failable - a wrapper to makes things fail predictably
 
 =head1 VERSION
 
-version 1.300011
+version 1.300012
 
 =head1 DESCRIPTION
 

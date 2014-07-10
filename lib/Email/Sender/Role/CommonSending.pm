@@ -1,6 +1,6 @@
 package Email::Sender::Role::CommonSending;
 # ABSTRACT: the common sending tasks most Email::Sender classes will need
-$Email::Sender::Role::CommonSending::VERSION = '1.300011';
+$Email::Sender::Role::CommonSending::VERSION = '1.300012';
 use Moo::Role;
 
 use Carp ();
@@ -11,26 +11,26 @@ use Email::Sender::Failure::Permanent;
 use Scalar::Util ();
 use Try::Tiny;
 
-# =head1 DESCRIPTION
-#
-# Email::Sender::Role::CommonSending provides a number of features that should
-# ease writing new classes that perform the L<Email::Sender> role.  Instead of
-# writing a C<send> method, implementors will need to write a smaller
-# C<send_email> method, which will be passed an L<Email::Abstract> object and
-# envelope containing C<from> and C<to> entries.  The C<to> entry will be
-# guaranteed to be an array reference.
-#
-# A C<success> method will also be provided as a shortcut for calling:
-#
-#   Email::Sender::Success->new(...);
-#
-# A few other minor details are handled by CommonSending; for more information,
-# consult the source.
-#
-# The methods documented here may be overridden to alter the behavior of the
-# CommonSending role.
-#
-# =cut
+#pod =head1 DESCRIPTION
+#pod
+#pod Email::Sender::Role::CommonSending provides a number of features that should
+#pod ease writing new classes that perform the L<Email::Sender> role.  Instead of
+#pod writing a C<send> method, implementors will need to write a smaller
+#pod C<send_email> method, which will be passed an L<Email::Abstract> object and
+#pod envelope containing C<from> and C<to> entries.  The C<to> entry will be
+#pod guaranteed to be an array reference.
+#pod
+#pod A C<success> method will also be provided as a shortcut for calling:
+#pod
+#pod   Email::Sender::Success->new(...);
+#pod
+#pod A few other minor details are handled by CommonSending; for more information,
+#pod consult the source.
+#pod
+#pod The methods documented here may be overridden to alter the behavior of the
+#pod CommonSending role.
+#pod
+#pod =cut
 
 with 'Email::Sender';
 
@@ -57,12 +57,12 @@ sub send {
   }
 }
 
-# =method prepare_email
-#
-# This method is passed a scalar and is expected to return an Email::Abstract
-# object.  You probably shouldn't override it in most cases.
-#
-# =cut
+#pod =method prepare_email
+#pod
+#pod This method is passed a scalar and is expected to return an Email::Abstract
+#pod object.  You probably shouldn't override it in most cases.
+#pod
+#pod =cut
 
 sub prepare_email {
   my ($self, $msg) = @_;
@@ -78,13 +78,13 @@ sub prepare_email {
   return Email::Abstract->new($msg);
 }
 
-# =method prepare_envelope
-#
-# This method is passed a hashref and returns a new hashref that should be used
-# as the envelope passed to the C<send_email> method.  This method is responsible
-# for ensuring that the F<to> entry is an array.
-#
-# =cut
+#pod =method prepare_envelope
+#pod
+#pod This method is passed a hashref and returns a new hashref that should be used
+#pod as the envelope passed to the C<send_email> method.  This method is responsible
+#pod for ensuring that the F<to> entry is an array.
+#pod
+#pod =cut
 
 sub prepare_envelope {
   my ($self, $env) = @_;
@@ -96,16 +96,16 @@ sub prepare_envelope {
   return \%new_env;
 }
 
-# =method success
-#
-#   ...
-#   return $self->success;
-#
-# This method returns a new Email::Sender::Success object.  Arguments passed to
-# this method are passed along to the Success's constructor.  This is provided as
-# a convenience for returning success from subclasses' C<send_email> methods.
-#
-# =cut
+#pod =method success
+#pod
+#pod   ...
+#pod   return $self->success;
+#pod
+#pod This method returns a new Email::Sender::Success object.  Arguments passed to
+#pod this method are passed along to the Success's constructor.  This is provided as
+#pod a convenience for returning success from subclasses' C<send_email> methods.
+#pod
+#pod =cut
 
 sub success {
   my $self = shift;
@@ -127,7 +127,7 @@ Email::Sender::Role::CommonSending - the common sending tasks most Email::Sender
 
 =head1 VERSION
 
-version 1.300011
+version 1.300012
 
 =head1 DESCRIPTION
 
