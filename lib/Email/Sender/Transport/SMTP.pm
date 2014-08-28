@@ -1,6 +1,6 @@
 package Email::Sender::Transport::SMTP;
 # ABSTRACT: send email over SMTP
-$Email::Sender::Transport::SMTP::VERSION = '1.300012';
+$Email::Sender::Transport::SMTP::VERSION = '1.300013';
 use Moo;
 
 use Email::Sender::Failure::Multi;
@@ -261,7 +261,7 @@ Email::Sender::Transport::SMTP - send email over SMTP
 
 =head1 VERSION
 
-version 1.300012
+version 1.300013
 
 =head1 DESCRIPTION
 

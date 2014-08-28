@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Email::Sender::Manual::QuickStart;
 # ABSTRACT: how to start using Email::Sender right now
-$Email::Sender::Manual::QuickStart::VERSION = '1.300012';
+$Email::Sender::Manual::QuickStart::VERSION = '1.300013';
 #pod =head1 QUICK START
 #pod
 #pod =head2 Let's Send Some Mail!
@@ -225,7 +225,7 @@ $Email::Sender::Manual::QuickStart::VERSION = '1.300012';
 #pod   my $message = create_email_mime_msg;  # <- whatever you do to get the message
 #pod
 #pod   $message->header_set('bcc');          # delete the Bcc header before sending
-#pod   sendmail($message, { to => $rcpt' }); # send to explicit Bcc address
+#pod   sendmail($message, { to => $rcpt });  # send to explicit Bcc address
 #pod   sendmail($message);                   # and then send as normal
 #pod
 #pod =head4 Example 2: Explicitly set the envelope recipients for all recipients
@@ -258,7 +258,7 @@ Email::Sender::Manual::QuickStart - how to start using Email::Sender right now
 
 =head1 VERSION
 
-version 1.300012
+version 1.300013
 
 =head1 QUICK START
 
@@ -482,7 +482,7 @@ and then send it to the To/Cc users implicitly.
   my $message = create_email_mime_msg;  # <- whatever you do to get the message
 
   $message->header_set('bcc');          # delete the Bcc header before sending
-  sendmail($message, { to => $rcpt' }); # send to explicit Bcc address
+  sendmail($message, { to => $rcpt });  # send to explicit Bcc address
   sendmail($message);                   # and then send as normal
 
 =head4 Example 2: Explicitly set the envelope recipients for all recipients

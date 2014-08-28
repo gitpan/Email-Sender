@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Email::Sender::Util;
 # ABSTRACT: random stuff that makes Email::Sender go
-$Email::Sender::Util::VERSION = '1.300012';
+$Email::Sender::Util::VERSION = '1.300013';
 use Email::Address;
 use Email::Sender::Failure;
 use Email::Sender::Failure::Permanent;
@@ -37,7 +37,21 @@ sub _sender_from_email {
 # now I don't want to deal with making a sane set of args. -- rjbs, 2008-12-09
 sub _failure {
   my ($self, $error, $smtp, @rest) = @_;
-  my $code = $smtp ? $smtp->code : undef;
+
+  my ($code, $message);
+  if ($smtp) {
+    $code = $smtp->code;
+    $message = $smtp->message;
+    $message = "(no SMTP error message)" unless defined $message;
+
+    $message = defined $error && length $error
+             ? "$error: $message"
+             : $message;
+  } else {
+    $message = $error;
+    $message = "(no error given)" unless defined $message;
+    $message = "(empty error string)" unless length $message;
+  }
 
   my $error_class = ! $code       ? 'Email::Sender::Failure'
                   : $code =~ /^4/ ? 'Email::Sender::Failure::Temporary'
@@ -45,9 +59,7 @@ sub _failure {
                   :                 'Email::Sender::Failure';
 
   $error_class->new({
-    message => $smtp
-               ? ($error ? ("$error: " . $smtp->message) : $smtp->message)
-               : $error,
+    message => $message,
     code    => $code,
     @rest,
   });
@@ -78,7 +90,7 @@ Email::Sender::Util - random stuff that makes Email::Sender go
 
 =head1 VERSION
 
-version 1.300012
+version 1.300013
 
 =head1 AUTHOR
 
