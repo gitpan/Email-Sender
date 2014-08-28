@@ -1,6 +1,6 @@
 package Email::Sender::Success;
 # ABSTRACT: the result of successfully sending mail
-$Email::Sender::Success::VERSION = '1.300013';
+$Email::Sender::Success::VERSION = '1.300014';
 use Moo;
 
 #pod =head1 DESCRIPTION
@@ -25,7 +25,7 @@ Email::Sender::Success - the result of successfully sending mail
 
 =head1 VERSION
 
-version 1.300013
+version 1.300014
 
 =head1 DESCRIPTION
 

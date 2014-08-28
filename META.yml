@@ -48,7 +48,7 @@ resources:
   bugtracker: https://github.com/rjbs/Email-Sender/issues
   homepage: https://github.com/rjbs/Email-Sender
   repository: https://github.com/rjbs/Email-Sender.git
-version: '1.300013'
+version: '1.300014'
 x_Dist_Zilla:
   perl:
     version: '5.021003'
@@ -321,7 +321,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: 0
-          tag: '1.300013'
+          tag: '1.300014'
           tag_format: '%v'
           tag_message: v%v
           time_zone: local

@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Email::Sender::Util;
 # ABSTRACT: random stuff that makes Email::Sender go
-$Email::Sender::Util::VERSION = '1.300013';
+$Email::Sender::Util::VERSION = '1.300014';
 use Email::Address;
 use Email::Sender::Failure;
 use Email::Sender::Failure::Permanent;
@@ -42,7 +42,9 @@ sub _failure {
   if ($smtp) {
     $code = $smtp->code;
     $message = $smtp->message;
-    $message = "(no SMTP error message)" unless defined $message;
+    $message = ! defined $message ? "(no SMTP error message)"
+             : ! length  $message ? "(empty SMTP error message)"
+             :                       $message;
 
     $message = defined $error && length $error
              ? "$error: $message"
@@ -90,7 +92,7 @@ Email::Sender::Util - random stuff that makes Email::Sender go
 
 =head1 VERSION
 
-version 1.300013
+version 1.300014
 
 =head1 AUTHOR
 

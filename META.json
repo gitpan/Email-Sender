@@ -77,7 +77,7 @@
          "web" : "https://github.com/rjbs/Email-Sender"
       }
    },
-   "version" : "1.300013",
+   "version" : "1.300014",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.021003"
@@ -430,7 +430,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "1.300013",
+                  "tag" : "1.300014",
                   "tag_format" : "%v",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
