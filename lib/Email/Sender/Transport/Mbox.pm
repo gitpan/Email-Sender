@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Mbox;
 # ABSTRACT: deliver mail to an mbox on disk
-$Email::Sender::Transport::Mbox::VERSION = '1.300014';
+$Email::Sender::Transport::Mbox::VERSION = '1.300015'; # TRIAL
 use Moo;
 with 'Email::Sender::Transport';
 
@@ -126,7 +126,7 @@ Email::Sender::Transport::Mbox - deliver mail to an mbox on disk
 
 =head1 VERSION
 
-version 1.300014
+version 1.300015
 
 =head1 DESCRIPTION
 

@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Failable;
 # ABSTRACT: a wrapper to makes things fail predictably
-$Email::Sender::Transport::Failable::VERSION = '1.300014';
+$Email::Sender::Transport::Failable::VERSION = '1.300015'; # TRIAL
 use Moo;
 extends 'Email::Sender::Transport::Wrapper';
 
@@ -61,7 +61,7 @@ Email::Sender::Transport::Failable - a wrapper to makes things fail predictably
 
 =head1 VERSION
 
-version 1.300014
+version 1.300015
 
 =head1 DESCRIPTION
 

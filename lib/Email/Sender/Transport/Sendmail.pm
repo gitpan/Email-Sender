@@ -1,6 +1,6 @@
 package Email::Sender::Transport::Sendmail;
 # ABSTRACT: send mail via sendmail(1)
-$Email::Sender::Transport::Sendmail::VERSION = '1.300014';
+$Email::Sender::Transport::Sendmail::VERSION = '1.300015'; # TRIAL
 use Moo;
 with 'Email::Sender::Transport';
 
@@ -88,7 +88,7 @@ sub send_email {
   my $string = $email->as_string;
   $string =~ s/\x0D\x0A/\x0A/g unless $^O eq 'MSWin32';
 
-  print $pipe $email->as_string
+  print $pipe $string
     or Email::Sender::Failure->throw("couldn't send message to sendmail: $!");
 
   close $pipe
@@ -112,7 +112,7 @@ Email::Sender::Transport::Sendmail - send mail via sendmail(1)
 
 =head1 VERSION
 
-version 1.300014
+version 1.300015
 
 =head2 DESCRIPTION
 

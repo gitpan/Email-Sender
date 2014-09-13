@@ -48,7 +48,7 @@ resources:
   bugtracker: https://github.com/rjbs/Email-Sender/issues
   homepage: https://github.com/rjbs/Email-Sender
   repository: https://github.com/rjbs/Email-Sender.git
-version: '1.300014'
+version: '1.300015'
 x_Dist_Zilla:
   perl:
     version: '5.021003'
@@ -81,7 +81,7 @@ x_Dist_Zilla:
           phase: build
           skip: []
       name: '@RJBS/RJBS-Outdated'
-      version: '0.024'
+      version: '0.026'
     -
       class: Dist::Zilla::Plugin::PromptIfStale
       config:
@@ -92,7 +92,7 @@ x_Dist_Zilla:
           phase: release
           skip: []
       name: '@RJBS/CPAN-Outdated'
-      version: '0.024'
+      version: '0.026'
     -
       class: Dist::Zilla::Plugin::PruneCruft
       name: '@RJBS/@Filter/PruneCruft'
@@ -321,7 +321,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: 0
-          tag: '1.300014'
+          tag: '1.300015'
           tag_format: '%v'
           tag_message: v%v
           time_zone: local
@@ -403,5 +403,5 @@ x_Dist_Zilla:
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
-      is_trial: '0'
+      is_trial: '1'
     version: '5.020'

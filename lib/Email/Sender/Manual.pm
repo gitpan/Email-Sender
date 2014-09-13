@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Email::Sender::Manual;
 # ABSTRACT: table of contents for the Email::Sender manual
-$Email::Sender::Manual::VERSION = '1.300014';
+$Email::Sender::Manual::VERSION = '1.300015'; # TRIAL
 #pod =head1 THE MANUAL
 #pod
 #pod L<Email::Sender::Manual::QuickStart> tells you just what you need to know to
@@ -24,7 +24,7 @@ Email::Sender::Manual - table of contents for the Email::Sender manual
 
 =head1 VERSION
 
-version 1.300014
+version 1.300015
 
 =head1 THE MANUAL
 

@@ -1,6 +1,6 @@
 package Email::Sender::Simple;
 # ABSTRACT: the simple interface for sending mail with Sender
-$Email::Sender::Simple::VERSION = '1.300014';
+$Email::Sender::Simple::VERSION = '1.300015'; # TRIAL
 use Moo;
 with 'Email::Sender::Role::CommonSending';
 
@@ -179,7 +179,7 @@ Email::Sender::Simple - the simple interface for sending mail with Sender
 
 =head1 VERSION
 
-version 1.300014
+version 1.300015
 
 =head1 SEE INSTEAD
 
