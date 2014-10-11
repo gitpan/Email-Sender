@@ -48,7 +48,7 @@ resources:
   bugtracker: https://github.com/rjbs/Email-Sender/issues
   homepage: https://github.com/rjbs/Email-Sender
   repository: https://github.com/rjbs/Email-Sender.git
-version: '1.300015'
+version: '1.300016'
 x_Dist_Zilla:
   perl:
     version: '5.021003'
@@ -61,7 +61,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@RJBS/Git::GatherDir'
-      version: '2.023'
+      version: '2.024'
     -
       class: Dist::Zilla::Plugin::CheckPrereqsIndexed
       name: '@RJBS/CheckPrereqsIndexed'
@@ -81,7 +81,7 @@ x_Dist_Zilla:
           phase: build
           skip: []
       name: '@RJBS/RJBS-Outdated'
-      version: '0.026'
+      version: '0.027'
     -
       class: Dist::Zilla::Plugin::PromptIfStale
       config:
@@ -92,7 +92,7 @@ x_Dist_Zilla:
           phase: release
           skip: []
       name: '@RJBS/CPAN-Outdated'
-      version: '0.026'
+      version: '0.027'
     -
       class: Dist::Zilla::Plugin::PruneCruft
       name: '@RJBS/@Filter/PruneCruft'
@@ -158,7 +158,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@RJBS/Git::NextVersion'
-      version: '2.023'
+      version: '2.024'
     -
       class: Dist::Zilla::Plugin::PkgVersion
       name: '@RJBS/PkgVersion'
@@ -297,7 +297,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@RJBS/@Git/Check'
-      version: '2.023'
+      version: '2.024'
     -
       class: Dist::Zilla::Plugin::Git::Commit
       config:
@@ -314,21 +314,21 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@RJBS/@Git/Commit'
-      version: '2.023'
+      version: '2.024'
     -
       class: Dist::Zilla::Plugin::Git::Tag
       config:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: 0
-          tag: '1.300015'
+          tag: '1.300016'
           tag_format: '%v'
           tag_message: v%v
           time_zone: local
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@RJBS/@Git/Tag'
-      version: '2.023'
+      version: '2.024'
     -
       class: Dist::Zilla::Plugin::Git::Push
       config:
@@ -340,7 +340,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@RJBS/@Git/Push'
-      version: '2.023'
+      version: '2.024'
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:
@@ -403,5 +403,5 @@ x_Dist_Zilla:
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
-      is_trial: '1'
+      is_trial: '0'
     version: '5.020'

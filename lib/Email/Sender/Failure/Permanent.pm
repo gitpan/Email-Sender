@@ -1,6 +1,6 @@
 package Email::Sender::Failure::Permanent;
 # ABSTRACT: a permanent delivery failure
-$Email::Sender::Failure::Permanent::VERSION = '1.300015'; # TRIAL
+$Email::Sender::Failure::Permanent::VERSION = '1.300016';
 use Moo;
 extends 'Email::Sender::Failure';
 
@@ -19,7 +19,7 @@ Email::Sender::Failure::Permanent - a permanent delivery failure
 
 =head1 VERSION
 
-version 1.300015
+version 1.300016
 
 =head1 AUTHOR
 
